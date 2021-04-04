@@ -1,0 +1,4 @@
+#Idee d'enigme 
+	-Salle sombre(Le joueur peut acquérir des capacités lier au type exemple  feu flameche -->  Activer les torches)
+	-Activer plusieur torche lui permet d'ouvrir une portes/faire aparaitre un cofre
+	
