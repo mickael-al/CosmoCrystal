@@ -12,6 +12,37 @@
 		eau -> feu -> plante -> eau | normal | combat -> ténèbre -> psy -> combat
 	* ##### attaques :
 		![image](diagramme_attaque.svg)
+		* attaques de feu :
+			* attaque simple basique (<strong>flammèche</strong>) _lv 1_ :
+				* _petite boule de feu -> dégats unique_
+			* attaque spé basique (<strong>orbe enflammé</strong>) _lv 5_ :
+				* _sphère de feu -> dégats de zone / QTE -> spam pour comprimé la boule de feu_
+			* attaque simple avancé (<strong>crocs de feu</strong>) _lv 10_ :
+				* _morsure de feu -> dégats unique_
+			* attaque spé avancé (<strong>déflagration</strong>) _lv 15_ :
+				* _lance flamme -> dégats de zone / QTE -> spam pour augmenter le curseur (doit rester dans la bonne partie de la jauge)_
+		* attaques d'eau :
+			* attaque simple basique (<strong>hydroslash</strong>) _lv 1_ :
+				* _slash d'eau -> dégats unique / QTE -> style simon_
+			* attaque spé basique (<strong>aquapulse</strong>) _lv 5_ :
+				* _jet laminaire d'eau -> dégats unique / QTE -> parcours graph_
+			* attaque simple avancé (<strong>noyade</strong>) _lv 10_ :
+				* _une bulle d'eau qui englode les ennemis -> dégats de zone / QTE -> suivre point avec un mouvement aléatoire_
+			* attaque spé avancé (<strong>hydroblast</strong>) _lv 15_ :
+				* _un jet d'eau puissant -> dégats unique_
+		* attaque de plante :
+			* attaque simple basique (<strong>photo synthèse</strong>) _lv 1_ :
+				* _une fleur que régen avec son pollen -> soin / QTE -> style osu catch_
+			* attaque spé basique (<strong>fouet liane</strong>) _lv 5_ :
+				* _un fouet de liane -> dégats unique / QTE -> style osu mania_
+			* attaque simple avancé (<strong>éruption vénéneuse</strong>) _lv 10_ :
+				* _des racines sortant du sol -> dégats de zone / QTE -> style osu taiko_
+			* attaque spé avancé (<strong>tournesol</strong>) _lv 15_ :
+				* _une fleur qui capte le soleil pour envoyer un rayon -> dégats unique_
+	* ##### level design :
+		* énigmes :
+			* <strong>salle sombre</strong> : le joueur peut acquérir des capacités liées au type exemple feu flammèche -> Activer les torches
+			* <strong>puzzle de torches</strong> : Activer plusieurs torche lui permet d'ouvrir une portes/faire apparaître un coffre
 ## Histoire
 * #### Contexte :
 	L'intrigue de l'histoire ce déroule dans un monde séparé en quatre continents, celui de la neige, de la forêt, du feu et celui de la mer. Divers espèces de monstres y vivent, chacune ayant des attribues spécifiques à leurs habitats. Un type de monstres  plus exotique existe aussi dans ce monde, il s'agit des monstres de cristaux, le joueur est lui même un monstre de ce type. Ces monstres n'apparaissent que très rarement (tout les quatre millénaire environ) et sortent du sol tous en même temps durant une période que l'on appelle <strong>l'éclosion</strong>. Du fait de la rareté de ces monstres et de leurs propriétés métaboliques, ceux-ci sont énormément chassé par <strong>les humains</strong> durant cette phase où ils sont les plus simples à tuer, le temps le rendant rapidement beaucoup trop puissant. Autrefois, ces créatures étaient protégé par un immense champs de protection infranchissable qui rendais leur lieu d'éclosion inattaquable jusqu'à ce qu'il atteigne l'age adulte et devienne de majestueuses et très puissante créature. Malheureusement, il y a de ça 20 000 ans, un groupe d'humains parvient à détruire le générateur et à canalisé toute sa puissance dans un artéfact appelé 'la relique du chaos', nommé ainsi par les humain du fait de la puissance quelle contient et de la quantité d'énérgie libéré lors de la destruction du champ de force, créant une onde de choc de 10 sur l'échelle de Richter sur l'ensemble des quatre continents et prenant d’innombrable vies humaines. Cet artefact est aujourd'hui enfermé dans les tréfonds du plus grand temple humain, là ou personne n’oserait pénétrer.
@@ -37,4 +68,5 @@
 ## Developpement
 * #### design pattern :
 	[les design patterns du jeu-vidéo](https://slides.com/red-red/les-design-patterns-du-jeu-video/fullscreen)
+
 
