@@ -50,11 +50,29 @@
 				* style osu catch
 				* style osu taiko
 				* dégats unique
-		* attaque ténèbre:
+		* attaque de ténèbre :
             		* attaque simple basique (<strong>malédiction</strong>) _lv 1_ :
                 		* _une poupé maudite qui fait des dégats de status sur plusieurs tours -> dégats unique_
                 	* attaque spé basique (<strong>fauchage</strong>) _lv 5_ :
                 		* _une faucheuse qui fait des dégat ciblé à un ennemi -> dégats de zone_
+                	* attaque simple avancé (<strong>épines ténébreuses</strong>) _lv 10_ :
+                		* _un mur d'épines qui partent graduellement en direction des ennemis aléatoirement -> dégats de zone_
+                	* attaque spé avancé (<strong>distortion</strong>) _lv 15_ :
+                		* _une singularité qui créé une distortion infligeant des dégats conséquant à l'ensemble des ennemis -> dégats de zone_
+			* QTE :
+				* suite de séquences de symboles à entrer dans le bon ordre
+		* attaque de combat :
+			* attaque simple basique (<strong>éclat poing</strong>) _lv 1_ :
+				* _une boule de roche apparait et le joueur frappe dedans pour l'envoyer dans l'ennemi -> dégat unique_
+			* attaque spé basique (<strong>choc télurique</strong>) _lv 5_ :
+				* _une onde de choc qui fait des dégats à tous les ennemis -> dégats de zone_
+			* attaque simple avancé (<strong>frappe éclair</strong>) _lv 10_ :
+				* _le joueur se déplace rapidement sur l'ennemi pour le frapper -> dégats unique_
+			* attaque spé avancé (<strong>ultra poing</strong>) _lv 15_ :
+				* _le joueur concentre sont pouvoir pour frapper à distance l'ennemi -> dégats unique_
+			* QTE :
+				* suite de touche à faire rapidement
+		* attaque de psy :
 	* ##### level design :
 		* biomes : 
 			<strong>généralités</strong> : Les biomes sont de différents types et contiennent des créatures de leurs type _(forêt contient des créatures de type plante)_. Certains biomes peuvent être de deux types différents est servir d'habitation à des créatures multitypes plus puissantes.
