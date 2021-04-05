@@ -51,8 +51,8 @@
 				* style osu taiko
 				* dégats unique
 		* attaque de ténèbre :
-            		* attaque simple basique (<strong>malédiction</strong>) _lv 1_ :
-                		* _une poupé maudite qui fait des dégats de status sur plusieurs tours -> dégats unique_
+			* attaque simple basique (<strong>malédiction</strong>) _lv 1_ :
+				* _une poupé maudite qui fait des dégats de status sur plusieurs tours -> dégats unique_
                 	* attaque spé basique (<strong>fauchage</strong>) _lv 5_ :
                 		* _une faucheuse qui fait des dégat ciblé à un ennemi -> dégats de zone_
                 	* attaque simple avancé (<strong>épines ténébreuses</strong>) _lv 10_ :
