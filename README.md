@@ -82,7 +82,10 @@
 			* attaque spé avancé (<strong>choc magic</strong>) _ lv 15 :
 				* _créé une zone de controle mental qui baisse la vitesse des ennemis et leur fait des dégats -> dégats de zone_
 			* QTE :
-				* esquiver des projectile pendant un certains temps
+				* esquiver des projectile pendant un certains temps (undertale)
+	* ##### monstres :
+		* idées :
+			slime, squelettes, chauve souris, feu follets, golem, humains, arbres vivant, troll, champi, goules, méduse volante psy, poulpe, crabe, gobelins, mécanoïds, shadow monsters, blob, coffre vivants, vers de sable, ombrage (harry potter), phenix
 	* ##### level design :
 		* biomes : 
 			<strong>généralités</strong> : Les biomes sont de différents types et contiennent des créatures de leurs type _(forêt contient des créatures de type plante)_. Certains biomes peuvent être de deux types différents est servir d'habitation à des créatures multitypes plus puissantes.
@@ -90,7 +93,7 @@
 			* <strong>généralités</strong> : Les donjons sont rempli de monstres de tout les types différents. Ceux ci contiennent des énigmes dont la résolution permet de progresser dans les différentes pièces et étages.
 		* abilitées :
 			* <strong>morsure</strong> : une abilité permettant de détruire un éléments faibles (feuillage, racien, etc...) / _type normal_
-			* <strong>boule de feu dirigé</strong> : une boule de flamme permettant d'actionner un reseau d'éléments (alumer un reseau de torche, etc...) / _type feu_
+			* <strong>boule de feu dirigé</strong> : une boule de flamme permettant d'actionner un reseau d'éléments (allumer un reseau de torche, etc...) / _type feu_
 			* <strong>pikmin troups</strong> : une petite araignée controllable et passe partout. / type psy
 			* <strong>grappin liane</strong> : un grappin permettant de traverser des obstacles. / type plante
 			* <strong>respi-bulle</strong> : une bulle d'air permettant de respirer sous l'eau indéfiniment. / type eau
