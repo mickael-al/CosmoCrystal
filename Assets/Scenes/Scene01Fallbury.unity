@@ -2524,6 +2524,30 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 839091455916315264, guid: 45b2a72c0609a92498f193622c6189c0, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 839091456357296709, guid: 45b2a72c0609a92498f193622c6189c0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 839091456357296709, guid: 45b2a72c0609a92498f193622c6189c0, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 839091456357296715, guid: 45b2a72c0609a92498f193622c6189c0, type: 3}
+      propertyPath: m_BlockingObjects
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 839091456357296715, guid: 45b2a72c0609a92498f193622c6189c0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 839091456357296715, guid: 45b2a72c0609a92498f193622c6189c0, type: 3}
+      propertyPath: m_IgnoreReversedGraphics
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 839091456566883031, guid: 45b2a72c0609a92498f193622c6189c0, type: 3}
       propertyPath: m_Material
       value: 
