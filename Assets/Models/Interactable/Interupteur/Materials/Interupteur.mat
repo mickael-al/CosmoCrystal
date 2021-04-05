@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Interupteur
+  m_Shader: {fileID: -6465566751694194690, guid: b4bfdab1044915f48ad100eb5692a393, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - Vector1_583EE13A: 2.4
+    - Vector1_90D48962: 0.3
+    m_Colors:
+    - Color_3017D926: {r: 0.007843138, g: 0, b: 1.4980392, a: 0}
+    - Color_477CD76F: {r: 0.12549019, g: 0.23411539, b: 0.8, a: 1}
+  m_BuildTextureStacks: []

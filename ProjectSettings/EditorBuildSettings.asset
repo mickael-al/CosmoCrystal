@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestScene.unity
+    path: Assets/Scenes/Scene01Fallbury.unity
     guid: c9fc6ee2aa8bd474ab22ee55fe9bcc75
   m_configObjects: {}
