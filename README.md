@@ -16,29 +16,40 @@
 			* attaque simple basique (<strong>flammèche</strong>) _lv 1_ :
 				* _petite boule de feu -> dégats unique_
 			* attaque spé basique (<strong>orbe enflammé</strong>) _lv 5_ :
-				* _sphère de feu -> dégats de zone / QTE -> spam pour comprimé la boule de feu_
+				* _sphère de feu -> dégats de zone_
 			* attaque simple avancé (<strong>crocs de feu</strong>) _lv 10_ :
 				* _morsure de feu -> dégats unique_
 			* attaque spé avancé (<strong>déflagration</strong>) _lv 15_ :
-				* _lance flamme -> dégats de zone / QTE -> spam pour augmenter le curseur (doit rester dans la bonne partie de la jauge)_
+				* _lance flamme -> dégats de zone_
+			* QTE :
+				* spam pour augmenter le curseur (doit rester dans la bonne partie de la jauge)
+				* spam pour comprimé la boule de feu
 		* attaques d'eau :
 			* attaque simple basique (<strong>hydroslash</strong>) _lv 1_ :
-				* _slash d'eau -> dégats unique / QTE -> style simon_
+				* _slash d'eau -> dégats unique_
 			* attaque spé basique (<strong>aquapulse</strong>) _lv 5_ :
-				* _jet laminaire d'eau -> dégats unique / QTE -> parcours graph_
+				* _jet laminaire d'eau -> dégats unique_
 			* attaque simple avancé (<strong>noyade</strong>) _lv 10_ :
-				* _une bulle d'eau qui englode les ennemis -> dégats de zone / QTE -> suivre point avec un mouvement aléatoire_
+				* _une bulle d'eau qui englode les ennemis -> dégats de zone_
 			* attaque spé avancé (<strong>hydroblast</strong>) _lv 15_ :
 				* _un jet d'eau puissant -> dégats unique_
+			* QTE :
+				* style simon
+				* parcours graph
+				* suivre point avec un mouvement aléatoire
 		* attaque de plante :
 			* attaque simple basique (<strong>photo synthèse</strong>) _lv 1_ :
-				* _une fleur que régen avec son pollen -> soin / QTE -> style osu catch_
+				* _une fleur que régen avec son pollen -> soin_
 			* attaque spé basique (<strong>fouet liane</strong>) _lv 5_ :
-				* _un fouet de liane -> dégats unique / QTE -> style osu mania_
+				* _un fouet de liane -> dégats unique_
 			* attaque simple avancé (<strong>éruption vénéneuse</strong>) _lv 10_ :
-				* _des racines sortant du sol -> dégats de zone / QTE -> style osu taiko_
+				* _des racines sortant du sol -> dégats de zone_
 			* attaque spé avancé (<strong>tournesol</strong>) _lv 15_ :
 				* _une fleur qui capte le soleil pour envoyer un rayon -> dégats unique_
+			* QTE :
+				* style osu catch
+				* style osu taiko
+				* dégats unique
 	* ##### level design :
 		* biomes : 
 			<strong>généralités</strong> : Les biomes sont de différents types et contiennent des créatures de leurs type _(forêt contient des créatures de type plante)_. Certains biomes peuvent être de deux types différents est servir d'habitation à des créatures multitypes plus puissantes.
@@ -49,6 +60,7 @@
 			* <strong>boule de feu dirigé</strong> : une boule de flamme permettant d'actionner un reseau d'éléments (alumer un reseau de torche, etc...) / _type feu_
 			* <strong>pikmin troups</strong> : une petite araignée controllable et passe partout. / type psy
 			* <strong>grappin liane</strong> : un grappin permettant de traverser des obstacles. / type plante
+			* <strong>respi-bulle</strong> : une bulle d'air permettant de respirer sous l'eau indéfiniment. / type eau
 		* énigmes :
 			* <strong>salle sombre</strong> : le joueur peut acquérir des capacités liées au type exemple feu flammèche -> Activer les torches
 			* <strong>puzzle de torches</strong> : Activer plusieurs torche lui permet d'ouvrir une portes/faire apparaître un coffre
