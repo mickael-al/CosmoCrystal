@@ -50,6 +50,11 @@
 				* style osu catch
 				* style osu taiko
 				* dégats unique
+		* attaque ténèbre:
+            		* attaque simple basique (<strong>malédiction</strong>) _lv 1_ :
+                		* _une poupé maudite qui fait des dégats de status sur plusieurs tours -> dégats unique_
+                	* attaque spé basique (<strong>fauchage</strong>) _lv 5_ :
+                		* _une faucheuse qui fait des dégat ciblé à un ennemi -> dégats de zone_
 	* ##### level design :
 		* biomes : 
 			<strong>généralités</strong> : Les biomes sont de différents types et contiennent des créatures de leurs type _(forêt contient des créatures de type plante)_. Certains biomes peuvent être de deux types différents est servir d'habitation à des créatures multitypes plus puissantes.
