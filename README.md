@@ -73,6 +73,16 @@
 			* QTE :
 				* suite de touche à faire rapidement
 		* attaque de psy :
+			* attaque simple basique (<strong>onde psy</strong>) _lv 1_ :
+				* _le joueur envoie un rayon psychique sur un ennemi -> dégats unique_
+			* attaque spé simple (<strong>télékinésie</strong>) _lv 5_ :
+				* _le joueur soulève l'ennemi dans les air et le fait tomber -> dégats unique_
+			* attaque simple avancé (<strong>dépression gravitationnelle</strong>) _lv 10_ :
+				* _l'ennemi reçoit des dégats d'écrasement sur plusieurs tours -> dégats unique_
+			* attaque spé avancé (<strong>choc magic</strong>) _ lv 15 :
+				* _créé une zone de controle mental qui baisse la vitesse des ennemis et leur fait des dégats -> dégats de zone_
+			* QTE :
+				* esquiver des projectile pendant un certains temps
 	* ##### level design :
 		* biomes : 
 			<strong>généralités</strong> : Les biomes sont de différents types et contiennent des créatures de leurs type _(forêt contient des créatures de type plante)_. Certains biomes peuvent être de deux types différents est servir d'habitation à des créatures multitypes plus puissantes.
