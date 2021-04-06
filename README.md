@@ -7,8 +7,6 @@
 * Style graphique : Stylized shading
 
 ## Gameplay
-### sommaire :
-	* [combat](#### Combat)
 * #### Combat :
 	* ##### types :
 		eau -> feu -> plante -> eau | normal | combat -> ténèbre -> psy -> combat
