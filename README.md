@@ -79,7 +79,7 @@
 				* _le joueur soulève l'ennemi dans les air et le fait tomber -> dégats unique_
 			* attaque simple avancé (<strong>dépression gravitationnelle</strong>) _lv 10_ :
 				* _l'ennemi reçoit des dégats d'écrasement sur plusieurs tours -> dégats unique_
-			* attaque spé avancé (<strong>choc magic</strong>) _ lv 15 :
+			* attaque spé avancé (<strong>choc magique</strong>) _ lv 15 :
 				* _créé une zone de controle mental qui baisse la vitesse des ennemis et leur fait des dégats -> dégats de zone_
 			* QTE :
 				* esquiver des projectile pendant un certains temps (undertale)
