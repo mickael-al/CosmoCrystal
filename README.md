@@ -9,7 +9,7 @@
 ## Gameplay
 * #### Combat :
 	* ##### types :
-		eau -> feu -> plante -> eau | normal | combat -> ténèbre -> psy -> combat
+		![image](diagramme_faible.svg)
 	* ##### attaques :
 		![image](diagramme_attaque.svg)
 		* attaques de feu :
