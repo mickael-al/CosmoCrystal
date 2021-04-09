@@ -107,6 +107,7 @@
 			* **Control Mental** : le Joueur peut prendre le contrôle de petites araignées qu'il peut contrôler dans des petites zones.
 			* **transfert de dimensions** : le joueur peut passer dans l'autre dimension pour activer des mécanismes invisibles.
 			* **chemins immergés** : des chemin que le joueur ne peut emprunter que si il maitrise l'abilité "respi-bulle"
+			* **chemin d'engrenages** : une suite de mécaniqme à activé en trouvant la bonne conbinaison d'engrenages
 	* ##### items et marchands :
 		* items :
 			* **items de buff** : le joueur pourra acheter des objets spéciaux à des marchands, il pourra en porter un au maximum et  il lui donnerons un buff au détriment d'un débuff. 
