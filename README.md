@@ -104,7 +104,9 @@
 			* **fossé franchissable avec grappin** : le joueur peut passer de l'autre côté d'un fossé via un grappin.
 			* **Interupteur(Switch)** : le joueur peut activer des interupteur pour ouvrir des portes.
 			* **blocks/physique** : le joueur peut déplacer des blocs de pierre pour activer des mécanismes.
-			* **Control Mental** : le Joueur peut prendre le contrôle de petites araignées qu'il peut contrôler dans des petites zones. 
+			* **Control Mental** : le Joueur peut prendre le contrôle de petites araignées qu'il peut contrôler dans des petites zones.
+			* **transfert de dimensions** : le joueur peut passer dans l'autre dimension pour activer des mécanismes invisibles.
+			* **chemins immergés** : des chemin que le joueur ne peut emprunter que si il maitrise l'abilité "respi-bulle"
 	* ##### items et marchands :
 		* items :
 			* **items de buff** : le joueur pourra acheter des objets spéciaux à des marchands, il pourra en porter un au maximum et  il lui donnerons un buff au détriment d'un débuff. 
