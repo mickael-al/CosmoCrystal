@@ -133,6 +133,8 @@
 		Argo est un chasseur humain dont l'objectif est de traquer Échidna du fait de la prime sur ça tête, c'est un personnage grossier qui ne porte pas réellement d'intérêts au joueur.
 	* ##### Lanthel :
 		Tout comme le joueur, Lanthel est une créature de cristal, il éclos au même moment que le joueur non loin de lui. Il servira de tutoriel basique au joueur avant de se faire violemment tué par Échidna peut de temps après.
+	* ##### Nyx : Nyx est une fée de feux dont l'apparence ne s'accorde en rien avec son tempérament d'orc alcoolique. Malgré son air repoussant, elle n'essitera pas à venir en aide à ses amis, en échange d'une tournée gratuite évidemment.
+	* #### Tithus : Tithus est un elfe aventurier, il se déplace tout le temps avec l'ensemble de son équipement, c'est pourquoi malgré sa petite taille on le repère facilement à sont immence sac à dos qui fait le double de son poids. 
 ## Developpement
 * #### design pattern :
 	[les design patterns du jeu-vidéo](https://slides.com/red-red/les-design-patterns-du-jeu-video/fullscreen)
