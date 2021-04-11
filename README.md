@@ -83,6 +83,21 @@
 				* _créé une zone de controle mental qui baisse la vitesse des ennemis et leur fait des dégats -> dégats de zone_
 			* QTE :
 				* esquiver des projectile pendant un certains temps (undertale)
+		* attaque de feu/psy :
+			* attaque simple avancé (**flamme noir**) _lv 10_ :
+				* _créé un feu noir ardent extrèmement puissant utilisé par les forgerons antiques -> dégats unique_
+			* attaque spé avancé (**désintégration**) _lv 20_ :
+				* _projette un rayon laser noir détruisant tout sur son passage -> dégats de zone_
+		* attaque de eau/ténèbre :
+			* attaque simple avancé (**sacrifice**) _lv 10_ :
+				* _englobe l'ennemi d'une couche d'eau ténébreuse implosant à l'intérieur du corps -> dégats unique_
+			* attaque spé avancé (**multiblast**) _lv 20_ :
+				* _créé des portails dimensionelles pour diriger un hydroblast sur tout les ennemis -> dégats de zone_
+		* attaque de plante/combat :
+			* attaque simple avancé (**fureur de la forêt**) _lv 10_ :
+				* _invoque un arbre golem qui fait une onde de choque avec des racines bloquants les ennemis -> dégats unique_
+			* attaque spé avancé (**enterrement**) _lv 20_ :
+				* _invoque un monstre plante qui attire l'ennemi dasn le sol, lui infligeant beaucoups de dégats et de débuffs_
 	* ##### monstres :
 		* idées :
 			slime, squelettes, chauve souris, feu follets, golem, humains, arbres vivant, troll, champi, goules, méduse volante psy, poulpe, crabe, gobelins, mécanoïds, shadow monsters, blob, coffre vivants, vers de sable, ombrage (harry potter), phenix
