@@ -1482,7 +1482,6 @@ Cloth:
   - {fileID: 6270475631170122656}
   - {fileID: 6245718688343390684}
   - {fileID: 3406250151826867303}
-  - {fileID: 7706217367543155937}
   m_SphereColliders: []
   m_SelfCollisionDistance: 0
   m_SelfCollisionStiffness: 0.2
