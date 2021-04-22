@@ -9,9 +9,9 @@
 ## Gameplay
 * #### Combat :
 	* ##### types :
-		![image](diagramme_faible.svg)
+		![image](diagramme_faible.png)
 	* ##### attaques :
-		![image](diagramme_attaque.svg)
+		![image](diagramme_attaque.png)
 		![image](diagramme_faiblesse.png)
 		* attaques de feu :
 			* attaque simple basique (**flammèche**) _lv 1_ :
