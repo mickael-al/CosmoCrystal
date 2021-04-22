@@ -12,6 +12,7 @@
 		![image](diagramme_faible.svg)
 	* ##### attaques :
 		![image](diagramme_attaque.svg)
+		![image](diagramme_faiblesse.png)
 		* attaques de feu :
 			* attaque simple basique (**flammèche**) _lv 1_ :
 				* _petite boule de feu -> dégats unique_
