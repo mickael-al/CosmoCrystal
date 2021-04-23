@@ -8,6 +8,11 @@ public class Character : MonoBehaviour
     [Header("Mouvement")]
     [SerializeField] protected float walkSpeed = 1.0f;
     [SerializeField] protected float gravityValue = -9.81f;
+    [SerializeField] protected float gravityAcelerationMultipliyer = 1.0f;
+
+    #region timerVar
+    protected float notGroundTime = 0.0f;
+    #endregion
     #endregion
 
     protected virtual void Awake() 

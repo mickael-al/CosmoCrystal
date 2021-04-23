@@ -27,9 +27,17 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Camera"",
+                    ""name"": ""CameraMouse"",
                     ""type"": ""Value"",
                     ""id"": ""28653ddb-b6e0-445f-a0c3-be1f54d33cab"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""CameraGamePad"",
+                    ""type"": ""Value"",
+                    ""id"": ""830c29a5-6d6a-4108-b6ad-6667c41be629"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -43,18 +51,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""Camera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4880a610-d4d4-484c-917f-f44a4bed8de7"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""GamePad"",
-                    ""action"": ""Camera"",
+                    ""action"": ""CameraMouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -123,6 +120,17 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""Mouvement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ec3f3be-2509-4c5c-a54d-92b2645159de"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""CameraGamePad"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -160,7 +168,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         // Controller
         m_Controller = asset.FindActionMap("Controller", throwIfNotFound: true);
         m_Controller_Mouvement = m_Controller.FindAction("Mouvement", throwIfNotFound: true);
-        m_Controller_Camera = m_Controller.FindAction("Camera", throwIfNotFound: true);
+        m_Controller_CameraMouse = m_Controller.FindAction("CameraMouse", throwIfNotFound: true);
+        m_Controller_CameraGamePad = m_Controller.FindAction("CameraGamePad", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -211,13 +220,15 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Controller;
     private IControllerActions m_ControllerActionsCallbackInterface;
     private readonly InputAction m_Controller_Mouvement;
-    private readonly InputAction m_Controller_Camera;
+    private readonly InputAction m_Controller_CameraMouse;
+    private readonly InputAction m_Controller_CameraGamePad;
     public struct ControllerActions
     {
         private @PlayerInput m_Wrapper;
         public ControllerActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Mouvement => m_Wrapper.m_Controller_Mouvement;
-        public InputAction @Camera => m_Wrapper.m_Controller_Camera;
+        public InputAction @CameraMouse => m_Wrapper.m_Controller_CameraMouse;
+        public InputAction @CameraGamePad => m_Wrapper.m_Controller_CameraGamePad;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -230,9 +241,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Mouvement.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnMouvement;
                 @Mouvement.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnMouvement;
                 @Mouvement.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnMouvement;
-                @Camera.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnCamera;
-                @Camera.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnCamera;
-                @Camera.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnCamera;
+                @CameraMouse.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnCameraMouse;
+                @CameraMouse.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnCameraMouse;
+                @CameraMouse.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnCameraMouse;
+                @CameraGamePad.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnCameraGamePad;
+                @CameraGamePad.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnCameraGamePad;
+                @CameraGamePad.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnCameraGamePad;
             }
             m_Wrapper.m_ControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -240,9 +254,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Mouvement.started += instance.OnMouvement;
                 @Mouvement.performed += instance.OnMouvement;
                 @Mouvement.canceled += instance.OnMouvement;
-                @Camera.started += instance.OnCamera;
-                @Camera.performed += instance.OnCamera;
-                @Camera.canceled += instance.OnCamera;
+                @CameraMouse.started += instance.OnCameraMouse;
+                @CameraMouse.performed += instance.OnCameraMouse;
+                @CameraMouse.canceled += instance.OnCameraMouse;
+                @CameraGamePad.started += instance.OnCameraGamePad;
+                @CameraGamePad.performed += instance.OnCameraGamePad;
+                @CameraGamePad.canceled += instance.OnCameraGamePad;
             }
         }
     }
@@ -268,6 +285,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     public interface IControllerActions
     {
         void OnMouvement(InputAction.CallbackContext context);
-        void OnCamera(InputAction.CallbackContext context);
+        void OnCameraMouse(InputAction.CallbackContext context);
+        void OnCameraGamePad(InputAction.CallbackContext context);
     }
 }

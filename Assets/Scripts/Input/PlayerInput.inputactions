@@ -14,9 +14,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Camera",
+                    "name": "CameraMouse",
                     "type": "Value",
                     "id": "28653ddb-b6e0-445f-a0c3-be1f54d33cab",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "CameraGamePad",
+                    "type": "Value",
+                    "id": "830c29a5-6d6a-4108-b6ad-6667c41be629",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
@@ -30,18 +38,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
-                    "action": "Camera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4880a610-d4d4-484c-917f-f44a4bed8de7",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "GamePad",
-                    "action": "Camera",
+                    "action": "CameraMouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -110,6 +107,17 @@
                     "action": "Mouvement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "5ec3f3be-2509-4c5c-a54d-92b2645159de",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "CameraGamePad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

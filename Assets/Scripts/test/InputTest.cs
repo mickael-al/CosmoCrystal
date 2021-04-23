@@ -17,16 +17,16 @@ public class InputTest : MonoBehaviour
 
     private void OnEnable() {
         InputManager.InputJoueur.Controller.Mouvement.Enable();
-        InputManager.InputJoueur.Controller.Camera.Enable();
+        InputManager.InputJoueur.Controller.CameraMouse.Enable();
     }
 
     private void OnDisable() {
         InputManager.InputJoueur.Controller.Mouvement.Disable();
-        InputManager.InputJoueur.Controller.Camera.Disable();
+        InputManager.InputJoueur.Controller.CameraMouse.Disable();
     }
 
     /*private void Update() {
-        Debug.Log("Right : " + InputManager.InputJoueur.Controller.Camera.ReadValue<Vector2>());
+        Debug.Log("Right : " + InputManager.InputJoueur.Controller.CameraMouse.ReadValue<Vector2>());
         Debug.Log("Left : " + InputManager.InputJoueur.Controller.Mouvement.ReadValue<Vector2>());
     }*/
 }
