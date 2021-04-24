@@ -10,11 +10,18 @@ public class PlayerCameraMouvement : MonoBehaviour
     [SerializeField] private Vector2 angleMaxX = Vector2.zero;
     [SerializeField] private float angleMaxClamp = 10.0f;
     [SerializeField] private float speedMoveCamera = 2.0f;
+    [SerializeField] private float speedAdaptationWallCamera = 2.0f;
+    [SerializeField] private float distanceCamera = 13.0f;
+    [SerializeField] private float mindistance = 8.0f;
+    [SerializeField] private GameObject cameraObj = null;
+    [SerializeField] private LayerMask layerMask = ~0;
     private GameObject target = null;
     private float angleY = 0.0f;
     private float angleX = 0.0f;
     private Vector2 cameraAxisMouse = Vector2.zero;
     private Vector2 cameraAxisPad = Vector2.zero;
+    private float varDistCamera = 13.0f;
+    private RaycastHit hit;
     void Start()
     {
         InputManager.InputJoueur.Controller.CameraMouse.Enable();
@@ -29,6 +36,8 @@ public class PlayerCameraMouvement : MonoBehaviour
             Debug.LogWarning("Le tag player cannot find");
             Destroy(this);
         }
+        varDistCamera = distanceCamera;
+        cameraObj.transform.localPosition = new Vector3(0,0,-distanceCamera);
     }
 
     void Update()
@@ -50,5 +59,17 @@ public class PlayerCameraMouvement : MonoBehaviour
         angleX = Mathf.Clamp(angleX,angleMaxX.x-angleMaxClamp,angleMaxX.y+angleMaxClamp);
         transform.eulerAngles = new Vector3(angleX,angleY,0);
         transform.position = Vector3.Lerp(transform.position,target.transform.position ,Time.deltaTime * speedMoveCamera);
+       
+        if (Physics.Raycast(transform.position, -transform.TransformDirection(Vector3.forward), out hit, distanceCamera,layerMask))
+        {            
+            varDistCamera = hit.distance < mindistance ? distanceCamera : hit.distance-1;
+        }
+        else
+        {
+            varDistCamera = distanceCamera;
+        }
+
+        cameraObj.transform.localPosition = Vector3.Lerp(cameraObj.transform.localPosition,new Vector3(0,0,-varDistCamera),Time.deltaTime * speedAdaptationWallCamera);
+        
     }
 }
