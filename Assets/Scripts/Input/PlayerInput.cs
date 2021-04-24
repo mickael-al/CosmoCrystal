@@ -41,6 +41,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ActionPrincipale"",
+                    ""type"": ""Button"",
+                    ""id"": ""759088ea-c896-4855-915e-12d8e717ee0e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -131,6 +139,28 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""CameraGamePad"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b6817e96-9c47-4616-a1a5-5633463f56e9"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""ActionPrincipale"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd93b9c8-5461-469b-99e3-ac618f12926b"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""ActionPrincipale"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -170,6 +200,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Controller_Mouvement = m_Controller.FindAction("Mouvement", throwIfNotFound: true);
         m_Controller_CameraMouse = m_Controller.FindAction("CameraMouse", throwIfNotFound: true);
         m_Controller_CameraGamePad = m_Controller.FindAction("CameraGamePad", throwIfNotFound: true);
+        m_Controller_ActionPrincipale = m_Controller.FindAction("ActionPrincipale", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -222,6 +253,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Controller_Mouvement;
     private readonly InputAction m_Controller_CameraMouse;
     private readonly InputAction m_Controller_CameraGamePad;
+    private readonly InputAction m_Controller_ActionPrincipale;
     public struct ControllerActions
     {
         private @PlayerInput m_Wrapper;
@@ -229,6 +261,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @Mouvement => m_Wrapper.m_Controller_Mouvement;
         public InputAction @CameraMouse => m_Wrapper.m_Controller_CameraMouse;
         public InputAction @CameraGamePad => m_Wrapper.m_Controller_CameraGamePad;
+        public InputAction @ActionPrincipale => m_Wrapper.m_Controller_ActionPrincipale;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -247,6 +280,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @CameraGamePad.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnCameraGamePad;
                 @CameraGamePad.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnCameraGamePad;
                 @CameraGamePad.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnCameraGamePad;
+                @ActionPrincipale.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnActionPrincipale;
+                @ActionPrincipale.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnActionPrincipale;
+                @ActionPrincipale.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnActionPrincipale;
             }
             m_Wrapper.m_ControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -260,6 +296,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @CameraGamePad.started += instance.OnCameraGamePad;
                 @CameraGamePad.performed += instance.OnCameraGamePad;
                 @CameraGamePad.canceled += instance.OnCameraGamePad;
+                @ActionPrincipale.started += instance.OnActionPrincipale;
+                @ActionPrincipale.performed += instance.OnActionPrincipale;
+                @ActionPrincipale.canceled += instance.OnActionPrincipale;
             }
         }
     }
@@ -287,5 +326,6 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnMouvement(InputAction.CallbackContext context);
         void OnCameraMouse(InputAction.CallbackContext context);
         void OnCameraGamePad(InputAction.CallbackContext context);
+        void OnActionPrincipale(InputAction.CallbackContext context);
     }
 }

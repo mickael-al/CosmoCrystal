@@ -28,6 +28,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ActionPrincipale",
+                    "type": "Button",
+                    "id": "759088ea-c896-4855-915e-12d8e717ee0e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -116,6 +124,28 @@
                     "processors": "",
                     "groups": "GamePad",
                     "action": "CameraGamePad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b6817e96-9c47-4616-a1a5-5633463f56e9",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "ActionPrincipale",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fd93b9c8-5461-469b-99e3-ac618f12926b",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "ActionPrincipale",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

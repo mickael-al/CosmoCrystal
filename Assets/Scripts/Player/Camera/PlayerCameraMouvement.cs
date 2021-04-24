@@ -22,10 +22,13 @@ public class PlayerCameraMouvement : MonoBehaviour
     private Vector2 cameraAxisPad = Vector2.zero;
     private float varDistCamera = 13.0f;
     private RaycastHit hit;
+
     void Start()
     {
         InputManager.InputJoueur.Controller.CameraMouse.Enable();
         InputManager.InputJoueur.Controller.CameraGamePad.Enable();
+        InputManager.InputJoueur.Controller.ActionPrincipale.Enable();
+        //InputManager.InputJoueur.Controller.ActionPrincipale.performed += ctx => ApplyEffect(new ShakeCamera(),1.0f,0.2f,1.0f);
         target = GameObject.FindWithTag("Player");
         if(target)
         {
@@ -70,6 +73,10 @@ public class PlayerCameraMouvement : MonoBehaviour
         }
 
         cameraObj.transform.localPosition = Vector3.Lerp(cameraObj.transform.localPosition,new Vector3(0,0,-varDistCamera),Time.deltaTime * speedAdaptationWallCamera);
-        
+    }
+
+    public void ApplyEffect(CameraEffect ce,float duree,float magnitude,float smoothness)
+    {
+        StartCoroutine(ce.Effect(cameraObj,duree,magnitude, smoothness));
     }
 }
