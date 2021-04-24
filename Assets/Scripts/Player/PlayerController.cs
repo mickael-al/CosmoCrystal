@@ -53,6 +53,14 @@ public class PlayerController : Character
     protected override void Update()
     {
         base.Update();
+        if(!base.isDead ||  !base.isInteract)
+        {
+            Locomation();
+        }
+
+    }
+    public void Locomation()
+    {
         Gravity();
         lerpMove = Vector2.Lerp(lerpMove, InputManager.InputJoueur.Controller.Mouvement.ReadValue<Vector2>(), Time.deltaTime * 12.0f);
         moveController = transform.TransformDirection(Vector3.right) * Time.deltaTime * speed * lerpMove.x;
@@ -64,15 +72,13 @@ public class PlayerController : Character
         {
             pivotY = transform.eulerAngles.y;
             proceduralAnimation.SmoothnessSpeed(Mathf.Abs(lerpMove.magnitude));
-            
+            AnglesModelPlayerY = pivotY + Mathf.Atan2(lerpMove.x, lerpMove.y) * Mathf.Rad2Deg;
         }
-        else
+        else 
         {
             modelPlayer.transform.rotation = RaycastQuatNormal;
         }
 
-        
-        AnglesModelPlayerY = pivotY + Mathf.Atan2(lerpMove.x, lerpMove.y) * Mathf.Rad2Deg;
 
         if (Physics.Raycast(transform.position, -Vector3.up, out hit, 4.0f) && floorAdaptation)
         {

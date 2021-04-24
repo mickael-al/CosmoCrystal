@@ -11,6 +11,8 @@ public class Character : MonoBehaviour
     [SerializeField] protected float gravityValue = -9.81f;
     [SerializeField] protected float gravityAcelerationMultipliyer = 1.0f;
 
+    [SerializeField] protected bool isInteract = false;
+
     #region timerVar
     protected float notGroundTime = 0.0f;
     #endregion

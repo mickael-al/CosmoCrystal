@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameManager
   - PivotCamera
+  - Interactable
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - 
   - PPP
   - Cloth
-  - 
+  - Interactable
   - 
   - 
   - 

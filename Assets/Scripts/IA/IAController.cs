@@ -12,10 +12,11 @@ public class IAController : Character
 
     public bool Dead{
         set{
-            if(value)
+            if(!base.isDead && value)
             {
                 nav.isStopped = true;
                 nav.speed = 0.0f;
+                animator.SetTrigger("Deaths");
             }
             base.isDead = value;
         }
