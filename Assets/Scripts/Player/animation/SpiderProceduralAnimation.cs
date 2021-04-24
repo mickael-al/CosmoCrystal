@@ -86,7 +86,7 @@ public class SpiderProceduralAnimation : ProceduralAnimation
         if (indexToMove != -1 && !legMoving[0])
         {
             Vector3 targetPoint = desiredPositions[indexToMove] + Mathf.Clamp(velocity.magnitude * velocityMultiplier, 0.0f, 1.5f) * (desiredPositions[indexToMove] - legTargets[indexToMove].position) + velocity * velocityMultiplier;
-            Vector3[] positionAndNormal = MatchToSurfaceFromAbove(targetPoint, raycastRange, bodyPos.transform.up);
+            Vector3[] positionAndNormal = MatchToSurfaceFromAbove(targetPoint, raycastRange, bodyPos.transform.up,base.layerMask);
             legMoving[0] = true;
             StartCoroutine(PerformStep(indexToMove, positionAndNormal[0]));
         }
@@ -103,14 +103,14 @@ public class SpiderProceduralAnimation : ProceduralAnimation
         }
     }
 
-    private void OnDrawGizmosSelected()
+    /*private void OnDrawGizmosSelected()
     {
-        /*for (int i = 0; i < nbLegs; ++i)
+        for (int i = 0; i < nbLegs; ++i)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(legTargets[i].position, 0.05f);
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(bodyPos.transform.TransformPoint(defaultLegPositions[i]), base.stepSize);
-        }*/
-    }
+        }
+    }*/
 }

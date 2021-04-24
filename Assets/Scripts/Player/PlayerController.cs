@@ -63,6 +63,8 @@ public class PlayerController : Character
         if(Mathf.Abs(lerpMove.magnitude) > 0.01f)
         {
             pivotY = transform.eulerAngles.y;
+            proceduralAnimation.SmoothnessSpeed(Mathf.Abs(lerpMove.magnitude));
+            
         }
         else
         {
