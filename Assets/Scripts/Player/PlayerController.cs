@@ -74,7 +74,7 @@ public class PlayerController : Character
         
         AnglesModelPlayerY = pivotY + Mathf.Atan2(lerpMove.x, lerpMove.y) * Mathf.Rad2Deg;
 
-        if (Physics.Raycast(transform.position, -Vector3.up, out hit, 4.0f))
+        if (Physics.Raycast(transform.position, -Vector3.up, out hit, 4.0f) && floorAdaptation)
         {
             Debug.DrawRay(transform.position, -Vector3.up, Color.red, 4.0f);
             RaycastQuatNormal = Quaternion.FromToRotation(Vector3.up, hit.normal) * Quaternion.Euler(0, AnglesModelPlayerY, 0);
