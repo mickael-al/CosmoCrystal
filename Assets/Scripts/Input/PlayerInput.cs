@@ -131,6 +131,17 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""430b5c6f-42b3-41b4-bc67-8585d1beced3"",
+                    ""path"": ""<HID::Saitek AV8R Joystick>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouvement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""5ec3f3be-2509-4c5c-a54d-92b2645159de"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
