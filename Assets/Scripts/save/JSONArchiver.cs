@@ -1,9 +1,9 @@
-﻿using System.Collections;
+﻿//using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System;
-using System.Text;
+//using System.Text;
 
 public class JSONArchiver : MonoBehaviour
 {
@@ -11,23 +11,22 @@ public class JSONArchiver : MonoBehaviour
     private String archivePath;
     private String loadPath;
     private String tosavePath;
-    [SerializeField] private bool archive = false;
-
-    // Start is called before the first frame update
+    //[SerializeField] private bool archive = false;
+    
     void Start()
     {
         this.archivePath = Path.Combine(Application.persistentDataPath, "save", "archive");
         this.loadPath = Path.Combine(Application.persistentDataPath, "save", "load");
         this.tosavePath = Path.Combine(Application.persistentDataPath, "save", "tosave");
 
-        Debug.Log(Application.persistentDataPath);
+        //Debug.Log(Application.persistentDataPath);
         Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, "save"));
         Directory.CreateDirectory(archivePath);
         Directory.CreateDirectory(loadPath);
         Directory.CreateDirectory(tosavePath);
     }
 
-    void Update()
+    /*void Update()
     {
         if(archive)
         {
@@ -37,7 +36,7 @@ public class JSONArchiver : MonoBehaviour
             loadJSONsFromArchive();
             Debug.Log("load ok");
         }
-    }
+    }*/
     
     public void archiveJSON()
     {

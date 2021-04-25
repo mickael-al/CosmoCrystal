@@ -7,6 +7,8 @@ TagManager:
   - GameManager
   - PivotCamera
   - Interactable
+  - SceneManager
+  - SceneSave
   layers:
   - Default
   - TransparentFX
