@@ -6,8 +6,7 @@ public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] private List<Interactable> interactable = new List<Interactable>();
     
-    private void Start() {
-        InputManager.InputJoueur.Controller.ActionPrincipale.Enable();
+    private void Start() {        
         InputManager.InputJoueur.Controller.ActionPrincipale.performed += ctx => Interact();  
     }
 

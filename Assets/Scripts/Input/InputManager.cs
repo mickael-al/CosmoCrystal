@@ -19,4 +19,17 @@ public class InputManager : MonoBehaviour
         instance = this;
         playerInput = new PlayerInput();
     }
+
+    private void OnEnable() {
+        playerInput.Controller.Mouvement.Enable();
+        playerInput.Controller.CameraMouse.Enable();
+        playerInput.Controller.CameraGamePad.Enable();
+        playerInput.Controller.ActionPrincipale.Enable();
+    }
+    private void OnDisable() {
+        /*playerInput.Controller.Mouvement.Disable();
+        playerInput.Controller.CameraMouse.Disable();
+        playerInput.Controller.CameraGamePad.Disable();
+        playerInput.Controller.ActionPrincipale.Disable();*/
+    }
 }

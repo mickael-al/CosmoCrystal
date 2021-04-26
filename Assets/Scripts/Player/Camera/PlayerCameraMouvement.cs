@@ -23,12 +23,15 @@ public class PlayerCameraMouvement : MonoBehaviour
     private float varDistCamera = 13.0f;
     private RaycastHit hit;
 
+    public void ChangeAngleY(float angle)
+    {
+        angleY = angle;
+        transform.eulerAngles = new Vector3(angleX,angleY,0);
+    }
+
     void Start()
     {
-        InputManager.InputJoueur.Controller.CameraMouse.Enable();
-        InputManager.InputJoueur.Controller.CameraGamePad.Enable();
-        InputManager.InputJoueur.Controller.ActionPrincipale.Enable();
-        //InputManager.InputJoueur.Controller.ActionPrincipale.performed += ctx => ApplyEffect(new ShakeCamera(),1.0f,0.2f,1.0f);
+        transform.parent = null;
         target = GameObject.FindWithTag("Player");
         if(target)
         {

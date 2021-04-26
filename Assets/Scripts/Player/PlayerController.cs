@@ -38,11 +38,18 @@ public class PlayerController : Character
         base.Awake();
     }
 
+    public void ChangeAnimationState(bool state)
+    {
+        if(proceduralAnimation)   
+        {
+            proceduralAnimation.SetActive = state;            
+        }
+        base.isInteract = !state;
+    }
+
     protected override void Start()
     {
         base.Start();
-        InputManager.InputJoueur.Controller.Mouvement.Enable();
-        InputManager.InputJoueur.Controller.CameraMouse.Enable();
         speed = walkSpeed;
         pivot = GameObject.FindWithTag("PivotCamera");
         pivotY = transform.eulerAngles.y;
@@ -53,7 +60,7 @@ public class PlayerController : Character
     protected override void Update()
     {
         base.Update();
-        if(!base.isDead ||  !base.isInteract)
+        if(!base.isDead && !base.isInteract)
         {
             Locomation();
         }

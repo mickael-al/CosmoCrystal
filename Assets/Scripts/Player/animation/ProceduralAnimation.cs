@@ -14,11 +14,20 @@ public class ProceduralAnimation : MonoBehaviour
     [SerializeField] protected float velocityMultiplier = 15f;
     [SerializeField] protected LayerMask layerMask = ~0;
     [SerializeField] protected int smoothness = 7;
+    [SerializeField] protected bool activeAnimation = true;
     #region GetterSetter
     public int Smoothness{
         get
         {
             return smoothness;
+        }
+    }
+    public virtual bool SetActive{
+        get{
+            return activeAnimation;
+        }
+        set{
+            activeAnimation = value;
         }
     }
     #endregion

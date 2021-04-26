@@ -8,6 +8,7 @@ public class SceneSave : MonoBehaviour
 
     public void SaveAll()
     {
+        Debug.Log("SaveScene");
         foreach(I_Save save in allObjectSaveLoad)
         {
             save.Save();
@@ -16,6 +17,7 @@ public class SceneSave : MonoBehaviour
 
     public void LoadAll()
     {
+        Debug.Log("LoadSave");
         foreach(I_Save load in allObjectSaveLoad)
         {
             load.Load();
