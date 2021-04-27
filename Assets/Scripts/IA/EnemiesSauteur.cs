@@ -18,8 +18,8 @@ public class EnemiesSauteur : Enemies
 
     private void LateUpdate() 
     {
-        /*syncMove+= Time.deltaTime *speedMult;
-        if(Mathf.Abs(Mathf.Sin(syncMove*Mathf.PI)) < 0.6f)
+        syncMove+= Time.deltaTime *speedMult;
+        /*if(Mathf.Abs(Mathf.Sin(syncMove*Mathf.PI)) < 0.6f)
         {
             root.transform.position = pos;
         }
@@ -27,7 +27,7 @@ public class EnemiesSauteur : Enemies
         {
             pos = root.transform.position;
             root.transform.localPosition = Vector3.Lerp(root.transform.localPosition,Vector3.zero,Time.deltaTime * 1.0f);
-        }
-        animator.SetFloat("MoveSync",syncMove);*/
+        }*/
+        animator.SetFloat("MoveSync",syncMove);
     }
 }
