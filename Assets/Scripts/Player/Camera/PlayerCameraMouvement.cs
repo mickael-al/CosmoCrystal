@@ -15,6 +15,11 @@ public class PlayerCameraMouvement : MonoBehaviour
     [SerializeField] private float mindistance = 8.0f;
     [SerializeField] private GameObject cameraObj = null;
     [SerializeField] private LayerMask layerMask = ~0;
+
+    [Header("Mouse")]
+
+    [SerializeField] private bool mouseSee = false;
+    [SerializeField] private bool mouseCursorMove = false;
     private GameObject target = null;
     private float angleY = 0.0f;
     private float angleX = 0.0f;
@@ -22,6 +27,35 @@ public class PlayerCameraMouvement : MonoBehaviour
     private Vector2 cameraAxisPad = Vector2.zero;
     private float varDistCamera = 13.0f;
     private RaycastHit hit;
+
+    #region GetterSetter
+        public bool MouseSee{
+            get{
+                return mouseSee;
+            }
+            set{
+                Cursor.visible = value;
+                mouseSee = value;
+            }
+        }
+
+        public bool MouseCursorMove
+        {
+            get{
+                return mouseCursorMove;
+            }
+            set{
+                if(value)
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                }
+                else{
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
+                mouseCursorMove = value;
+            }
+        }
+    #endregion
 
     public void ChangeAngleY(float angle)
     {
@@ -44,16 +78,18 @@ public class PlayerCameraMouvement : MonoBehaviour
         }
         varDistCamera = distanceCamera;
         cameraObj.transform.localPosition = new Vector3(0,0,-distanceCamera);
+        MouseSee = MouseSee;
+        MouseCursorMove = MouseCursorMove;
     }
 
     void Update()
     {
         cameraAxisMouse = Vector2.Lerp(cameraAxisMouse, InputManager.InputJoueur.Controller.CameraMouse.ReadValue<Vector2>(), Time.deltaTime * 12.0f);
         cameraAxisPad = Vector2.Lerp(cameraAxisPad, InputManager.InputJoueur.Controller.CameraGamePad.ReadValue<Vector2>(), Time.deltaTime * 12.0f);
-        angleY += cameraAxisMouse.x * sensitiveX;
-        angleY += cameraAxisPad.x*1.5f;
-        angleX += cameraAxisMouse.y * sensitiveY;
-        angleX += cameraAxisPad.y;
+        angleY += cameraAxisMouse.x * sensitiveX * Time.deltaTime * 100.0f;
+        angleY += cameraAxisPad.x * Time.deltaTime * 250.0f;
+        angleX += cameraAxisMouse.y * sensitiveY * Time.deltaTime * 100.0f;
+        angleX += cameraAxisPad.y* Time.deltaTime * 100.0f;
         if(angleX < angleMaxX.x)
         {
             angleX = Mathf.Lerp(angleX,angleMaxX.x,Time.deltaTime*13.0f);

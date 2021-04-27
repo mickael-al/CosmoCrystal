@@ -1,8 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class SceneManagerLoader : MonoBehaviour
 {
@@ -14,7 +14,6 @@ public class SceneManagerLoader : MonoBehaviour
     private SceneSave sceneSave = null;
     private bool canChangeScene = true;
     private AsyncOperation _asyncOperation;
-    //https://gamedev.stackexchange.com/questions/185528/preload-scene-in-unity
 
     public bool CanChangeScene
     {
@@ -57,7 +56,7 @@ public class SceneManagerLoader : MonoBehaviour
     private IEnumerator ChangeSceneTransition(string sceneName, Vector3 pos, float angleY)
     {
         if (canChangeScene)
-        {
+        {            
             canChangeScene = false;
             sceneSave.SaveAll();
             float timer = tempsTransition;
@@ -78,8 +77,26 @@ public class SceneManagerLoader : MonoBehaviour
             playerObj.transform.eulerAngles = new Vector3(playerObj.transform.eulerAngles.x, angleY, playerObj.transform.eulerAngles.z);
             cameraObj.GetComponent<PlayerCameraMouvement>().ChangeAngleY(angleY);
             loadingText.SetActive(true);
-            SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
-            yield return null;
+            this._asyncOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+            string chargement = "Chargement";
+            timer = 0.0f;
+            int countPoint = 0;
+            while (!this._asyncOperation.isDone)
+            {
+                chargement = "Chargement";
+                for(int i = 0; i <= countPoint;i++)
+                {
+                    chargement += ".";
+                }
+                timer += Time.deltaTime;
+                if(timer > 0.1f)
+                {
+                    timer = 0.0f;
+                    countPoint = ++countPoint%3;
+                }
+                loadingText.GetComponent<TextMeshProUGUI>().text = chargement;
+                yield return null;
+            }            
             loadingText.SetActive(false);
             playerObj.GetComponent<PlayerController>().ChangeAnimationState(true);
             timer = tempsTransition;

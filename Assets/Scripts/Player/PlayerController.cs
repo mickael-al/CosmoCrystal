@@ -40,6 +40,7 @@ public class PlayerController : Character
 
     public void ChangeAnimationState(bool state)
     {
+        characterControler.enabled = state;
         if(proceduralAnimation)   
         {
             proceduralAnimation.SetActive = state;            

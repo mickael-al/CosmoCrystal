@@ -980,7 +980,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1473393852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0828679217576464a80225385459b7c8, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d12ecc8c28877d4abeec61083dc1d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 3.5
@@ -998,6 +998,7 @@ MonoBehaviour:
     lastRandom: 0
   distanceChasse: 6
   playerObj: {fileID: 0}
+  root: {fileID: 1000013779527277}
 --- !u!4 &1473393855
 Transform:
   m_ObjectHideFlags: 0

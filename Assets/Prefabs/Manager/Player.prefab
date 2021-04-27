@@ -917,6 +917,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   smoothness: 7
+  activeAnimation: 1
   legTargets:
   - {fileID: 3945491863395858460}
   - {fileID: 3945491863601930479}
