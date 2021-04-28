@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] private List<Interactable> interactable = new List<Interactable>();
+    private Interactable lastInteraction = null;
     
     private void Start() {        
         InputManager.InputJoueur.Controller.ActionPrincipale.performed += ctx => Interact();  
@@ -36,6 +37,14 @@ public class PlayerInteract : MonoBehaviour
         }
         if(inter != null)
         {
+            if(inter != lastInteraction)
+            {
+                if(lastInteraction != null)
+                {                    
+                    lastInteraction.ChangeInteract();
+                }
+            }
+            lastInteraction = inter;
             inter.Interact(this.GetComponent<Character>());
         }
     }

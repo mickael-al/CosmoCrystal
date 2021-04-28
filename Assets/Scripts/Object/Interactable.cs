@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    //[Header("Interact Settings")]
     [Header("Animator")]
     [SerializeField] private Animator animator = null;
-    private bool useState = false;
+    protected bool useState = false;
+    protected bool interactState = false;
+    #region GetterSetter
+    public bool InteractState
+    {
+        get{
+            return interactState;
+        }
+    }
+    #endregion
+
     public virtual void StartInteract()
     {
         useState = true;
@@ -22,9 +31,18 @@ public class Interactable : MonoBehaviour
     }
     public virtual void StopInteract()
     {
-        useState = false;
-        animator.SetTrigger("Stop");
+        if(useState)
+        {
+            animator.SetTrigger("Stop");
+            useState = false;        
+        }
     }
+
+    public virtual void ChangeInteract()
+    {
+        
+    }
+
     protected virtual void Start()
     {
         

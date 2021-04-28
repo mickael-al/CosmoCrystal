@@ -999,6 +999,8 @@ MonoBehaviour:
   distanceChasse: 6
   playerObj: {fileID: 0}
   root: {fileID: 1000013779527277}
+  syncMove: 0
+  speedMult: 1
 --- !u!4 &1473393855
 Transform:
   m_ObjectHideFlags: 0
@@ -2820,6 +2822,22 @@ PrefabInstance:
     - target: {fileID: 2900069040356470995, guid: 45b2a72c0609a92498f193622c6189c0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4549595807060009754, guid: 45b2a72c0609a92498f193622c6189c0, type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4549595807060009754, guid: 45b2a72c0609a92498f193622c6189c0, type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: '2 : Le Lorem Ipsum est simplement du faux text'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4549595807060009754, guid: 45b2a72c0609a92498f193622c6189c0, type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: '3 : Le Lorem Ipsum est simplement du faux text'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4549595807060009754, guid: 45b2a72c0609a92498f193622c6189c0, type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: '1 : Le Lorem Ipsum est simplement du faux text'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45b2a72c0609a92498f193622c6189c0, type: 3}

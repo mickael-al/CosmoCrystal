@@ -598,6 +598,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8464793187052084423}
+  dialogue:
+    nameCharacter: 
+    sentences:
+    - '1 : Le Lorem Ipsum est simplement du faux text'
+    - '2 : Le Lorem Ipsum est simplement du faux text'
+    - '3 : Le Lorem Ipsum est simplement du faux text'
 --- !u!135 &648073964726232181
 SphereCollider:
   m_ObjectHideFlags: 0
