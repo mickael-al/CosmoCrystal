@@ -602,8 +602,16 @@ MonoBehaviour:
     nameCharacter: 
     sentences:
     - '1 : Le Lorem Ipsum est simplement du faux text'
-    - '2 : Le Lorem Ipsum est simplement du faux text'
-    - '3 : Le Lorem Ipsum est simplement du faux text'
+    - '2 : Le Lorem Ipsum est simplement du faux text
+
+      Le Lorem Ipsum est simplement
+      du faux text'
+    - '3 : Le Lorem Ipsum est simplement du faux text
+
+      Le Lorem Ipsum est simplement
+      du faux text
+
+      Le Lorem Ipsum est simplement du faux text'
 --- !u!135 &648073964726232181
 SphereCollider:
   m_ObjectHideFlags: 0
