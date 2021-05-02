@@ -1,26 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneSave : MonoBehaviour
 {
-    [SerializeField] private List<I_Save> allObjectSaveLoad = new List<I_Save>();
-
+    [SerializeField] private List<GameObject> allObjectSaveLoad = new List<GameObject>();
+    [SerializeField] private string keyRandom = "";
+    private void Awake() {
+        keyRandom = SceneManager.GetActiveScene().name;
+    }
     public void SaveAll()
     {
         Debug.Log("SaveScene");
-        foreach(I_Save save in allObjectSaveLoad)
+        for(int i = 0 ; i < allObjectSaveLoad.Count;i++)
         {
-            save.Save();
+            allObjectSaveLoad[i].GetComponent<I_Save>().Save(keyRandom+""+i);
         }
     }
 
     public void LoadAll()
     {
         Debug.Log("LoadSave");
-        foreach(I_Save load in allObjectSaveLoad)
+        for(int i = 0 ; i < allObjectSaveLoad.Count;i++)
         {
-            load.Load();
+            allObjectSaveLoad[i].GetComponent<I_Save>().Load(keyRandom+""+i);
         }
     }
 }

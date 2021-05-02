@@ -1,5 +1,5 @@
 ﻿public interface I_Save
 {
-    void Save();
-    void Load();
+    void Save(string s);
+    void Load(string s);
 }
