@@ -522,7 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSceneName: Scene02Fallbury
-  nextPosition: {x: 85.572, y: 0.6800049, z: 64.98662}
+  nextPosition: {x: 85.572, y: -4.319995, z: 64.98662}
   nextAngleY: 47
   sceneManager: {fileID: 0}
 --- !u!65 &830888555
