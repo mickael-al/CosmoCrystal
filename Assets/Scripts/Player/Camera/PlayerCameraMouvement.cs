@@ -20,6 +20,7 @@ public class PlayerCameraMouvement : MonoBehaviour
 
     [SerializeField] private bool mouseSee = false;
     [SerializeField] private bool mouseCursorMove = false;
+    [SerializeField] private bool cameraMove = true;
     private GameObject target = null;
     private float angleY = 0.0f;
     private float angleX = 0.0f;
@@ -55,6 +56,15 @@ public class PlayerCameraMouvement : MonoBehaviour
                 mouseCursorMove = value;
             }
         }
+        public bool CameraMove
+        {
+            get{
+                return cameraMove;
+            }
+            set{
+                cameraMove = value;
+            }
+        }
     #endregion
 
     public void ChangeAngleY(float angle)
@@ -84,8 +94,16 @@ public class PlayerCameraMouvement : MonoBehaviour
 
     void Update()
     {
-        cameraAxisMouse = Vector2.Lerp(cameraAxisMouse, InputManager.InputJoueur.Controller.CameraMouse.ReadValue<Vector2>(), Time.deltaTime * 12.0f);
-        cameraAxisPad = Vector2.Lerp(cameraAxisPad, InputManager.InputJoueur.Controller.CameraGamePad.ReadValue<Vector2>(), Time.deltaTime * 12.0f);
+        if(cameraMove)
+        {
+            cameraAxisMouse = Vector2.Lerp(cameraAxisMouse, InputManager.InputJoueur.Controller.CameraMouse.ReadValue<Vector2>(), Time.deltaTime * 12.0f);
+            cameraAxisPad = Vector2.Lerp(cameraAxisPad, InputManager.InputJoueur.Controller.CameraGamePad.ReadValue<Vector2>(), Time.deltaTime * 12.0f);
+        }
+        else
+        {
+            cameraAxisMouse = Vector2.Lerp(cameraAxisMouse, Vector2.zero, Time.deltaTime * 12.0f);
+            cameraAxisPad = Vector2.Lerp(cameraAxisPad, Vector2.zero, Time.deltaTime * 12.0f);
+        }
         angleY += cameraAxisMouse.x * sensitiveX * Time.deltaTime * 100.0f;
         angleY += cameraAxisPad.x * Time.deltaTime * 250.0f;
         angleX += cameraAxisMouse.y * sensitiveY * Time.deltaTime * 100.0f;

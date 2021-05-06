@@ -6,8 +6,26 @@ public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] private List<Interactable> interactable = new List<Interactable>();
     private Interactable lastInteraction = null;
+    private PlayerAbiliteControleur playerAbiliteControleur = null;
+
+    #region GetterSetter
+    public bool CanInteract
+    {
+        get{
+            return interactable.Count > 0;
+        }
+    }
+
+    public bool isInteract
+    {
+        get{
+            return lastInteraction != null ? lastInteraction.InteractState : false;
+        }
+    }
+    #endregion
     
     private void Start() {        
+        playerAbiliteControleur = GetComponent<PlayerAbiliteControleur>();
         InputManager.InputJoueur.Controller.ActionPrincipale.performed += ctx => Interact();  
     }
 
@@ -25,6 +43,7 @@ public class PlayerInteract : MonoBehaviour
 
     public void Interact()
     {
+        if(playerAbiliteControleur.IsChoising || playerAbiliteControleur.IsUsing) return;
         Interactable inter = null;
         float distance = float.MaxValue;
         foreach(Interactable i in interactable)

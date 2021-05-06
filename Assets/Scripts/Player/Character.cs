@@ -10,7 +10,6 @@ public class Character : MonoBehaviour
     [SerializeField] protected float runSpeed = 2.0f;
     [SerializeField] protected float gravityValue = -9.81f;
     [SerializeField] protected float gravityAcelerationMultipliyer = 1.0f;
-
     [SerializeField] protected bool isInteract = false;
 
     #region timerVar
@@ -24,6 +23,14 @@ public class Character : MonoBehaviour
     #endregion
 
 
+    #endregion
+    #region GetterSetter
+        public bool IsInteract
+        {
+            get{
+                return isInteract;
+            }
+        }
     #endregion
 
     protected virtual void Awake() 

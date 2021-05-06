@@ -49,6 +49,22 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Abilite"",
+                    ""type"": ""Button"",
+                    ""id"": ""59856408-d493-48f5-9337-bc356c66fa0e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""CameraMousePos"",
+                    ""type"": ""Value"",
+                    ""id"": ""ff76222f-6556-473c-aa91-01992ecedcef"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -172,6 +188,39 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""ActionPrincipale"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""597f824b-5da6-45bd-ba3f-1cf86a69074c"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Abilite"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b91c08fe-db1f-4985-a0a4-a632cb84dd3e"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Abilite"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e176b159-13fc-408f-98eb-7806a9da9a1b"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""CameraMousePos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -212,6 +261,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Controller_CameraMouse = m_Controller.FindAction("CameraMouse", throwIfNotFound: true);
         m_Controller_CameraGamePad = m_Controller.FindAction("CameraGamePad", throwIfNotFound: true);
         m_Controller_ActionPrincipale = m_Controller.FindAction("ActionPrincipale", throwIfNotFound: true);
+        m_Controller_Abilite = m_Controller.FindAction("Abilite", throwIfNotFound: true);
+        m_Controller_CameraMousePos = m_Controller.FindAction("CameraMousePos", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -265,6 +316,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Controller_CameraMouse;
     private readonly InputAction m_Controller_CameraGamePad;
     private readonly InputAction m_Controller_ActionPrincipale;
+    private readonly InputAction m_Controller_Abilite;
+    private readonly InputAction m_Controller_CameraMousePos;
     public struct ControllerActions
     {
         private @PlayerInput m_Wrapper;
@@ -273,6 +326,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @CameraMouse => m_Wrapper.m_Controller_CameraMouse;
         public InputAction @CameraGamePad => m_Wrapper.m_Controller_CameraGamePad;
         public InputAction @ActionPrincipale => m_Wrapper.m_Controller_ActionPrincipale;
+        public InputAction @Abilite => m_Wrapper.m_Controller_Abilite;
+        public InputAction @CameraMousePos => m_Wrapper.m_Controller_CameraMousePos;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -294,6 +349,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @ActionPrincipale.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnActionPrincipale;
                 @ActionPrincipale.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnActionPrincipale;
                 @ActionPrincipale.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnActionPrincipale;
+                @Abilite.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnAbilite;
+                @Abilite.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnAbilite;
+                @Abilite.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnAbilite;
+                @CameraMousePos.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnCameraMousePos;
+                @CameraMousePos.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnCameraMousePos;
+                @CameraMousePos.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnCameraMousePos;
             }
             m_Wrapper.m_ControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -310,6 +371,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @ActionPrincipale.started += instance.OnActionPrincipale;
                 @ActionPrincipale.performed += instance.OnActionPrincipale;
                 @ActionPrincipale.canceled += instance.OnActionPrincipale;
+                @Abilite.started += instance.OnAbilite;
+                @Abilite.performed += instance.OnAbilite;
+                @Abilite.canceled += instance.OnAbilite;
+                @CameraMousePos.started += instance.OnCameraMousePos;
+                @CameraMousePos.performed += instance.OnCameraMousePos;
+                @CameraMousePos.canceled += instance.OnCameraMousePos;
             }
         }
     }
@@ -338,5 +405,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnCameraMouse(InputAction.CallbackContext context);
         void OnCameraGamePad(InputAction.CallbackContext context);
         void OnActionPrincipale(InputAction.CallbackContext context);
+        void OnAbilite(InputAction.CallbackContext context);
+        void OnCameraMousePos(InputAction.CallbackContext context);
     }
 }

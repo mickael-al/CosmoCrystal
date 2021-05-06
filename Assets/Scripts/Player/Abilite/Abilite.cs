@@ -2,5 +2,6 @@
 {
     void startAbilite();
     void endAbilite();
+
     bool isActive();
 }

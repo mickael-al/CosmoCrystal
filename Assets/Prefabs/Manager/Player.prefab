@@ -1033,6 +1033,8 @@ GameObject:
   - component: {fileID: 3945491864731072380}
   - component: {fileID: 3945491864731072376}
   - component: {fileID: 3945491864731072381}
+  - component: {fileID: 161367830698922792}
+  - component: {fileID: 5562675677546060079}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1130,6 +1132,32 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.7, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &161367830698922792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945491864731072377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 833cca0b6978c864f9385f98ec2ab2c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerControleur: {fileID: 3945491864731072383}
+  playerInteract: {fileID: 3945491864731072380}
+--- !u!114 &5562675677546060079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945491864731072377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02782ebf9553c1648a6cdd5382366251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3945491864790057555
 GameObject:
   m_ObjectHideFlags: 0

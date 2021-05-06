@@ -9,6 +9,8 @@ TagManager:
   - Interactable
   - SceneManager
   - SceneSave
+  - FxTemporaire
+  - Destroyable
   layers:
   - Default
   - TransparentFX
