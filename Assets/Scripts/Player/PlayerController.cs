@@ -13,6 +13,7 @@ public class PlayerController : Character
     [SerializeField] private GameObject pivot = null;
     [SerializeField] private float speedRotate = 2.0f;
     [SerializeField] private GameObject modelPlayer = null;
+    [SerializeField] private float pushPower = 4.0f;
 
     #region ControlerVariable
     private float speed = 0.0f;
@@ -46,6 +47,21 @@ public class PlayerController : Character
             proceduralAnimation.SetActive = state;            
         }
         base.isInteract = !state;
+    }
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody body = hit.collider.attachedRigidbody;
+        if (body == null || body.isKinematic)
+        {
+            return;
+        }
+
+        if (hit.moveDirection.y < -0.3)
+        {
+            return;
+        }
+        Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+        body.velocity = pushDir * pushPower;
     }
 
     protected override void Start()

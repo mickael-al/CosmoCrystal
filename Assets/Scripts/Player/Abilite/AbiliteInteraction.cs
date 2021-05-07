@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AbiliteInteraction : MonoBehaviour
 {
-    [SerializeField] private string tagInteract = "";
+    [SerializeField] private string[] tagInteract = null;
 
     private void OnTriggerEnter(Collider other) {
-        if(other.CompareTag(tagInteract))
+        foreach(string tagInt in tagInteract)
         {
-            Debug.Log(other);
-            other.GetComponent<InteractableAbilite>().Interact();
+            if(other.tag == tagInt)
+            {
+                other.GetComponent<InteractableAbilite>().Interact();
+                return;
+            }
         }
     }
 }

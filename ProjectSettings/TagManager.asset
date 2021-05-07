@@ -11,6 +11,7 @@ TagManager:
   - SceneSave
   - FxTemporaire
   - Destroyable
+  - ' Ennemi'
   layers:
   - Default
   - TransparentFX

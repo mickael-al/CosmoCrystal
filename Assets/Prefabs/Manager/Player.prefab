@@ -1035,6 +1035,7 @@ GameObject:
   - component: {fileID: 3945491864731072381}
   - component: {fileID: 161367830698922792}
   - component: {fileID: 5562675677546060079}
+  - component: {fileID: 4608279724364153293}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1084,6 +1085,7 @@ MonoBehaviour:
   pivot: {fileID: 3945491864434256978}
   speedRotate: 10
   modelPlayer: {fileID: 3945491864310467476}
+  pushPower: 4
   proceduralAnimation: {fileID: 3945491864310467466}
 --- !u!114 &3945491864731072380
 MonoBehaviour:
@@ -1146,6 +1148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerControleur: {fileID: 3945491864731072383}
   playerInteract: {fileID: 3945491864731072380}
+  isChoising: 0
 --- !u!114 &5562675677546060079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1158,6 +1161,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02782ebf9553c1648a6cdd5382366251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4608279724364153293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945491864731072377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97e64a6fbb777af4fa1150b4cc9857af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statistique: {fileID: 11400000, guid: 0951a2bfd25694940b01e2f0e840f4f2, type: 2}
 --- !u!1 &3945491864790057555
 GameObject:
   m_ObjectHideFlags: 0

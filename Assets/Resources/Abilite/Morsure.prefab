@@ -4714,7 +4714,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d5c024cf3c68034f977f8ea909c595c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagInteract: Destroyable
+  tagInteract:
+  - Destroyable
+  - ' Ennemi'
 --- !u!65 &6970341865407117806
 BoxCollider:
   m_ObjectHideFlags: 0

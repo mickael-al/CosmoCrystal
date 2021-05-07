@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043fbc81bf537d64fb2107f1058ecadf, type: 3}
+  m_Name: Lapin_sauvage
+  m_EditorClassIdentifier: 
+  vieBase: 0
+  manaBase: 0
+  vitesseBase: 0
+  attaqueBase: 0
+  defenceBase: 0
+  attaqueBaseSpecial: 0
+  defenceBaseSpecial: 0
+  niveaux: 1
+  experience: 0
+  levelUpExponentielle: 0
+  characterType: 00000000
