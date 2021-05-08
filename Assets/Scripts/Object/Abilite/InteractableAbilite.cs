@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public interface InteractableAbilite 
 {
-    void Interact();
+    void Interact(Character owner);
 }

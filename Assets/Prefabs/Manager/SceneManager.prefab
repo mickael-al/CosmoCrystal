@@ -3600,6 +3600,7 @@ GameObject:
   - component: {fileID: 7325393598932224671}
   - component: {fileID: 2134173127151272079}
   - component: {fileID: 577443722}
+  - component: {fileID: 551391901}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: SceneManager
@@ -3732,6 +3733,18 @@ MonoBehaviour:
     m_RotationOrder: 4
   mindistanceActive: 160
   abiliteSelected: {fileID: 1064592155091906010}
+--- !u!114 &551391901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375795970947247619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2bd2fe4a91072f40a31c113aa9a7039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2106026925545147829
 GameObject:
   m_ObjectHideFlags: 0
@@ -4495,6 +4508,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f49a2edec77f9f7439795f15023f4fee, type: 3}
+--- !u!1 &65932569587944147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1935537603630056260, guid: f49a2edec77f9f7439795f15023f4fee, type: 3}
+  m_PrefabInstance: {fileID: 1888789867382229399}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &65932569587944146 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1935537603630056261, guid: f49a2edec77f9f7439795f15023f4fee, type: 3}
@@ -4522,11 +4540,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &65932569587944147 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1935537603630056260, guid: f49a2edec77f9f7439795f15023f4fee, type: 3}
-  m_PrefabInstance: {fileID: 1888789867382229399}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3151050316391622827
 PrefabInstance:
   m_ObjectHideFlags: 0

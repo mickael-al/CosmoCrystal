@@ -16,6 +16,9 @@ public class Statistique : ScriptableObject
     [Header("Modifier")]
     [SerializeField] private float niveaux = 1.0f;
     [SerializeField] private float experience = 0.0f;
+    [SerializeField] private float vie = 0.0f;
+    [SerializeField] private float mana = 0.0f;
+    [Header("Exp")]
     [SerializeField] private float expBaseLevelUp = 0.0f;
     [SerializeField] private float levelUpExponentielle = 0.0f;
     [Header("Bonus")]
@@ -42,6 +45,8 @@ public class Statistique : ScriptableObject
     public float DefenceBaseSpecial{get{return defenceBaseSpecial;}}    
     public float Niveaux{set{niveaux = value;}get{return niveaux;}}
     public float Experience{set{experience = value;}get{return experience;}}
+    public float Vie{set{vie = value;}get{return vie;}}
+    public float Mana{set{mana = value;}get{return mana;}}
     public float ExpBaseLevelUp{get{return expBaseLevelUp;}}
     public float LevelUpExponentielle{get{return levelUpExponentielle;}}
     public Types[] CharacterType{set{characterType = value;}get{return characterType;}}

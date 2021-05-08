@@ -24,9 +24,11 @@ public class Enemies : IAController
     [Header("Chasse")]
     [SerializeField] private float distanceChasse = 6.0f;
     private float varDistChasse = 0.0f;
+    private float distancePlayerEnnemi = 0.0f;
 
     [Header("Player")]
     [SerializeField] private GameObject playerObj = null;
+    [SerializeField] private float distanceTriggerCombat = 1.2f;
     private NavMeshHit myNavHit;
 
     private Vector3 targetPoint = Vector3.zero;    
@@ -46,7 +48,7 @@ public class Enemies : IAController
     protected override void Update()
     {
         base.Update();
-        if(!base.isDead)
+        if(!base.isDead && !base.isInteract)
         {
             Move();
         }
@@ -67,8 +69,9 @@ public class Enemies : IAController
             }
             
             nav.SetDestination(targetPoint);
-        }                
-        if(Vector3.Distance(playerObj.transform.position,transform.position) < varDistChasse)
+        }    
+        distancePlayerEnnemi = Vector3.Distance(playerObj.transform.position,transform.position);
+        if(distancePlayerEnnemi < varDistChasse)
         {   
             nav.SetDestination(playerObj.transform.position);
             nav.speed = base.runSpeed;
@@ -78,6 +81,11 @@ public class Enemies : IAController
             varDistChasse = distanceChasse;
             nav.speed = base.walkSpeed;
             waitTime.lastRandom -= Time.deltaTime;
+        }
+        if(distancePlayerEnnemi < distanceTriggerCombat)
+        {
+            base.isInteract = true;
+            playerObj.GetComponent<InteractableAbilite>().Interact(this);
         }
     }
 

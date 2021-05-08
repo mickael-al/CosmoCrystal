@@ -2,10 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStarter : CombatStarter,InteractableAbilite
+public class PlayerStarter : CombatStarter,InteractableAbilite,I_Save
 {
-    public void Interact()
+    public void Interact(Character owner)
     {
-        Debug.Log("Combat");
+        GameObject.FindObjectOfType<CombatManager>().StartCombat(false,gameObject,owner.gameObject);
+    }
+
+    public void Save(string s)
+    {
+
+    }
+    public void Load(string s)
+    {
+
     }
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnnemiStarter : CombatStarter,InteractableAbilite
 {
-    public void Interact()
+    public void Interact(Character owner)
     {
-        Debug.Log("Combat");
+        GameObject.FindObjectOfType<CombatManager>().StartCombat(true,owner.gameObject,gameObject);
     }
 }

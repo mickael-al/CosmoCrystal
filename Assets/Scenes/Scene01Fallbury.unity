@@ -1000,6 +1000,7 @@ MonoBehaviour:
     lastRandom: 0
   distanceChasse: 6
   playerObj: {fileID: 0}
+  distanceTriggerCombat: 2
   root: {fileID: 1000013779527277}
   syncMove: 0
   speedMult: 1
