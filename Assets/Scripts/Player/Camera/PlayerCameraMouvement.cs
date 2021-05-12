@@ -65,6 +65,18 @@ public class PlayerCameraMouvement : MonoBehaviour
                 cameraMove = value;
             }
         }
+
+        public GameObject Target
+        {
+            get{
+                return target;
+            }
+            set{
+                target = value;
+                angleY = target.transform.eulerAngles.y;
+                angleX = target.transform.eulerAngles.x;
+            }
+        }
     #endregion
 
     public void ChangeAngleY(float angle)

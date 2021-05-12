@@ -30,6 +30,9 @@ public class Character : MonoBehaviour
             get{
                 return isInteract;
             }
+            set{
+                isInteract = value;
+            }
         }
     #endregion
 

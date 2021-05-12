@@ -28,6 +28,8 @@ public class Enemies : IAController
 
     [Header("Player")]
     [SerializeField] private GameObject playerObj = null;
+    private PlayerController playerController = null;
+    private PlayerInteract playerInteract = null;
     [SerializeField] private float distanceTriggerCombat = 1.2f;
     private NavMeshHit myNavHit;
 
@@ -42,6 +44,8 @@ public class Enemies : IAController
         base.Start();
         targetPoint = transform.position;
         playerObj = GameObject.FindWithTag("Player");
+        playerController = playerObj.GetComponent<PlayerController>();
+        playerInteract = playerObj.GetComponent<PlayerInteract>();
         varDistChasse = distanceChasse;
     }
 
@@ -82,7 +86,7 @@ public class Enemies : IAController
             nav.speed = base.walkSpeed;
             waitTime.lastRandom -= Time.deltaTime;
         }
-        if(distancePlayerEnnemi < distanceTriggerCombat)
+        if(distancePlayerEnnemi < distanceTriggerCombat && !playerController.IsInteract && !playerInteract.isInteract)
         {
             base.isInteract = true;
             playerObj.GetComponent<InteractableAbilite>().Interact(this);

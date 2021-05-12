@@ -130,15 +130,16 @@ public class UIAbilite : MonoBehaviour
     }
 
     public void EndMenuAbilite()
-    {
+    {        
         if(!playerObj.GetComponent<PlayerAbiliteControleur>().IsChoising) return;        
         abiliteCanvas.SetActive(false);
         pointeurAbility.SetActive(false);
+        showAbilite = false;        
+        if(playerObj.GetComponent<PlayerController>().IsInteract) return;
         cameraObj.GetComponent<PlayerCameraMouvement>().CameraMove = true;
         cameraObj.GetComponent<PlayerCameraMouvement>().MouseCursorMove = false;
         cameraObj.GetComponent<PlayerCameraMouvement>().MouseSee = false;
-        playerObj.GetComponent<PlayerAbiliteControleur>().IsChoising = false;
-        showAbilite = false;
+        playerObj.GetComponent<PlayerAbiliteControleur>().IsChoising = false;        
         float calcWeight = 0.3f;
         int choix = -1;
         for(int i = 0; i < slot.Count;i++)
