@@ -1,6 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
+[System.Serializable]
+public class UIButtonSave
+{
+    public GameObject nouvellePartie;
+    public GameObject partie;
+    public TextMeshProUGUI nom;
+    public TextMeshProUGUI vie;
+    public TextMeshProUGUI mana;
+    public TextMeshProUGUI tempsDate;
+    public TextMeshProUGUI tempsHeure;
+    public TextMeshProUGUI tempsTotal;
+}
 
 public class UISave : MonoBehaviour
 {
@@ -8,6 +22,12 @@ public class UISave : MonoBehaviour
     private PlayerCameraMouvement cameraJoueur = null;
     private static UISave uiSave = null;
     private bool onSave;
+
+    [Header("UI Save")]
+    [SerializeField] private UIButtonSave[] uiButtonSave = null;
+    [SerializeField] private GameObject selection = null;
+
+
     #region GetterSetter
         public static UISave Instance
         {
@@ -35,6 +55,12 @@ public class UISave : MonoBehaviour
         cameraJoueur.MouseCursorMove = onSave;
         cameraJoueur.MouseSee = onSave;
         cameraJoueur.CameraMove = !onSave;
+    }
+
+    public void Save(int i)
+    {
+        Debug.Log("Save " + i);
+        Debug.Log(uiButtonSave.Length);
     }
 
     public void EndSaveMenu()
