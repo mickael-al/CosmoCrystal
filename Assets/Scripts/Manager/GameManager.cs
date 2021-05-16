@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,7 +6,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> instantiateManager = new List<GameObject>();
     [SerializeField] private GameObject playerPrefab = null;
     [SerializeField] private GameObject spawnPoint = null;
-    [SerializeField] private SceneManagerLoader sceneManagerLoader = null;
+    private SceneManagerLoader sceneManagerLoader = null;
     private void Awake()
     {
         if(GameObject.FindGameObjectsWithTag("GameManager").Length >= 2)
@@ -19,13 +18,14 @@ public class GameManager : MonoBehaviour
             transform.parent = null;
             DontDestroyOnLoad(this);
         }
-        DontDestroyOnLoad(Instantiate(playerPrefab,spawnPoint.transform.position,Quaternion.identity));
+        GameObject playerObj = Instantiate(playerPrefab,spawnPoint.transform.position,Quaternion.identity);
+        DontDestroyOnLoad(playerObj);
         foreach(GameObject obj in instantiateManager)
         {
             DontDestroyOnLoad(Instantiate(obj,Vector3.zero,Quaternion.identity));
         }
         sceneManagerLoader = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManagerLoader>();
         StartCoroutine(sceneManagerLoader.TransitionFade(1.5f));
+        playerObj.GetComponent<PlayerSaveManager>().LoadAll(0);
     }
-
 }

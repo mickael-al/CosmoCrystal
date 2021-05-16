@@ -10,25 +10,25 @@ public class TotemSauvegarde : Interactable
     }
     public override void Interact(Character character)
     {
-        if(useState)
+        if (useState)
         {
-            if(!interactState)
+            if (!interactState)
             {
                 interactState = true;
                 base.Interact(character);
                 UISave.Instance.StartSaveMenu();
                 return;
             }
-            /*if(DialogueManager.Instance.DisplayNextSentence())
+            else
             {
-                DialogueManager.Instance.EndDialogue();
-                interactState = false;
-            }*/
+                base.Interact(character);
+                UISave.Instance.StartSaveMenu();
+            }
         }
     }
     public override void StopInteract()
     {
-        if(interactState && useState)
+        if (interactState && useState)
         {
             UISave.Instance.EndSaveMenu();
             interactState = false;
@@ -39,7 +39,7 @@ public class TotemSauvegarde : Interactable
     public override void ChangeInteract()
     {
         base.ChangeInteract();
-        if(interactState && useState)
+        if (interactState && useState)
         {
             UISave.Instance.EndSaveMenu();
             interactState = false;
