@@ -47,8 +47,6 @@ public class PlayerAbiliteControleur : MonoBehaviour,I_Save
 
     private void Awake() {
         allAbilite.Add(gameObject.AddComponent<Morsure>() as Morsure);
-        savePlayerAbilite.hasAbilite = new bool[allAbilite.Count];     
-        savePlayerAbilite.hasAbilite[0] = true; //temporaire
     }
     void Start()
     {
@@ -92,10 +90,16 @@ public class PlayerAbiliteControleur : MonoBehaviour,I_Save
 
     public void Save(string s)
     {
-        //Debug.Log(JsonUtility.ToJson(savePlayerAbilite));
+        JSONArchiver.SaveJSONsFile(JSONArchiver.JSONPath, s, JsonUtility.ToJson(savePlayerAbilite));
     }
     public void Load(string s)
     {
-        //Debug.Log(JsonUtility.FromJson<S_PlayerAbility>(""));
+        bool state = false;
+        JsonUtility.FromJsonOverwrite(JSONArchiver.LoadJsonsFile(JSONArchiver.JSONPath,s,out state),savePlayerAbilite);
+        if(!state)
+        {
+            savePlayerAbilite.hasAbilite = new bool[allAbilite.Count];     
+            savePlayerAbilite.hasAbilite[0] = true; //temporaire
+        }
     }
 }

@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 8855326311120591310}
   m_Layer: 0
   m_Name: SpawnPoint
-  m_TagString: Untagged
+  m_TagString: RespawnPoint
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,6 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d068ed26c297b554ab9109c183c42596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allObjectSaveLoad: []
 --- !u!1001 &5072145991390912175
 PrefabInstance:
   m_ObjectHideFlags: 0

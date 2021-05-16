@@ -15,6 +15,14 @@ public class SceneManagerLoader : MonoBehaviour
     private bool canChangeScene = true;
     private AsyncOperation _asyncOperation;
 
+    public float TempsTransition
+    {
+        get
+        {
+            return tempsTransition;
+        }
+    }
+
     public bool CanChangeScene
     {
         get

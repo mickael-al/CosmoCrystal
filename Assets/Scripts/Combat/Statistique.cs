@@ -43,6 +43,16 @@ public class Statistique : ScriptableObject
     public float DefenceBase{get{return defenceBase;}}
     public float AttaqueBaseSpecial{get{return attaqueBaseSpecial;}}
     public float DefenceBaseSpecial{get{return defenceBaseSpecial;}}    
+
+    /*Calcule selon le niveaux a faire*/
+    public float VieMax{get{return vieBase;}}
+    public float ManaMax{get{return manaBase;}}
+    public float VitesseMax{get{return vitesseBase;}}
+    public float AttaqueMax{get{return attaqueBase;}}
+    public float DefenceMax{get{return defenceBase;}}
+    public float AttaqueMaxSpecial{get{return attaqueBaseSpecial;}}
+    public float DefenceMaxSpecial{get{return defenceBaseSpecial;}}    
+
     public float Niveaux{set{niveaux = value;}get{return niveaux;}}
     public float Experience{set{experience = value;}get{return experience;}}
     public float Vie{set{vie = value;}get{return vie;}}

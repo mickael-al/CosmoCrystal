@@ -12,6 +12,8 @@ TagManager:
   - FxTemporaire
   - Destroyable
   - ' Ennemi'
+  - PPV
+  - RespawnPoint
   layers:
   - Default
   - TransparentFX

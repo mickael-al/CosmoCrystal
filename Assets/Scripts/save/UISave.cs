@@ -143,6 +143,12 @@ public class UISave : MonoBehaviour
         }
     }
 
+    public void ConfirmPartieSave()
+    {
+        partieSauvegarder.SetActive(false);
+        animator.SetBool("Choix", false);
+    }
+
     public void EndSaveMenu()
     {
         animator.SetBool("IsOpen", false);
