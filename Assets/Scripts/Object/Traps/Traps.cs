@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,8 +13,12 @@ public class Traps : MonoBehaviour
             if(Time.time-lastDegatRate > degatRate)
             {
                 lastDegatRate = Time.time;
-                other.GetComponent<PlayerStarter>().TakeExternalDamage(degatPourcentage*other.GetComponent<PlayerStarter>().Stat.VieBase,0.1f,0.1f,0.3f);
+                other.GetComponent<PlayerStarter>().TakeExternalDamage(degatPourcentage*other.GetComponent<PlayerStarter>().Stat.VieMax,0.1f,0.1f,0.3f);
             }
+        }
+        else if(other.tag == "ItemDrop")
+        {
+            other.GetComponent<ItemDrop>().Desintegrate();
         }
     }
 }

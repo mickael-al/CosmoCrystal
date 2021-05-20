@@ -14,6 +14,7 @@ TagManager:
   - ' Ennemi'
   - PPV
   - RespawnPoint
+  - ItemDrop
   layers:
   - Default
   - TransparentFX
