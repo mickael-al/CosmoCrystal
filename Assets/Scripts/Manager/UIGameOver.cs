@@ -80,6 +80,8 @@ public class UIGameOver : MonoBehaviour
             yield return new WaitForSeconds(sml.TempsTransition);
             pc.GetComponent<PlayerStarter>().Respawn();
             pcm.CameraMove = true; 
+            pcm.MouseCursorMove = false;
+            pcm.MouseSee = false;
             bouttonRetry.SetActive(false);
             fg.intensity.value = 0.0f;
             ca.saturation.value = saturationBase;

@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerStarter : CombatStarter, InteractableAbilite, I_Save
 {
     private GameObject sceneManagerObj = null;
-    private void Start()
+    protected override void Start()
     {
         sceneManagerObj = GameObject.FindWithTag("SceneManager");
     }

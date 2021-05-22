@@ -2,7 +2,8 @@
 [System.Serializable]
 public class ItemInventaire
 {
-    [SerializeField] private Item item = null;
+    private Item item = null;
+    [SerializeField] private string resourcesName = "";
     [SerializeField] private int nbItem = 0;
     [SerializeField] private int numeroPosInventaire = -1;
 
@@ -15,13 +16,21 @@ public class ItemInventaire
     #region GetterSetter
     public Item Item
     {
-        get { return item; }
+        get 
+        {
+            if(item == null)
+            {
+                item = Resources.Load("item/"+resourcesName) as Item;
+            }
+            return item; 
+        }
         set
         {
             item = value;
-
+            resourcesName = item.name;
         }
     }
+
     public int NbItem
     {
         get { return nbItem; }
@@ -32,6 +41,7 @@ public class ItemInventaire
     }
 
     public int NumeroPosInventaire { get { return numeroPosInventaire; } }
+    public string ResourcesName { get { return resourcesName; } }
 
     #endregion
 }

@@ -226,8 +226,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 1, z: 2}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &1667841991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc122c18cdd33e488d187d196fd2e8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 3c9582888c9255d48979a63dbcd3711c, type: 2}
+  item: {fileID: 11400000, guid: 468887f5a09b16540a613d566bfdecda, type: 2}
   nbItem: 1
   spriteRender: {fileID: 7680253313065961315}
   itemDropRareteEffect:
