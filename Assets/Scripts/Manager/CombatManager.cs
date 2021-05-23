@@ -17,9 +17,10 @@ public class CombatManager : MonoBehaviour
     IEnumerator StartCombatCoroutine(bool playerIsAttack,GameObject player,GameObject ennemie)
     {
         PlayerCameraMouvement cam = GameObject.FindGameObjectWithTag("PivotCamera").GetComponent<PlayerCameraMouvement>();
+        GetComponent<UIInventaire>().OpenInventaire(false);
         cam.CameraMove = false;
         anim.gameObject.SetActive(true);
-        player.GetComponent<PlayerController>().IsInteract = true;
+        player.GetComponent<PlayerController>().IsInteract = true;        
         float timer = 0.0f;
         while(timer < 0.35f)
         {

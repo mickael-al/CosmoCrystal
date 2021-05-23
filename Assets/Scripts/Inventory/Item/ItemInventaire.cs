@@ -11,7 +11,7 @@ public class ItemInventaire
     public ItemInventaire(Item it, int nombre)
     {
         Item = it;
-        nombre = nbItem;
+        nbItem = nombre;
     }
     #region GetterSetter
     public Item Item
@@ -40,7 +40,7 @@ public class ItemInventaire
         }
     }
 
-    public int NumeroPosInventaire { get { return numeroPosInventaire; } }
+    public int NumeroPosInventaire { get { return numeroPosInventaire; } set{numeroPosInventaire=value;} }
     public string ResourcesName { get { return resourcesName; } }
 
     #endregion

@@ -45457,6 +45457,7 @@ GameObject:
   - component: {fileID: 2136289445}
   - component: {fileID: 2136289444}
   - component: {fileID: 2136289446}
+  - component: {fileID: 2136289447}
   m_Layer: 4
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -45540,6 +45541,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.99999994, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2136289447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136289442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34374ac9effc55a47b1fd9ff60fd4fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  degatPourcentage: 0.25
+  degatRate: 0.8
 --- !u!1001 &219312958109454548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45547,6 +45562,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1667841991, guid: ecb6946b32378f34b8c736568b4925cc, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 3c9582888c9255d48979a63dbcd3711c, type: 2}
     - target: {fileID: 7680253313365020946, guid: ecb6946b32378f34b8c736568b4925cc, type: 3}
       propertyPath: m_Name
       value: ItemBase

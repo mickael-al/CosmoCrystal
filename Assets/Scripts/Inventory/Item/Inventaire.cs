@@ -11,18 +11,23 @@ public class Inventaire : MonoBehaviour
     private int nbItemGlobal = -1;
     private List<int> pageCount = new List<int>();
 
+    #region GetterSetter
+    public List<ItemInventaire> ItemInventaire { get { return itemInventaire; } }
+    public int MaxSlotPage { get { return maxSlotPage; } }
+    #endregion
+
     protected virtual void Awake() { }
-    protected virtual void Start() 
+    protected virtual void Start()
     {
         pageCount = new List<int>(new int[Enum.GetValues(typeof(Item.CaseTypeInventaire)).Length]);
     }
 
     public int calcItemType(int indice)
     {
-        if(itemInventaire.Count != nbItemGlobal)
+        if (itemInventaire.Count != nbItemGlobal)
         {
             pageCount = new List<int>(new int[Enum.GetValues(typeof(Item.CaseTypeInventaire)).Length]);
-            for(int i = 0; i < itemInventaire.Count;i++)
+            for (int i = 0; i < itemInventaire.Count; i++)
             {
                 pageCount[(int)itemInventaire[i].Item.typeInventaire]++;
             }
@@ -48,7 +53,7 @@ public class Inventaire : MonoBehaviour
         List<int> indiceFind;
         reste = nombre;
         if (ItemExist(item, out indiceFind))
-        {            
+        {
             foreach (int i in indiceFind)
             {
                 if (itemInventaire[i].NbItem + reste > itemInventaire[i].Item.MaxStack)
@@ -67,7 +72,7 @@ public class Inventaire : MonoBehaviour
                 }
             }
         }
-        if(calcItemType((int)item.typeInventaire) >= maxSlotPage)
+        if (calcItemType((int)item.typeInventaire) >= maxSlotPage)
         {
             return false;
         }
