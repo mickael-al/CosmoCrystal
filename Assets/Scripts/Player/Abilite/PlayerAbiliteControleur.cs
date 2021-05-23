@@ -55,7 +55,7 @@ public class PlayerAbiliteControleur : MonoBehaviour,I_Save
 
     public void StartAbilite()
     {
-        if(currentUseAbilite != null && !playerControleur.IsInteract && !playerInteract.CanInteract && !IsChoising)
+        if(currentUseAbilite != null && !playerControleur.IsInteract && !playerInteract.CanInteract && !IsChoising && !GetComponent<PlayerInventaire>().inInventaire)
         {
             if(!currentUseAbilite.isActive())
             {

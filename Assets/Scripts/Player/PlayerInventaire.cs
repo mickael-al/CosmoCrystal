@@ -4,17 +4,30 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerInventaire : Inventaire, I_Save
 {
-    private UIInventaire uiInventaire = null;
+    private UIInventaire uiInventaire = null;    
+    private PlayerInteract playerInteract = null;
+    private PlayerAbiliteControleur playerAbiliteControleur = null;
+
+    #region GetterSetter
+        public bool inInventaire
+        {
+            get
+            {
+                return uiInventaire.InventaireOpen;
+            }
+        }
+    #endregion
+
     public override bool AddItem(Item item, int nombre, out int reste)
     {
         bool result = base.AddItem(item, nombre, out reste);
-        if(reste != nombre && !result)
+        if (reste != nombre && !result)
         {
-            uiInventaire.ItemTakeDrop(item,reste,true);
+            uiInventaire.ItemTakeDrop(item, reste, true);
         }
-        else if(result)
+        else if (result)
         {
-            uiInventaire.ItemTakeDrop(item,nombre,true);
+            uiInventaire.ItemTakeDrop(item, nombre, true);
         }
         return result;
     }
@@ -22,9 +35,21 @@ public class PlayerInventaire : Inventaire, I_Save
     {
         JSONArchiver.SaveJSONsFile(JSONArchiver.JSONPath, s, JsonUtility.ToJson(this));
     }
-    protected override void Start() {
+    protected override void Start()
+    {
         base.Start();
+        playerAbiliteControleur = GetComponent<PlayerAbiliteControleur>();
         uiInventaire = GameObject.FindWithTag("SceneManager").GetComponent<UIInventaire>();
+        InputManager.InputJoueur.Controller.Inventaire.started += ctx => switchInventaire(); 
+        playerInteract = GetComponent<PlayerInteract>();
+    }
+
+    void switchInventaire()
+    {     
+        if(!playerInteract.isInteract && (!playerAbiliteControleur.IsUsing || !playerAbiliteControleur.IsChoising))  
+        {
+            uiInventaire.OpenInventaire(); 
+        }
     }
     public void Load(string s)
     {

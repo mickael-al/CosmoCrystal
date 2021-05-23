@@ -97,7 +97,7 @@ public class UIAbilite : MonoBehaviour
 
     public void StartMenuAbilite()
     {
-        if(playerObj.GetComponent<PlayerController>().IsInteract|| playerObj.GetComponent<PlayerInteract>().isInteract) return;
+        if(playerObj.GetComponent<PlayerController>().IsInteract|| playerObj.GetComponent<PlayerInteract>().isInteract || playerObj.GetComponent<PlayerInventaire>().inInventaire) return;
         posGamePad = Vector2.zero;
         posCursor = new Vector2(Screen.width/2,Screen.height/2);
         showAbilite = true;

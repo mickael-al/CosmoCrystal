@@ -67,6 +67,7 @@ public class SceneManagerLoader : MonoBehaviour
         {            
             canChangeScene = false;
             sceneSave.SaveAll();
+            GetComponent<UIInventaire>().OpenInventaire(false);
             float timer = tempsTransition;
             Color color = imageTransition.color;
             color.a = 0.0f;

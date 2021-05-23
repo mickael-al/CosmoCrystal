@@ -28,6 +28,7 @@ public class UIGameOver : MonoBehaviour
             rp = respawnPos;
             ra = respawnAngle;
             isDead = true;
+            GetComponent<UIInventaire>().OpenInventaire(false);
             gameOver.SetActive(true);
             bouttonRetry.SetActive(false);
             RawImage image = gameOver.GetComponent<RawImage>();

@@ -65,6 +65,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Inventaire"",
+                    ""type"": ""Button"",
+                    ""id"": ""c66c8e0b-6c5f-43cc-9387-fabba2901043"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -221,6 +229,28 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""CameraMousePos"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""04e0f7f1-5712-4dc1-99fe-4795fbb33efa"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Inventaire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b2f22a50-e886-4191-a19d-758399aab7eb"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventaire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -263,6 +293,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Controller_ActionPrincipale = m_Controller.FindAction("ActionPrincipale", throwIfNotFound: true);
         m_Controller_Abilite = m_Controller.FindAction("Abilite", throwIfNotFound: true);
         m_Controller_CameraMousePos = m_Controller.FindAction("CameraMousePos", throwIfNotFound: true);
+        m_Controller_Inventaire = m_Controller.FindAction("Inventaire", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -318,6 +349,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Controller_ActionPrincipale;
     private readonly InputAction m_Controller_Abilite;
     private readonly InputAction m_Controller_CameraMousePos;
+    private readonly InputAction m_Controller_Inventaire;
     public struct ControllerActions
     {
         private @PlayerInput m_Wrapper;
@@ -328,6 +360,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @ActionPrincipale => m_Wrapper.m_Controller_ActionPrincipale;
         public InputAction @Abilite => m_Wrapper.m_Controller_Abilite;
         public InputAction @CameraMousePos => m_Wrapper.m_Controller_CameraMousePos;
+        public InputAction @Inventaire => m_Wrapper.m_Controller_Inventaire;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -355,6 +388,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @CameraMousePos.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnCameraMousePos;
                 @CameraMousePos.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnCameraMousePos;
                 @CameraMousePos.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnCameraMousePos;
+                @Inventaire.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnInventaire;
+                @Inventaire.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnInventaire;
+                @Inventaire.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnInventaire;
             }
             m_Wrapper.m_ControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -377,6 +413,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @CameraMousePos.started += instance.OnCameraMousePos;
                 @CameraMousePos.performed += instance.OnCameraMousePos;
                 @CameraMousePos.canceled += instance.OnCameraMousePos;
+                @Inventaire.started += instance.OnInventaire;
+                @Inventaire.performed += instance.OnInventaire;
+                @Inventaire.canceled += instance.OnInventaire;
             }
         }
     }
@@ -407,5 +446,6 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnActionPrincipale(InputAction.CallbackContext context);
         void OnAbilite(InputAction.CallbackContext context);
         void OnCameraMousePos(InputAction.CallbackContext context);
+        void OnInventaire(InputAction.CallbackContext context);
     }
 }
