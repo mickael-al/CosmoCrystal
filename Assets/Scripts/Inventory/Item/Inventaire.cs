@@ -72,7 +72,7 @@ public class Inventaire : MonoBehaviour
                 }
             }
         }
-        if (calcItemType((int)item.typeInventaire) >= maxSlotPage)
+        if (calcItemType((int)item.typeInventaire) >= maxSlotPage && !item.QueteObject)
         {
             return false;
         }

@@ -24,6 +24,7 @@ public class UIInventaire : MonoBehaviour
     [SerializeField] private float tempsDispawnAddItem = 2.0f;
     [SerializeField] private Color addItem = Color.white;
     [SerializeField] private Color removeItem = Color.white;
+    [SerializeField] private Shader shader = null;
 
     [Header("Inventaire")]
     [SerializeField] private TextMeshProUGUI titreText = null;
@@ -34,6 +35,8 @@ public class UIInventaire : MonoBehaviour
     [SerializeField] private GameObject armureCase = null;
     [SerializeField] private GameObject carteObj = null;
     [SerializeField] private ButtonChangeUiType[] buttonChangeUiType = null;
+    [SerializeField] private RawImage imageMouse = null;
+    [SerializeField] private GameObject infoBox = null;
     private List<UIItemSlots> uiItemSlots = new List<UIItemSlots>();
     private PlayerController playerController = null;
     private PlayerAbiliteControleur playerAbiliteControleur = null;
@@ -41,10 +44,12 @@ public class UIInventaire : MonoBehaviour
     private PlayerInventaire playerInventaire = null;
     private bool inventaireOpen = false;
     private int selectedTypePage = 0;
+    private UIItemSlots swhitchSlots = null;
 
 
     #region GetterSetter
     public bool InventaireOpen { get { return inventaireOpen; } set { inventaireOpen = value; } }
+    public ItemDropRareteEffect[] Idre { get { return itemDropRareteEffect; } }
     #endregion
 
     private void Start()
@@ -53,6 +58,7 @@ public class UIInventaire : MonoBehaviour
         playerInventaire = playerController.GetComponent<PlayerInventaire>();
         playerAbiliteControleur = playerController.GetComponent<PlayerAbiliteControleur>();
         playerCameraMouvement = GameObject.FindGameObjectWithTag("PivotCamera").GetComponent<PlayerCameraMouvement>();
+        InputManager.InputJoueur.Controller.Drop.canceled += ctx => StartCoroutine(DropWait());
     }
     public void ItemTakeDrop(Item item, int nombre, bool take)
     {
@@ -60,18 +66,22 @@ public class UIInventaire : MonoBehaviour
         TextMeshProUGUI nomText = prefab.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI nombreText = prefab.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         RawImage iconImage = prefab.transform.GetChild(2).GetComponent<RawImage>();
+        iconImage.material = new Material(shader);
         nomText.text = item.Nom;
-        nomText.color = itemDropRareteEffect[(int)item.ItemRarete].HdrColor;
+        nomText.color = itemDropRareteEffect[(int)item.ItemRarete].HdrColorText;
         nombreText.text = (take ? "x " : "- ") + nombre.ToString();
         nombreText.color = take ? addItem : removeItem;
         iconImage.texture = item.SpriteIcon.texture;
         iconImage.material.SetFloat("_Shine", itemDropRareteEffect[(int)item.ItemRarete].shine);
+        iconImage.material.SetColor("_OutlineColor", (Vector4)itemDropRareteEffect[(int)item.ItemRarete].HdrColor);
         StartCoroutine(DispawnAddItem(prefab.GetComponent<Animator>()));
         BoutonChangeUI(selectedTypePage);
     }
 
     public void BoutonChangeUI(int ind)
     {
+        HideInfoBox();
+        imageMouse.gameObject.SetActive(false);
         selectedTypePage = ind;
         titreText.text = buttonChangeUiType[ind].titreTxt;
         titreText.color = buttonChangeUiType[ind].colorTxt;
@@ -84,7 +94,7 @@ public class UIInventaire : MonoBehaviour
         }
         else
         {
-             foreach (Transform child in contentBox.transform){GameObject.Destroy(child.gameObject);}
+            foreach (Transform child in contentBox.transform) { GameObject.Destroy(child.gameObject); }
         }
     }
 
@@ -103,14 +113,16 @@ public class UIInventaire : MonoBehaviour
             {
                 GameObject ui = Instantiate(prefabItemSlots, contentBox.transform.position, Quaternion.identity, contentBox.transform);
                 ui.GetComponent<UIItemSlots>().IndiceSlots = countSlot++;
+                ui.GetComponent<UIItemSlots>().UIInventaireSwith = this;
                 ui.GetComponent<UIItemSlots>().ItemInv = ii[i];
                 uiItemSlots.Add(ui.GetComponent<UIItemSlots>());
             }
         }
         for (int i = countSlot; i < playerInventaire.MaxSlotPage; i++)
         {
-            GameObject ui = Instantiate(prefabItemSlots, contentBox.transform.position, Quaternion.identity, contentBox.transform);            
+            GameObject ui = Instantiate(prefabItemSlots, contentBox.transform.position, Quaternion.identity, contentBox.transform);
             ui.GetComponent<UIItemSlots>().IndiceSlots = i;
+            ui.GetComponent<UIItemSlots>().UIInventaireSwith = this;
         }
     }
 
@@ -141,6 +153,45 @@ public class UIInventaire : MonoBehaviour
             playerCameraMouvement.CameraMove = !InventaireOpen;
             playerCameraMouvement.MouseCursorMove = InventaireOpen;
             playerCameraMouvement.MouseSee = InventaireOpen;
+        }
+    }
+
+    public void Drag(UIItemSlots uIItemSlots)
+    {
+        swhitchSlots = uIItemSlots;
+        imageMouse.gameObject.SetActive(true);
+        imageMouse.texture = swhitchSlots.ItemInv.Item.SpriteIcon.texture;
+    }
+    IEnumerator DropWait()
+    {
+        yield return null;
+        Drop(null);
+    }
+
+    public void ShowInfoBox(UIItemSlots uiItemSlots)
+    {
+        infoBox.SetActive(true);
+    }
+    public void HideInfoBox()
+    {
+        infoBox.SetActive(false);
+    }
+
+    public void Drop(UIItemSlots uIItemSlots)
+    {
+        imageMouse.gameObject.SetActive(false);
+        if (swhitchSlots != null)
+        {
+            if (uIItemSlots == null)
+            {
+                swhitchSlots.ItemInv = swhitchSlots.ItemInv;
+                swhitchSlots = null;
+                return;
+            }
+            ItemInventaire ii = uIItemSlots.ItemInv;
+            uIItemSlots.ItemInv = swhitchSlots.ItemInv;
+            swhitchSlots.ItemInv = ii;
+            swhitchSlots = null;
         }
     }
 }

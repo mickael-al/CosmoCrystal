@@ -57,8 +57,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.6862745}
+  m_Material: {fileID: 2100000, guid: 575c1e16e7f6fee429f9690cd347e076, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -403,6 +403,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+        - m_Target: {fileID: 3833450901778289436}
+          m_TargetAssemblyTypeName: UIItemSlots, Assembly-CSharp
+          m_MethodName: EnterSlot
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
@@ -411,6 +423,18 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
           m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 3833450901778289436}
+          m_TargetAssemblyTypeName: UIItemSlots, Assembly-CSharp
+          m_MethodName: ExitSlot
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -466,7 +490,9 @@ MonoBehaviour:
   backGroundHaveItem: {fileID: 21300000, guid: c4f70295482d2bb4bafcf2247f5bd892, type: 3}
   backGroundNotHaveItem: {fileID: 21300000, guid: 468f3bd224c97ce449b5f1e37619b303, type: 3}
   nullImage: {fileID: 21300000, guid: 01ff89d7ad5556848b7a96a0ecb4e8d2, type: 3}
+  shader: {fileID: -6465566751694194690, guid: ce95bfe9d49c8b1469a864d64d959997, type: 3}
   iconImage: {fileID: 292612071275480893}
   selected: {fileID: 4453550760828537481}
   backGround: {fileID: 7777434037647944440}
   countText: {fileID: 8235628428534177965}
+  timerInfoBox: 1

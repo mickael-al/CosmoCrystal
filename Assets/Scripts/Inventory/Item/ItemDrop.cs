@@ -7,6 +7,7 @@ public class ItemDropRareteEffect
 {
     public float thickness = 0.0f;
     [ColorUsage(true, true)] public Color HdrColor;
+    [ColorUsage(true, true)] public Color HdrColorText;
     public float shine = 0.0f;
 }
 

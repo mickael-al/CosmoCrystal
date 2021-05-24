@@ -14,6 +14,7 @@ public class Item : ScriptableObject
     [SerializeField] private Sprite image = null;
     [SerializeField] private bool jetable = true;
     [SerializeField] private bool vendable = true;
+    [SerializeField] private bool queteObject = false;
 
     #region GetterSetter
     public string Nom { get { return nom; } }
@@ -26,6 +27,7 @@ public class Item : ScriptableObject
     public Rarete ItemRarete { get { return rarete; } }
     public bool Vendable { get { return vendable; } }
     public bool Jetable { get { return jetable; } }
+    public bool QueteObject { get { return queteObject; } }
     public virtual CaseTypeInventaire typeInventaire { get{ return CaseTypeInventaire.ObjNormal;}}
     #endregion
 

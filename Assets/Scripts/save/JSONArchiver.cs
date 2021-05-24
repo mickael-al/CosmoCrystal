@@ -35,6 +35,7 @@ public class JSONArchiver : MonoBehaviour
         Directory.CreateDirectory(archivePath);
         Directory.CreateDirectory(tosavePath);
     }
+     #if UNITY_EDITOR
 
     [MenuItem("PathMenu/All Path %g")]
     static void AllPath()
@@ -42,6 +43,7 @@ public class JSONArchiver : MonoBehaviour
         Debug.Log(Path.Combine(Application.persistentDataPath, "save", "archive"));
         Debug.Log(Path.Combine(Application.persistentDataPath, "save", "tosave"));
     }
+    #endif
 
     public static void archiveJSON(int archiveNumber)
     {

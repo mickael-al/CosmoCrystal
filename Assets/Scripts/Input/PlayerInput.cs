@@ -73,6 +73,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Drop"",
+                    ""type"": ""Button"",
+                    ""id"": ""2d6d1b1a-1c71-4a7a-ad2c-2b7cd5dcdf1a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -251,6 +259,28 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""Inventaire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1bde9940-239e-40cc-8f60-dd4e6da03d2e"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fee44565-22f7-49bb-928c-420d91cbd6d1"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -294,6 +324,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Controller_Abilite = m_Controller.FindAction("Abilite", throwIfNotFound: true);
         m_Controller_CameraMousePos = m_Controller.FindAction("CameraMousePos", throwIfNotFound: true);
         m_Controller_Inventaire = m_Controller.FindAction("Inventaire", throwIfNotFound: true);
+        m_Controller_Drop = m_Controller.FindAction("Drop", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -350,6 +381,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Controller_Abilite;
     private readonly InputAction m_Controller_CameraMousePos;
     private readonly InputAction m_Controller_Inventaire;
+    private readonly InputAction m_Controller_Drop;
     public struct ControllerActions
     {
         private @PlayerInput m_Wrapper;
@@ -361,6 +393,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @Abilite => m_Wrapper.m_Controller_Abilite;
         public InputAction @CameraMousePos => m_Wrapper.m_Controller_CameraMousePos;
         public InputAction @Inventaire => m_Wrapper.m_Controller_Inventaire;
+        public InputAction @Drop => m_Wrapper.m_Controller_Drop;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -391,6 +424,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Inventaire.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnInventaire;
                 @Inventaire.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnInventaire;
                 @Inventaire.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnInventaire;
+                @Drop.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnDrop;
+                @Drop.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnDrop;
+                @Drop.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnDrop;
             }
             m_Wrapper.m_ControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -416,6 +452,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Inventaire.started += instance.OnInventaire;
                 @Inventaire.performed += instance.OnInventaire;
                 @Inventaire.canceled += instance.OnInventaire;
+                @Drop.started += instance.OnDrop;
+                @Drop.performed += instance.OnDrop;
+                @Drop.canceled += instance.OnDrop;
             }
         }
     }
@@ -447,5 +486,6 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnAbilite(InputAction.CallbackContext context);
         void OnCameraMousePos(InputAction.CallbackContext context);
         void OnInventaire(InputAction.CallbackContext context);
+        void OnDrop(InputAction.CallbackContext context);
     }
 }
