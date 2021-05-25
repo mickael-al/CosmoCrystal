@@ -60,4 +60,13 @@ public class PlayerInventaire : Inventaire, I_Save
             itemInventaire = new List<ItemInventaire>();
         }
     }
+
+    public override void Lacher(ItemInventaire ii)
+    {
+        base.Lacher(ii);
+        if(ii.Item.Jetable)
+        {
+            uiInventaire.ItemTakeDrop(ii.Item, ii.NbItem, false);
+        }
+    }
 }
