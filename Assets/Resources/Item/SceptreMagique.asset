@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93adda1607e7ad04fbb00899268e84ea, type: 3}
+  m_Name: SceptreMagique
+  m_EditorClassIdentifier: 
+  nom: Sceptre magique
+  description: Il s'agit d'un sceptre complexe qui peut amplifier les attaques specials
+    de l'utilisateur.
+  prix: 60
+  vente: 30
+  maxStack: 1
+  mass: 2
+  rarete: 0
+  image: {fileID: 21300000, guid: 7f5b1b1edd674354484dcd6d2e92ae98, type: 3}
+  jetable: 1
+  vendable: 1
+  queteObject: 0
+  itemEffect: []
+  equipementType: 1
+  playerEquipement:
+  - prefabPlayerEquipement: {fileID: 3287869011013776341, guid: c2fcb00d54d316247b70959c77c69670, type: 3}
+    indiceBody: 1
+    posObj: {x: 0, y: 0, z: 0}
+    eulerObj: {x: 0, y: 0, z: 0}
+  bonusMalusStat:
+  - statModifier: 5
+    statTypes: 2

@@ -38,6 +38,7 @@ public class UIInventaire : MonoBehaviour
     [SerializeField] private RawImage imageMouse = null;
     [SerializeField] private GameObject infoBox = null;
     [SerializeField] private GameObject menuContextuel = null;
+    [SerializeField] private List<UIItemSlotsEquipement> uiItemSlotsEquipement = new List<UIItemSlotsEquipement>();
     private List<UIItemSlots> uiItemSlots = new List<UIItemSlots>();
     private PlayerController playerController = null;
     private PlayerAbiliteControleur playerAbiliteControleur = null;
@@ -52,6 +53,7 @@ public class UIInventaire : MonoBehaviour
     #region GetterSetter
     public bool InventaireOpen { get { return inventaireOpen; } set { inventaireOpen = value; } }
     public ItemDropRareteEffect[] Idre { get { return itemDropRareteEffect; } }
+    public GameObject PlayerObj { get { return playerController.gameObject; } }
     #endregion
 
     private void Start()
@@ -103,6 +105,11 @@ public class UIInventaire : MonoBehaviour
 
     public void ChangeInventairePage(int type)
     {
+        foreach (UIItemSlotsEquipement uie in uiItemSlotsEquipement)
+        {
+            uie.ItemInv = null;
+            uie.UIInventaireSwith = this;
+        }
         foreach (Transform child in contentBox.transform)
         {
             GameObject.Destroy(child.gameObject);
@@ -119,6 +126,19 @@ public class UIInventaire : MonoBehaviour
                 ui.GetComponent<UIItemSlots>().UIInventaireSwith = this;
                 ui.GetComponent<UIItemSlots>().ItemInv = ii[i];
                 uiItemSlots.Add(ui.GetComponent<UIItemSlots>());
+            }
+            if ((int)(ii[i].Item.typeInventaire) == (int)Item.CaseTypeInventaire.ObjEquipable)
+            {
+                if (ii[i].EquipementID >= 0)
+                {
+                    foreach (UIItemSlotsEquipement uie in uiItemSlotsEquipement)
+                    {
+                        if (ii[i].EquipementID == (int)uie.TypeEquipement)
+                        {
+                            uie.ItemInv = ii[i];
+                        }
+                    }
+                }
             }
         }
         for (int i = countSlot; i < playerInventaire.MaxSlotPage; i++)
@@ -173,25 +193,51 @@ public class UIInventaire : MonoBehaviour
 
     public void ShowInfoBox(UIItemSlots uiItemSlots)
     {
-        infoBox.SetActive(true);
-        infoBox.transform.position = uiItemSlots.transform.position;
-        TextMeshProUGUI nameBox = infoBox.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI textBox = infoBox.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
-        nameBox.text = uiItemSlots.ItemInv.Item.Nom;
-        nameBox.color = itemDropRareteEffect[(int)uiItemSlots.ItemInv.Item.ItemRarete].HdrColorText;
-        textBox.text = uiItemSlots.ItemInv.Item.Description;
+        if (uiItemSlots.ItemInv != null)
+        {
+            infoBox.SetActive(true);
+            infoBox.transform.position = uiItemSlots.transform.position;
+            TextMeshProUGUI nameBox = infoBox.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI textBox = infoBox.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+            nameBox.text = uiItemSlots.ItemInv.Item.Nom;
+            nameBox.color = itemDropRareteEffect[(int)uiItemSlots.ItemInv.Item.ItemRarete].HdrColorText;
+            textBox.text = uiItemSlots.ItemInv.Item.Description;
+        }
     }
     public void HideInfoBox()
     {
         infoBox.SetActive(false);
     }
 
+    public void Equip(UIItemSlotsEquipement uiItemSE)
+    {
+        imageMouse.gameObject.SetActive(false);
+        if (swhitchSlots != null)
+        {
+            if (uiItemSE == null || !(swhitchSlots.ItemInv.Item is Equipable))
+            {
+                swhitchSlots.ItemInv = swhitchSlots.ItemInv;
+                swhitchSlots = null;
+                return;
+            }
+            if (((Equipable)swhitchSlots.ItemInv.Item).EquipementTypeObjet == uiItemSE.TypeEquipement)
+            {
+                uiItemSE.menuContextuel();
+                uiItemSE.ItemInv = swhitchSlots.ItemInv;
+                uiItemSE.ItemInv.EquipementID = (int)uiItemSE.TypeEquipement;
+                PlayerObj.GetComponent<PlayerEquipableModel>().AddModel(((Equipable)swhitchSlots.ItemInv.Item).PlayerEquipement);
+                swhitchSlots.ItemInv = swhitchSlots.ItemInv;
+                swhitchSlots = null;
+            }
+        }
+    }
+
     public void MenuContextuel(UIItemSlots uIItemSlots)
     {
-        if(!uIItemSlots.ItemInv.Item.Jetable && !uIItemSlots.ItemInv.Item.Utilisable)
+        if (!uIItemSlots.ItemInv.Item.Jetable && !uIItemSlots.ItemInv.Item.Utilisable)
         {
             return;
-        }        
+        }
         menuContextuel.SetActive(true);
         menuContextuel.transform.position = uIItemSlots.transform.position;
         menuContextuel.transform.GetChild(0).GetChild(0).gameObject.SetActive(uIItemSlots.ItemInv.Item.Utilisable);
@@ -203,7 +249,7 @@ public class UIInventaire : MonoBehaviour
 
     public void HideMenuContextuel()
     {
-        if(menuContext != null)
+        if (menuContext != null)
         {
             menuContext.MenuC = false;
             menuContext = null;
@@ -213,11 +259,11 @@ public class UIInventaire : MonoBehaviour
 
     public void Utiliser()
     {
-        if(menuContext != null)
+        if (menuContext != null)
         {
-            if(menuContext.ItemInv.Item.Utilisable)
+            if (menuContext.ItemInv.Item.Utilisable)
             {
-                if(menuContext.ItemInv.Item.UseEffect(GameObject.FindGameObjectWithTag("Player").GetComponent<Character>()))
+                if (menuContext.ItemInv.Item.UseEffect(GameObject.FindGameObjectWithTag("Player").GetComponent<Character>()))
                 {
                     menuContext.ItemInv.NbItem--;
                     BoutonChangeUI(selectedTypePage);
@@ -229,12 +275,17 @@ public class UIInventaire : MonoBehaviour
 
     public void Lacher()
     {
-        if(menuContext != null)
+        if (menuContext != null)
         {
-            if(menuContext.ItemInv.Item.Jetable)
+            if (menuContext.ItemInv.Item.Jetable)
             {
+                menuContext.ItemInv.EquipementID = -1;
+                if (menuContext.ItemInv.Item is Equipable)
+                {
+                    PlayerObj.GetComponent<PlayerEquipableModel>().RemoveModel(((Equipable)menuContext.ItemInv.Item).PlayerEquipement);
+                }     
                 GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventaire>().Lacher(menuContext.ItemInv);
-                BoutonChangeUI(selectedTypePage);
+                BoutonChangeUI(selectedTypePage);                                               
             }
         }
         HideMenuContextuel();

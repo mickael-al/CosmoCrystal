@@ -42,6 +42,16 @@ public class PlayerInventaire : Inventaire, I_Save
         uiInventaire = GameObject.FindWithTag("SceneManager").GetComponent<UIInventaire>();
         InputManager.InputJoueur.Controller.Inventaire.started += ctx => switchInventaire(); 
         playerInteract = GetComponent<PlayerInteract>();
+        foreach(ItemInventaire ii  in itemInventaire)
+        {
+            if(ii.EquipementID >= 0)
+            {
+                if(ii.Item is Equipable)
+                {
+                    GetComponent<PlayerEquipableModel>().AddModel(((Equipable)ii.Item).PlayerEquipement);
+                }
+            }
+        }
     }
 
     void switchInventaire()

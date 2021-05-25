@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 3673862979522243349}
   - component: {fileID: 2137506409056472104}
   m_Layer: 0
-  m_Name: Bone.013
+  m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1038,6 +1038,7 @@ GameObject:
   - component: {fileID: 4608279724364153293}
   - component: {fileID: 953608423200157346}
   - component: {fileID: 2413368064451185986}
+  - component: {fileID: 7401617075378429542}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1209,6 +1210,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3587601e975657b4088728409e762ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  piece: 0
+  maxSlotPage: 15
+  itemInventaire: []
+--- !u!114 &7401617075378429542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945491864731072377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be76842880710f4884c4f49bdfd1f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentRig:
+  - {fileID: 4836483153708988050}
+  - {fileID: 2137506409056472105}
+  - {fileID: 6785662021884784829}
+  - {fileID: 446076054761972044}
+  - {fileID: 884597871422632601}
+  - {fileID: 3555595207247821415}
+  - {fileID: 6335534879588668633}
+  - {fileID: 5372967221698510304}
+  - {fileID: 4124980272263861582}
+  - {fileID: 8699566277526429407}
 --- !u!1 &3945491864790057555
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,7 +1276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3099916832313671285}
   m_Layer: 0
-  m_Name: Bone.014
+  m_Name: AntenneDroite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1360,7 +1387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5158058322702397230}
   m_Layer: 0
-  m_Name: Bone
+  m_Name: Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1650,7 +1677,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3132224163656259849}
   m_Layer: 0
-  m_Name: Bone.016
+  m_Name: AntenneGauche
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

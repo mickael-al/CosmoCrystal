@@ -6,6 +6,7 @@ public class ItemInventaire
     [SerializeField] private string resourcesName = "";
     [SerializeField] private int nbItem = 0;
     [SerializeField] private int numeroPosInventaire = -1;
+    [SerializeField] private int equipementID = -1;
 
     public ItemInventaire() { }
     public ItemInventaire(Item it, int nombre)
@@ -16,13 +17,13 @@ public class ItemInventaire
     #region GetterSetter
     public Item Item
     {
-        get 
+        get
         {
-            if(item == null)
+            if (item == null)
             {
-                item = Resources.Load("item/"+resourcesName) as Item;
+                item = Resources.Load("item/" + resourcesName) as Item;
             }
-            return item; 
+            return item;
         }
         set
         {
@@ -37,16 +38,18 @@ public class ItemInventaire
         set
         {
             nbItem = Mathf.Clamp(value, 0, item != null ? item.MaxStack : 0);
-            if(nbItem == 0)
+            if (nbItem == 0)
             {
                 item = null;
                 resourcesName = "";
-                
+
             }
         }
     }
 
-    public int NumeroPosInventaire { get { return numeroPosInventaire; } set{numeroPosInventaire=value;} }
+    public int EquipementID { get { return equipementID; } set { equipementID = value; } }
+
+    public int NumeroPosInventaire { get { return numeroPosInventaire; } set { numeroPosInventaire = value; } }
     public string ResourcesName { get { return resourcesName; } }
 
     #endregion

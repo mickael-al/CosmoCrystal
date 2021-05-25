@@ -5,20 +5,20 @@ using TMPro;
 
 public class UIItemSlots : MonoBehaviour
 {
-    [SerializeField] private Sprite backGroundHaveItem = null;
+    [SerializeField] protected Sprite backGroundHaveItem = null;
     [SerializeField] private Sprite backGroundNotHaveItem = null;
-    [SerializeField] private Sprite nullImage = null;
-    [SerializeField] private Shader shader = null;
-    private ItemInventaire itemInventaire = null;
+    [SerializeField] protected Sprite nullImage = null;
+    [SerializeField] protected Shader shader = null;
+    protected ItemInventaire itemInventaire = null;
 
     [Header("UI")]
-    [SerializeField] private RawImage iconImage = null;
-    [SerializeField] private RawImage selected = null;
-    [SerializeField] private RawImage backGround = null;
-    [SerializeField] private TextMeshProUGUI countText = null;
+    [SerializeField] protected RawImage iconImage = null;
+    [SerializeField] protected RawImage selected = null;
+    [SerializeField] protected RawImage backGround = null;
+    [SerializeField] protected TextMeshProUGUI countText = null;
     [SerializeField] private float timerInfoBox = 0.4f;
-    private UIInventaire uIInventaire = null;
-    private int indice = -1;
+    protected UIInventaire uIInventaire = null;
+    protected int indice = -1;
     private bool inslot = false;
     private bool menuC = false;
     public UIItemSlots(int ind, ItemInventaire item = null)
@@ -59,7 +59,7 @@ public class UIItemSlots : MonoBehaviour
 
     public int IndiceSlots { set { indice = value; } }
 
-    public void Drag()
+    public virtual void Drag()
     {
         if (uIInventaire != null && itemInventaire != null)
         {
@@ -68,7 +68,7 @@ public class UIItemSlots : MonoBehaviour
             uIInventaire.Drag(this);
         }
     }
-    public void Drop()
+    public virtual void Drop()
     {
         if (uIInventaire != null)
         {
