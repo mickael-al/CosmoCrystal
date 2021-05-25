@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CleScene02Fallbury
   m_EditorClassIdentifier: 
   nom: "Cl\xE9 du portillon"
-  description: "une petite cl\xE9 "
+  description: "Une petite cl\xE9 qui ouvre un petit portillon."
   prix: 0
   vente: 0
   maxStack: 1

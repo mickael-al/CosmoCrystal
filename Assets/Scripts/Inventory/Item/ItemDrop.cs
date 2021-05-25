@@ -62,7 +62,10 @@ public class ItemDrop : MonoBehaviour
 
     public void Desintegrate()//detruit par un traps 
     {
-        Destroy(gameObject);
+        //if(!item.QueteObject)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public IEnumerator blockRecupWait(float temps)

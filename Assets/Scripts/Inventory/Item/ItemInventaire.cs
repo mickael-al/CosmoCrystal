@@ -37,6 +37,12 @@ public class ItemInventaire
         set
         {
             nbItem = Mathf.Clamp(value, 0, item != null ? item.MaxStack : 0);
+            if(nbItem == 0)
+            {
+                item = null;
+                resourcesName = "";
+                
+            }
         }
     }
 

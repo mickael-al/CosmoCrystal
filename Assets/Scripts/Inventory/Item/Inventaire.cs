@@ -12,7 +12,19 @@ public class Inventaire : MonoBehaviour
     private List<int> pageCount = new List<int>();
 
     #region GetterSetter
-    public List<ItemInventaire> ItemInventaire { get { return itemInventaire; } }
+    public List<ItemInventaire> ItemInventaire { 
+        get 
+        { 
+            for(int i = itemInventaire.Count-1; i >= 0;i--)
+            {
+                if(itemInventaire[i].Item == null)
+                {
+                    itemInventaire.RemoveAt(i);
+                }
+            }
+            return itemInventaire; 
+        } 
+    }
     public int MaxSlotPage { get { return maxSlotPage; } }
     #endregion
 
@@ -79,5 +91,18 @@ public class Inventaire : MonoBehaviour
         itemInventaire.Add(new ItemInventaire(item, reste));
         reste = 0;
         return true;
+    }
+
+    public virtual void Lacher(ItemInventaire ii)
+    {
+        if(ii.Item.Jetable)
+        {
+            itemInventaire.Remove(ii);        
+            GameObject prefabBaseItem = Resources.Load("Item/Prefab/ItemBase") as GameObject;
+            GameObject objSpawn = Instantiate(prefabBaseItem,transform.position+new Vector3(0,1.0f,0),Quaternion.identity);            
+            StartCoroutine(objSpawn.GetComponent<ItemDrop>().blockRecupWait(2.5f));
+            objSpawn.GetComponent<ItemDrop>().Item = ii.Item;
+            objSpawn.GetComponent<ItemDrop>().NbItem = ii.NbItem;
+        }
     }
 }

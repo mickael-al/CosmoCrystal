@@ -37,6 +37,7 @@ public class UIInventaire : MonoBehaviour
     [SerializeField] private ButtonChangeUiType[] buttonChangeUiType = null;
     [SerializeField] private RawImage imageMouse = null;
     [SerializeField] private GameObject infoBox = null;
+    [SerializeField] private GameObject menuContextuel = null;
     private List<UIItemSlots> uiItemSlots = new List<UIItemSlots>();
     private PlayerController playerController = null;
     private PlayerAbiliteControleur playerAbiliteControleur = null;
@@ -45,6 +46,7 @@ public class UIInventaire : MonoBehaviour
     private bool inventaireOpen = false;
     private int selectedTypePage = 0;
     private UIItemSlots swhitchSlots = null;
+    private UIItemSlots menuContext = null;
 
 
     #region GetterSetter
@@ -81,6 +83,7 @@ public class UIInventaire : MonoBehaviour
     public void BoutonChangeUI(int ind)
     {
         HideInfoBox();
+        HideMenuContextuel();
         imageMouse.gameObject.SetActive(false);
         selectedTypePage = ind;
         titreText.text = buttonChangeUiType[ind].titreTxt;
@@ -171,10 +174,70 @@ public class UIInventaire : MonoBehaviour
     public void ShowInfoBox(UIItemSlots uiItemSlots)
     {
         infoBox.SetActive(true);
+        infoBox.transform.position = uiItemSlots.transform.position;
+        TextMeshProUGUI nameBox = infoBox.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI textBox = infoBox.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        nameBox.text = uiItemSlots.ItemInv.Item.Nom;
+        nameBox.color = itemDropRareteEffect[(int)uiItemSlots.ItemInv.Item.ItemRarete].HdrColorText;
+        textBox.text = uiItemSlots.ItemInv.Item.Description;
     }
     public void HideInfoBox()
     {
         infoBox.SetActive(false);
+    }
+
+    public void MenuContextuel(UIItemSlots uIItemSlots)
+    {
+        if(!uIItemSlots.ItemInv.Item.Jetable && !uIItemSlots.ItemInv.Item.Utilisable)
+        {
+            return;
+        }        
+        menuContextuel.SetActive(true);
+        menuContextuel.transform.position = uIItemSlots.transform.position;
+        menuContextuel.transform.GetChild(0).GetChild(0).gameObject.SetActive(uIItemSlots.ItemInv.Item.Utilisable);
+        menuContextuel.transform.GetChild(0).GetChild(1).gameObject.SetActive(uIItemSlots.ItemInv.Item.Jetable);
+        uIItemSlots.MenuC = true;
+        menuContext = uIItemSlots;
+        HideInfoBox();
+    }
+
+    public void HideMenuContextuel()
+    {
+        if(menuContext != null)
+        {
+            menuContext.MenuC = false;
+            menuContext = null;
+        }
+        menuContextuel.SetActive(false);
+    }
+
+    public void Utiliser()
+    {
+        if(menuContext != null)
+        {
+            if(menuContext.ItemInv.Item.Utilisable)
+            {
+                if(menuContext.ItemInv.Item.UseEffect(GameObject.FindGameObjectWithTag("Player").GetComponent<Character>()))
+                {
+                    menuContext.ItemInv.NbItem--;
+                    BoutonChangeUI(selectedTypePage);
+                }
+            }
+        }
+        HideMenuContextuel();
+    }
+
+    public void Lacher()
+    {
+        if(menuContext != null)
+        {
+            if(menuContext.ItemInv.Item.Jetable)
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventaire>().Lacher(menuContext.ItemInv);
+                BoutonChangeUI(selectedTypePage);
+            }
+        }
+        HideMenuContextuel();
     }
 
     public void Drop(UIItemSlots uIItemSlots)

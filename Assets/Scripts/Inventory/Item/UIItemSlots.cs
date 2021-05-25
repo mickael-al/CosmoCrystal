@@ -16,10 +16,11 @@ public class UIItemSlots : MonoBehaviour
     [SerializeField] private RawImage selected = null;
     [SerializeField] private RawImage backGround = null;
     [SerializeField] private TextMeshProUGUI countText = null;
-    [SerializeField] private float timerInfoBox = 1.0f;
+    [SerializeField] private float timerInfoBox = 0.4f;
     private UIInventaire uIInventaire = null;
     private int indice = -1;
     private bool inslot = false;
+    private bool menuC = false;
     public UIItemSlots(int ind, ItemInventaire item = null)
     {
         ItemInv = item;
@@ -52,6 +53,7 @@ public class UIItemSlots : MonoBehaviour
         }
 
     }
+    public bool MenuC { set{menuC = value;}get{return menuC;}}
 
     public UIInventaire UIInventaireSwith { set { uIInventaire = value; } }
 
@@ -74,10 +76,21 @@ public class UIItemSlots : MonoBehaviour
         }
     }
 
+    public virtual void menuContextuel()
+    {
+        if(itemInventaire != null)
+        {
+            uIInventaire.MenuContextuel(this);
+        }
+    }
+
     public void EnterSlot()
     {
-        inslot = true;
-        StartCoroutine(InfoBox());
+        if(itemInventaire != null)
+        {
+            inslot = true;
+            StartCoroutine(InfoBox());
+        }
     }
 
     public void ExitSlot()
@@ -94,9 +107,10 @@ public class UIItemSlots : MonoBehaviour
         float timer = timerInfoBox;
         while(timer > 0 && inslot)
         {
+            timer -= Time.deltaTime;
             yield return null;
         }
-        if(inslot)
+        if(inslot && !menuC)
         {
             uIInventaire.ShowInfoBox(this);
         }

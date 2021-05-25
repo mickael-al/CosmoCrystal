@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Leaf
   m_EditorClassIdentifier: 
   nom: Feuille
-  description: Feuille
+  description: Une feuille
   prix: 0
   vente: 1
   maxStack: 32
@@ -22,3 +22,4 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 768d421c0442d5a429995d0a4fddd6f3, type: 3}
   jetable: 1
   vendable: 1
+  queteObject: 0

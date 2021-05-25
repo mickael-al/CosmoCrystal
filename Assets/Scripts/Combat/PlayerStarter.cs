@@ -12,6 +12,16 @@ public class PlayerStarter : CombatStarter, InteractableAbilite, I_Save
         GameObject.FindObjectOfType<CombatManager>().StartCombat(false, gameObject, owner.gameObject);
     }
 
+    public void Healing(float heal)
+    {
+        statistique.Vie += heal;
+        if(statistique.Vie > statistique.VieMax)
+        {
+            statistique.Vie = statistique.VieMax;
+        }
+        sceneManagerObj.GetComponent<UIStatPlayer>().MajValue();
+    }
+
     public void TakeExternalDamage(float damage, float effCamMag = 0.0f, float effCamDur = 0.0f, float effCamSmoth = 0.0f)
     {
         if (statistique.Vie - damage < 0)

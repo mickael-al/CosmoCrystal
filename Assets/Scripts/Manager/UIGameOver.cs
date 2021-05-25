@@ -11,6 +11,7 @@ public class UIGameOver : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textGameOver = null;
     [SerializeField] private GameObject bouttonRetry = null;
     [SerializeField] private float transitionDuree = 2.0f;
+    [SerializeField] private GameObject particleRespawn = null;
     private PlayerController pc = null;
     private PlayerCameraMouvement pcm = null;
     private Volume volume = null;
@@ -79,7 +80,7 @@ public class UIGameOver : MonoBehaviour
             SceneManagerLoader sml = GetComponent<SceneManagerLoader>();
             sml.LoadSceneTransition(SceneManager.GetActiveScene().name, rp, ra);
             yield return new WaitForSeconds(sml.TempsTransition);
-            pc.GetComponent<PlayerStarter>().Respawn();
+            pc.GetComponent<PlayerStarter>().Respawn();            
             pcm.CameraMove = true; 
             pcm.MouseCursorMove = false;
             pcm.MouseSee = false;
@@ -90,6 +91,7 @@ public class UIGameOver : MonoBehaviour
             isDead = false;
             inRespawn = false;
         }
-        yield return null;
+        yield return new WaitForSeconds(0.1f);
+        Instantiate(particleRespawn,pc.transform.position+new Vector3(0,-0.6f,0),Quaternion.Euler(-90,0,0));
     }
 }

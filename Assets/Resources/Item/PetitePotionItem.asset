@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e12fd4288482804da04abd0eb783e35, type: 3}
   m_Name: PetitePotionItem
   m_EditorClassIdentifier: 
-  nom: Petite Potion
-  description: Potion
+  nom: Petite Potion de Soin
+  description: Une petite infusion magique qui restaure 20 PV.
   prix: 10
   vente: 5
   maxStack: 16
@@ -22,5 +22,6 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 36e8c30ce1b0ed94c90630bb71f5e90b, type: 3}
   jetable: 1
   vendable: 1
+  queteObject: 0
   itemEffect:
   - {fileID: 11400000, guid: 35bb3f65654a4b0469b15a0a654d78d0, type: 2}
