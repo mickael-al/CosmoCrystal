@@ -26,6 +26,12 @@ public class Inventaire : MonoBehaviour
         } 
     }
     public int MaxSlotPage { get { return maxSlotPage; } }
+
+    public int Piece {get{return piece;} 
+        set{
+            piece = Mathf.Clamp(value,0,99999);
+        }
+    }
     #endregion
 
     protected virtual void Awake() { }
@@ -62,6 +68,15 @@ public class Inventaire : MonoBehaviour
     }
     public virtual bool AddItem(Item item, int nombre, out int reste)
     {
+        if(item is SpecialItem)
+        {
+            if(item.UseEffect(GetComponent<Character>(),nombre)){}
+            if(((SpecialItem)item).DestroyOnTake)
+            {                
+                reste=0;
+                return true;
+            }
+        }
         List<int> indiceFind;
         reste = nombre;
         if (ItemExist(item, out indiceFind))

@@ -29,8 +29,8 @@ MonoBehaviour:
   playerEquipement:
   - prefabPlayerEquipement: {fileID: 3287869011013776341, guid: c2fcb00d54d316247b70959c77c69670, type: 3}
     indiceBody: 1
-    posObj: {x: 0, y: 0, z: 0}
-    eulerObj: {x: 0, y: 0, z: 0}
+    posObj: {x: 0.00376, y: 0.00734, z: -0.00134}
+    eulerObj: {x: -45, y: 80, z: 180}
   bonusMalusStat:
   - statModifier: 5
     statTypes: 2

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93adda1607e7ad04fbb00899268e84ea, type: 3}
+  m_Name: WitchHat
+  m_EditorClassIdentifier: 
+  nom: "Chapeau de Sorci\xE8re"
+  description: "Ce chapeau a appartenu \xE0 une puissante sorci\xE8re.\n"
+  prix: 300
+  vente: 150
+  maxStack: 1
+  mass: 2
+  rarete: 1
+  image: {fileID: 21300000, guid: ea8686fc5310110468b716224696a950, type: 3}
+  jetable: 1
+  vendable: 1
+  queteObject: 0
+  itemEffect: []
+  equipementType: 0
+  playerEquipement:
+  - prefabPlayerEquipement: {fileID: 7195886982135587549, guid: 472920ce16c93e84e87ad49d85611fff, type: 3}
+    indiceBody: 1
+    posObj: {x: -0.00374, y: 0.00516, z: -0.00063}
+    eulerObj: {x: -66.185, y: 71.936, z: 1.363}
+  bonusMalusStat:
+  - statModifier: 10
+    statTypes: 1
+  - statModifier: 10
+    statTypes: 4

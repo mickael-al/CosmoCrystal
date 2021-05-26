@@ -27,7 +27,7 @@ public class UIItemSlotsEquipement : UIItemSlots
                 {
                     foreach (BonusMalus bm in ((Equipable)itemInventaire.Item).BonusMalusStat)
                     {
-                        countText.text += "[" + bm.statTypes.ToString() + ":" + bm.statModifier.ToString() + "]";
+                        countText.text += "[" + bm.statTypes.ToString() + ":" + bm.statModifier.ToString() + "]\n";
                     }
                 }
             }

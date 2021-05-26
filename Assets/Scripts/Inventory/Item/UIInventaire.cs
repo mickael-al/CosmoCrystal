@@ -38,6 +38,7 @@ public class UIInventaire : MonoBehaviour
     [SerializeField] private RawImage imageMouse = null;
     [SerializeField] private GameObject infoBox = null;
     [SerializeField] private GameObject menuContextuel = null;
+    [SerializeField] private TextMeshProUGUI textPiece = null;
     [SerializeField] private List<UIItemSlotsEquipement> uiItemSlotsEquipement = new List<UIItemSlotsEquipement>();
     private List<UIItemSlots> uiItemSlots = new List<UIItemSlots>();
     private PlayerController playerController = null;
@@ -85,9 +86,10 @@ public class UIInventaire : MonoBehaviour
     public void BoutonChangeUI(int ind)
     {
         HideInfoBox();
-        HideMenuContextuel();
+        HideMenuContextuel();        
         imageMouse.gameObject.SetActive(false);
         selectedTypePage = ind;
+        textPiece.text = playerInventaire.Piece.ToString("00000");
         titreText.text = buttonChangeUiType[ind].titreTxt;
         titreText.color = buttonChangeUiType[ind].colorTxt;
         armureCase.SetActive(buttonChangeUiType[ind].armure);

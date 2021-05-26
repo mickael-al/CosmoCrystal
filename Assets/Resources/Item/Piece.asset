@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed83bc6f35c102e42a74b7860de7fdf0, type: 3}
+  m_Name: Piece
+  m_EditorClassIdentifier: 
+  nom: "Pi\xE8ces"
+  description: 
+  prix: 1
+  vente: 1
+  maxStack: 99999
+  mass: 0.5
+  rarete: 0
+  image: {fileID: 21300000, guid: 925a1a541a436814ebc812bc2ca0e8ba, type: 3}
+  jetable: 0
+  vendable: 0
+  queteObject: 0
+  itemEffect:
+  - {fileID: 11400000, guid: d11a8c5f2ba9f66498733dcdd91153e4, type: 2}
+  destroyOnTake: 1

@@ -34,12 +34,12 @@ public class Item : ScriptableObject
     public virtual CaseTypeInventaire typeInventaire { get { return CaseTypeInventaire.ObjNormal; } }
     #endregion
 
-    public virtual bool UseEffect(Character character)
+    public virtual bool UseEffect(Character character,int nombre =-1)
     {
         bool reusi = false;
         foreach(ItemEffect id in itemEffect)
         {
-            if(id.Effect(character))
+            if(id.Effect(character,nombre))
             {
                 reusi=true;   
             }            

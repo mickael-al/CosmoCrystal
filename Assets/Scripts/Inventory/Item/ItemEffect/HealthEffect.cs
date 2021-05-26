@@ -3,7 +3,7 @@
 public class HealthEffect : ItemEffect
 {
     [SerializeField] private float HealthRegen = 0.0f;
-    public override bool Effect(Character character)
+    public override bool Effect(Character character,int nombre = -1)
     {
         //Debug.Log("HealthRegen de " + HealthRegen + " sur " + character);
         GameObject prefabSpawn = Resources.Load("Item/Effect/Particle/Heal") as GameObject;
