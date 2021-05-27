@@ -45,6 +45,7 @@ public class PlayerEquipableModel : MonoBehaviour
             GameObject go = Instantiate(eop.prefabPlayerEquipement,parentRig[eop.indiceBody].transform.position,Quaternion.identity,parentRig[eop.indiceBody].transform);
             go.transform.localPosition = eop.posObj;
             go.transform.localEulerAngles = eop.eulerObj;
+            go.transform.localScale = eop.scaleObj;
             modelAdd.Add(eop,go);
         }
     }

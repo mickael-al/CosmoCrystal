@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93adda1607e7ad04fbb00899268e84ea, type: 3}
+  m_Name: EpeePlante
+  m_EditorClassIdentifier: 
+  nom: "\xC9p\xE9e V\xE9g\xE9tal"
+  description: "Une \xE9p\xE9e qui est un abrit\xE9 par un esprit mineur v\xE9g\xE9tal,
+    elle amplifie les attaques de l'utilisateur. Ajoute un bonus sur les attaques
+    plante.\n"
+  prix: 90
+  vente: 60
+  maxStack: 4
+  mass: 1
+  rarete: 0
+  image: {fileID: 21300000, guid: a8881a11098f2bf4187ab83269a73e5d, type: 3}
+  jetable: 1
+  vendable: 1
+  queteObject: 0
+  itemEffect: []
+  equipementType: 1
+  playerEquipement:
+  - prefabPlayerEquipement: {fileID: 100000, guid: cf67e4c6cccfa0e47b8a451b1eb25da9, type: 3}
+    indiceBody: 1
+    posObj: {x: 0.0053, y: 0.00828, z: -0.00691}
+    eulerObj: {x: -176.647, y: -11.966, z: 138.824}
+    scaleObj: {x: 0.005, y: 0.005, z: 0.0055}
+  bonusMalusStat:
+  - statModifier: 8
+    statTypes: 3
+    typesCibles: 7
+  - statModifier: 10
+    statTypes: 3
+    typesCibles: 3

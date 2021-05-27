@@ -30,6 +30,7 @@ MonoBehaviour:
     indiceBody: 1
     posObj: {x: -0.00374, y: 0.00516, z: -0.00063}
     eulerObj: {x: -66.185, y: 71.936, z: 1.363}
+    scaleObj: {x: 1.8, y: 1.8, z: 1.8}
   bonusMalusStat:
   - statModifier: 10
     statTypes: 1

@@ -139,6 +139,7 @@ public class Inventaire : MonoBehaviour
                 {
                     foreach (BonusMalus bm in ((Equipable)ii.Item).BonusMalusStat)
                     {
+                        if(bm.typesCibles != Statistique.Types.ALL){break;}
                         switch (bm.statTypes)
                         {
                             case StatTypes.Vie:

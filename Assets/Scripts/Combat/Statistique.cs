@@ -39,7 +39,8 @@ public class Statistique : ScriptableObject
         Plante,
         Psy,
         Combat,
-        Tenebre
+        Tenebre,
+        ALL
     }
 
     #region GetterSetter

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93adda1607e7ad04fbb00899268e84ea, type: 3}
+  m_Name: SceptreMagiqueBrasier
+  m_EditorClassIdentifier: 
+  nom: Sceptre Du brasier
+  description: Il s'agit d'un sceptre magique complexe qui peut amplifier les attaques
+    specials de l'utilisateur. Ajoute un bonus sur les attaques de Feu.
+  prix: 160
+  vente: 80
+  maxStack: 4
+  mass: 1
+  rarete: 1
+  image: {fileID: 21300000, guid: 57baa04c48886db4dbdac97d51f8f1b1, type: 3}
+  jetable: 1
+  vendable: 1
+  queteObject: 0
+  itemEffect: []
+  equipementType: 1
+  playerEquipement:
+  - prefabPlayerEquipement: {fileID: 100000, guid: ca03084cfa4bdb348bb24f827a335077, type: 3}
+    indiceBody: 1
+    posObj: {x: 0.00349, y: 0.00718, z: 0.00036}
+    eulerObj: {x: 0.722, y: 170.501, z: -14.727}
+    scaleObj: {x: 0.005, y: 0.005, z: 0.005}
+  bonusMalusStat:
+  - statModifier: 16
+    statTypes: 2
+    typesCibles: 7
+  - statModifier: 30
+    statTypes: 2
+    typesCibles: 1

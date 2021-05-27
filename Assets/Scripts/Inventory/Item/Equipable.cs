@@ -8,6 +8,7 @@ public class EquipementObjectPlacer
     public int indiceBody;
     public Vector3 posObj;
     public Vector3 eulerObj;
+    public Vector3 scaleObj;
 }
 
 [System.Serializable]
@@ -15,6 +16,7 @@ public class BonusMalus
 {
     public float statModifier;
     public StatTypes statTypes;
+    public Statistique.Types typesCibles = Statistique.Types.ALL;
 }
 
 public enum StatTypes
