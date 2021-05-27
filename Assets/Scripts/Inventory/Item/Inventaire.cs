@@ -120,4 +120,54 @@ public class Inventaire : MonoBehaviour
             objSpawn.GetComponent<ItemDrop>().NbItem = ii.NbItem;
         }
     }
+
+    public virtual void majStatBonusEquipement()
+    {
+        Statistique stat = GetComponent<CombatStarter>().Stat;
+        stat.VieBaseBonus = 0.0f;
+        stat.ManaBaseBonus = 0.0f;
+        stat.VitesseBaseBonus = 0.0f;
+        stat.AttaqueBaseBonus = 0.0f;
+        stat.DefenceBaseBonus = 0.0f;
+        stat.AttaqueBaseSpecialBonus = 0.0f;
+        stat.DefenceBaseSpecialBonus = 0.0f;
+        foreach (ItemInventaire ii in itemInventaire)
+        {
+            if (ii.EquipementID >= 0)
+            {
+                if (ii.Item is Equipable)
+                {
+                    foreach (BonusMalus bm in ((Equipable)ii.Item).BonusMalusStat)
+                    {
+                        switch (bm.statTypes)
+                        {
+                            case StatTypes.Vie:
+                                stat.VieBaseBonus += bm.statModifier;
+                                break;
+                            case StatTypes.Mana:
+                                stat.ManaBaseBonus += bm.statModifier;
+                                break;
+                            case StatTypes.Vitt:
+                                stat.VitesseBaseBonus += bm.statModifier;
+                                break;
+                            case StatTypes.AtkPhys:
+                                stat.AttaqueBaseBonus += bm.statModifier;
+                                break;
+                            case StatTypes.AtkSpe:
+                                stat.AttaqueBaseSpecialBonus += bm.statModifier;
+                                break;
+                            case StatTypes.DefPhys:
+                                stat.DefenceBaseBonus += bm.statModifier;
+                                break;
+                            case StatTypes.DefSpe:
+                                stat.DefenceBaseSpecialBonus += bm.statModifier;
+                                break;
+                        }
+                    }
+                }
+            }
+        }        
+        stat.Vie = Mathf.Clamp(stat.Vie,0,stat.VieMax);
+        stat.Mana = Mathf.Clamp(stat.Mana,0,stat.ManaMax);
+    }
 }

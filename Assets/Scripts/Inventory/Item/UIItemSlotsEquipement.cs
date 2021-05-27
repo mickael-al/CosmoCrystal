@@ -58,6 +58,7 @@ public class UIItemSlotsEquipement : UIItemSlots
                 uIInventaire.PlayerObj.GetComponent<PlayerEquipableModel>().RemoveModel(((Equipable)ItemInv.Item).PlayerEquipement);
             }
             uIInventaire.HideInfoBox();
+            uIInventaire.PlayerObj.GetComponent<PlayerInventaire>().majStatBonusEquipement();
             ItemInv = null;
         }
     }

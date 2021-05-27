@@ -22,6 +22,16 @@ public class PlayerStarter : CombatStarter, InteractableAbilite, I_Save
         sceneManagerObj.GetComponent<UIStatPlayer>().MajValue();
     }
 
+    public void HealingMana(float heal)
+    {
+        statistique.Mana += heal;
+        if(statistique.Mana > statistique.ManaMax)
+        {
+            statistique.Mana = statistique.ManaMax;
+        }
+        sceneManagerObj.GetComponent<UIStatPlayer>().MajValue();
+    }
+
     public void TakeExternalDamage(float damage, float effCamMag = 0.0f, float effCamDur = 0.0f, float effCamSmoth = 0.0f)
     {
         if (statistique.Vie - damage < 0)
@@ -61,6 +71,13 @@ public class PlayerStarter : CombatStarter, InteractableAbilite, I_Save
             base.statistique.Experience = 0.0f;
             base.statistique.CharacterType = new Statistique.Types[1];
             base.statistique.CharacterType[0] = Statistique.Types.Normal;
+            base.statistique.VieBaseBonus = 0.0f;
+            base.statistique.ManaBaseBonus = 0.0f;
+            base.statistique.VitesseBaseBonus = 0.0f;
+            base.statistique.AttaqueBaseBonus = 0.0f;
+            base.statistique.DefenceBaseBonus = 0.0f;
+            base.statistique.AttaqueBaseSpecialBonus = 0.0f;
+            base.statistique.DefenceBaseSpecialBonus = 0.0f;
         }
     }
 }

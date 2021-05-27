@@ -37,10 +37,12 @@ public class UIStatPlayer : MonoBehaviour
             if(lastVie < ps.Stat.Vie){lastVie++;}
             if(lastMana > ps.Stat.Mana){lastMana--;}
             if(lastMana < ps.Stat.Mana){lastMana++;}
-            textVie.text = lastVie.ToString("00") + "/" + ps.Stat.VieBase;
-            textMana.text = lastMana.ToString("00") + "/" + ps.Stat.ManaBase;
+            textVie.text = lastVie.ToString("00") + "/" + ps.Stat.VieMax;
+            textMana.text = lastMana.ToString("00") + "/" + ps.Stat.ManaMax;
             yield return null;
         }
+        textVie.text = lastVie.ToString("00") + "/" + ps.Stat.VieMax;
+        textMana.text = lastMana.ToString("00") + "/" + ps.Stat.ManaMax;
     }
 
 }

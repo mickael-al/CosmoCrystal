@@ -228,6 +228,7 @@ public class UIInventaire : MonoBehaviour
                 uiItemSE.ItemInv = swhitchSlots.ItemInv;
                 uiItemSE.ItemInv.EquipementID = (int)uiItemSE.TypeEquipement;
                 PlayerObj.GetComponent<PlayerEquipableModel>().AddModel(((Equipable)swhitchSlots.ItemInv.Item).PlayerEquipement);
+                playerInventaire.majStatBonusEquipement();
                 swhitchSlots.ItemInv = swhitchSlots.ItemInv;
                 swhitchSlots = null;
             }

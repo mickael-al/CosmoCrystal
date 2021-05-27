@@ -4,18 +4,18 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerInventaire : Inventaire, I_Save
 {
-    private UIInventaire uiInventaire = null;    
+    private UIInventaire uiInventaire = null;
     private PlayerInteract playerInteract = null;
     private PlayerAbiliteControleur playerAbiliteControleur = null;
 
     #region GetterSetter
-        public bool inInventaire
+    public bool inInventaire
+    {
+        get
         {
-            get
-            {
-                return uiInventaire.InventaireOpen;
-            }
+            return uiInventaire.InventaireOpen;
         }
+    }
     #endregion
 
     public override bool AddItem(Item item, int nombre, out int reste)
@@ -40,25 +40,26 @@ public class PlayerInventaire : Inventaire, I_Save
         base.Start();
         playerAbiliteControleur = GetComponent<PlayerAbiliteControleur>();
         uiInventaire = GameObject.FindWithTag("SceneManager").GetComponent<UIInventaire>();
-        InputManager.InputJoueur.Controller.Inventaire.started += ctx => switchInventaire(); 
+        InputManager.InputJoueur.Controller.Inventaire.started += ctx => switchInventaire();
         playerInteract = GetComponent<PlayerInteract>();
-        foreach(ItemInventaire ii  in itemInventaire)
+        foreach (ItemInventaire ii in itemInventaire)
         {
-            if(ii.EquipementID >= 0)
+            if (ii.EquipementID >= 0)
             {
-                if(ii.Item is Equipable)
+                if (ii.Item is Equipable)
                 {
                     GetComponent<PlayerEquipableModel>().AddModel(((Equipable)ii.Item).PlayerEquipement);
                 }
             }
         }
+        majStatBonusEquipement();
     }
 
     void switchInventaire()
-    {     
-        if(!playerInteract.isInteract && (!playerAbiliteControleur.IsUsing || !playerAbiliteControleur.IsChoising))  
+    {
+        if (!playerInteract.isInteract && (!playerAbiliteControleur.IsUsing || !playerAbiliteControleur.IsChoising))
         {
-            uiInventaire.OpenInventaire(); 
+            uiInventaire.OpenInventaire();
         }
     }
     public void Load(string s)
@@ -74,9 +75,15 @@ public class PlayerInventaire : Inventaire, I_Save
     public override void Lacher(ItemInventaire ii)
     {
         base.Lacher(ii);
-        if(ii.Item.Jetable)
+        if (ii.Item.Jetable)
         {
             uiInventaire.ItemTakeDrop(ii.Item, ii.NbItem, false);
         }
+    }
+
+    public override void majStatBonusEquipement()
+    {
+        base.majStatBonusEquipement();
+        GameObject.FindWithTag("SceneManager").GetComponent<UIStatPlayer>().MajValue();
     }
 }
