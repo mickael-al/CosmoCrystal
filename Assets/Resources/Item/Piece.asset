@@ -18,7 +18,7 @@ MonoBehaviour:
   vente: 1
   maxStack: 99999
   mass: 0.5
-  rarete: 0
+  rarete: 2
   image: {fileID: 21300000, guid: 925a1a541a436814ebc812bc2ca0e8ba, type: 3}
   jetable: 0
   vendable: 0
