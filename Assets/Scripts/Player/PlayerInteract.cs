@@ -8,6 +8,7 @@ public class PlayerInteract : MonoBehaviour
     private Interactable lastInteraction = null;
     private PlayerAbiliteControleur playerAbiliteControleur = null;
     private PlayerInventaire playerInventaire = null;
+    private PlayerStarter playerStarter = null;
 
     #region GetterSetter
     public bool CanInteract
@@ -28,6 +29,7 @@ public class PlayerInteract : MonoBehaviour
     private void Start() {        
         playerAbiliteControleur = GetComponent<PlayerAbiliteControleur>();
         playerInventaire = GetComponent<PlayerInventaire>();
+        playerStarter = GetComponent<PlayerStarter>();
         InputManager.InputJoueur.Controller.ActionPrincipale.performed += ctx => Interact();  
     }
 
@@ -45,7 +47,7 @@ public class PlayerInteract : MonoBehaviour
 
     public void Interact()
     {
-        if(playerAbiliteControleur.IsChoising || playerAbiliteControleur.IsUsing || playerInventaire.inInventaire) return;
+        if(playerAbiliteControleur.IsChoising || playerAbiliteControleur.IsUsing || playerInventaire.inInventaire || playerStarter.IsFighting) return;
         Interactable inter = null;
         float distance = float.MaxValue;
         foreach(Interactable i in interactable)

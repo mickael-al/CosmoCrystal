@@ -25,28 +25,23 @@ public class Character : MonoBehaviour
 
     #endregion
     #region GetterSetter
-        public bool IsInteract
+    public bool IsInteract
+    {
+        get
         {
-            get{
-                return isInteract;
-            }
-            set{
-                isInteract = value;
-            }
+            return isInteract;
         }
+        set
+        {
+            isInteract = value;
+        }
+    }
+
+    public virtual float SpeedModifier { set { } get { return 0.0f; } }
+    public virtual float WalkSpeed { get { return walkSpeed; } }
     #endregion
 
-    protected virtual void Awake() 
-    {
-        
-    }
-    protected virtual void Start()
-    {
-        
-    }
-
-    protected virtual void Update()
-    {
-        
-    }
+    protected virtual void Awake() { }
+    protected virtual void Start() { }
+    protected virtual void Update() { }
 }

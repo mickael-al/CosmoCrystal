@@ -34,6 +34,10 @@ public class PlayerController : Character
     #endregion
     #endregion
 
+    #region GetterSetter
+    public override float SpeedModifier { set {speed=value; } get { return speed; } }
+    #endregion
+
     protected override void Awake()
     {
         base.Awake();

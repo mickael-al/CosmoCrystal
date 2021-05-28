@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93adda1607e7ad04fbb00899268e84ea, type: 3}
+  m_Name: EspadonDeFer
+  m_EditorClassIdentifier: 
+  nom: Espadon de fer
+  description: 'Un simple Espadon de fer assez lourd.
+
+'
+  prix: 80
+  vente: 45
+  maxStack: 4
+  mass: 1
+  rarete: 0
+  image: {fileID: 21300000, guid: b640109831f86444d9cb6971ddeb11f4, type: 3}
+  jetable: 1
+  vendable: 1
+  queteObject: 0
+  itemEffect: []
+  equipementType: 1
+  playerEquipement:
+  - prefabPlayerEquipement: {fileID: 100000, guid: cd1cfb297d32e124ba813220e8203a90, type: 3}
+    indiceBody: 1
+    posObj: {x: 0.006139985, y: 0.008519971, z: -0.01085001}
+    eulerObj: {x: -3.353, y: 168.034, z: -70.683}
+    scaleObj: {x: 0.005, y: 0.005, z: 0.0055}
+  bonusMalusStat:
+  - statModifier: 15
+    statTypes: 3
+    typesCibles: 7
+  - statModifier: -8
+    statTypes: 6
+    typesCibles: 7

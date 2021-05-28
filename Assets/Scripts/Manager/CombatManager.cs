@@ -20,7 +20,9 @@ public class CombatManager : MonoBehaviour
         GetComponent<UIInventaire>().OpenInventaire(false);
         cam.CameraMove = false;
         anim.gameObject.SetActive(true);
-        player.GetComponent<PlayerController>().IsInteract = true;        
+        player.GetComponent<PlayerController>().IsInteract = true;    
+        player.GetComponent<CombatStarter>().IsFighting = true;
+        ennemie.GetComponent<CombatStarter>().IsFighting = true;
         float timer = 0.0f;
         while(timer < 0.35f)
         {
