@@ -60,22 +60,22 @@ public class JSONArchiver : MonoBehaviour
 
     }
 
-    [MenuItem("PathMenu/Clear Path %h")]
+    [MenuItem("PathMenu/Clear Save %h")]
     static void ClearPath()
     {
         Directory.Delete(Path.Combine(Application.persistentDataPath, "save"), true);
     }
+
     [MenuItem("PathMenu/Git Push %p")]
     static void GitPush()
     {
-
-        string command = Application.dataPath.Replace("/Assets", "") + "/gitSend.sh";
-
+        string command = Application.dataPath.Replace("/Assets", "") + "/gitSend.bat";
         Process process = new Process();
         process.StartInfo.UseShellExecute = false;
         process.StartInfo.RedirectStandardOutput = true;
         process.StartInfo.CreateNoWindow = true;
         process.StartInfo.FileName = command;
+        process.StartInfo.Arguments = "commit";
 
         int exitCode = -1;
         string output = null;
@@ -88,12 +88,11 @@ public class JSONArchiver : MonoBehaviour
         }
         catch (Exception e)
         {
-            UnityEngine.Debug.LogError("Run error" + e.ToString()); // or throw new Exception
+            UnityEngine.Debug.LogError("Run error" + e.ToString());
         }
         finally
         {
             exitCode = process.ExitCode;
-
             process.Dispose();
             process = null;
         }
