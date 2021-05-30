@@ -68,16 +68,36 @@ public class JSONArchiver : MonoBehaviour
     [MenuItem("PathMenu/Git Push %p")]
     static void GitPush()
     {
-        ProcessStartInfo psi = new ProcessStartInfo();
-        psi.FileName = Application.dataPath.Replace("/Assets", "") + "/gitSend.sh";
-        psi.UseShellExecute = false;
-        psi.RedirectStandardOutput = true;
-        psi.Arguments = "";
 
-        Process p = Process.Start(psi);
-        string strOutput = p.StandardOutput.ReadToEnd();
-        p.WaitForExit();
-        UnityEngine.Debug.Log(strOutput);
+        string command = Application.dataPath.Replace("/Assets", "") + "/gitSend.sh";
+
+        Process process = new Process();
+        process.StartInfo.UseShellExecute = false;
+        process.StartInfo.RedirectStandardOutput = true;
+        process.StartInfo.CreateNoWindow = true;
+        process.StartInfo.FileName = command;
+
+        int exitCode = -1;
+        string output = null;
+
+        try
+        {
+            process.Start();
+            output = process.StandardOutput.ReadToEnd();
+            process.WaitForExit();
+        }
+        catch (Exception e)
+        {
+            UnityEngine.Debug.LogError("Run error" + e.ToString()); // or throw new Exception
+        }
+        finally
+        {
+            exitCode = process.ExitCode;
+
+            process.Dispose();
+            process = null;
+        }
+
     }
 #endif
 
