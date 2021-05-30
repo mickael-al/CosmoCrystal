@@ -108,7 +108,7 @@ public class PlayerController : Character
         }
 
 
-        if (Physics.Raycast(transform.position, -Vector3.up, out hit, 4.0f) && floorAdaptation)
+        if (Physics.Raycast(transform.position, -Vector3.up, out hit, 4.0f,layerMaskRayCastFloor) && floorAdaptation)
         {
             Debug.DrawRay(transform.position, -Vector3.up, Color.red, 4.0f);
             RaycastQuatNormal = Quaternion.FromToRotation(Vector3.up, hit.normal) * Quaternion.Euler(0, AnglesModelPlayerY, 0);

@@ -1039,7 +1039,7 @@ GameObject:
   - component: {fileID: 953608423200157346}
   - component: {fileID: 2413368064451185986}
   - component: {fileID: 7401617075378429542}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1184,6 +1184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statistique: {fileID: 11400000, guid: 0951a2bfd25694940b01e2f0e840f4f2, type: 2}
+  isFighting: 0
 --- !u!114 &953608423200157346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1897,6 +1898,10 @@ PrefabInstance:
     - target: {fileID: 2482528376490811583, guid: c6e7986070f52924ca7282a3b898ebd2, type: 3}
       propertyPath: m_Name
       value: MainCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 2482528377257595666, guid: c6e7986070f52924ca7282a3b898ebd2, type: 3}
+      propertyPath: m_VolumeLayerMask.m_Bits
+      value: 4097
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6e7986070f52924ca7282a3b898ebd2, type: 3}

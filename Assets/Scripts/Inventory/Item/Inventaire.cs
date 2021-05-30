@@ -121,6 +121,32 @@ public class Inventaire : MonoBehaviour
         }
     }
 
+    public virtual bool RemoveItem(Item item, int nombre = 1)
+    {
+        List<int> indiceFind;
+        if (ItemExist(item, out indiceFind))
+        {
+            foreach (int i in indiceFind)
+            {
+                if (itemInventaire[i].NbItem - nombre > 0)
+                {
+                    itemInventaire[i].NbItem -= nombre;
+                    return true;
+                }
+                else
+                {
+                    nombre-= itemInventaire[i].NbItem;
+                    itemInventaire.Remove(itemInventaire[i]); 
+                    if(nombre == 0)
+                    {
+                        return true;
+                    }
+                }
+            }            
+        }
+        return false;
+    }
+
     public virtual void majStatBonusEquipement()
     {
         Statistique stat = GetComponent<CombatStarter>().Stat;

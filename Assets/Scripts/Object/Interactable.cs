@@ -1,6 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
+[System.Serializable]
+public class InteractStateSave
+{
+    public bool locked = true;
+}
 
 public class Interactable : MonoBehaviour
 {

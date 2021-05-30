@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System;
+using System.Diagnostics;
 
 public class JSONArchiver : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class JSONArchiver : MonoBehaviour
     {
         get
         {
+            if (tosavePath == null)
+            {
+                return JSONArchiver.tosavePath = Path.Combine(Application.persistentDataPath, "save", "tosave");
+            }
             return JSONArchiver.tosavePath;
         }
     }
@@ -23,27 +28,58 @@ public class JSONArchiver : MonoBehaviour
     {
         get
         {
+            if (archivePath == null)
+            {
+                return JSONArchiver.archivePath = Path.Combine(Application.persistentDataPath, "save", "archive");
+            }
             return JSONArchiver.archivePath;
         }
     }
     #endregion
     private void Awake()
     {
+        JSONArchiver.tosavePath = Path.Combine(Application.persistentDataPath, "save", "tosave");
         JSONArchiver.archivePath = Path.Combine(Application.persistentDataPath, "save", "archive");
-        JSONArchiver.tosavePath = Path.Combine(Application.persistentDataPath, "save", "tosave");        
         Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, "save"));
         Directory.CreateDirectory(archivePath);
         Directory.CreateDirectory(tosavePath);
     }
-     #if UNITY_EDITOR
+#if UNITY_EDITOR
 
-    [MenuItem("PathMenu/All Path %g")]
-    static void AllPath()
+    [MenuItem("PathMenu/Save Path %g")]
+    static void SavePath()
     {
-        Debug.Log(Path.Combine(Application.persistentDataPath, "save", "archive"));
-        Debug.Log(Path.Combine(Application.persistentDataPath, "save", "tosave"));
+        Application.OpenURL(Path.Combine(Application.persistentDataPath, "save"));
+
     }
-    #endif
+
+    [MenuItem("PathMenu/Projet Path %j")]
+    static void ProjetPath()
+    {
+        Application.OpenURL(Application.dataPath.Replace("/Assets", ""));
+
+    }
+
+    [MenuItem("PathMenu/Clear Path %h")]
+    static void ClearPath()
+    {
+        Directory.Delete(Path.Combine(Application.persistentDataPath, "save"), true);
+    }
+    [MenuItem("PathMenu/Git Push %p")]
+    static void GitPush()
+    {
+        ProcessStartInfo psi = new ProcessStartInfo();
+        psi.FileName = Application.dataPath.Replace("/Assets", "") + "/gitSend.sh";
+        psi.UseShellExecute = false;
+        psi.RedirectStandardOutput = true;
+        psi.Arguments = "";
+
+        Process p = Process.Start(psi);
+        string strOutput = p.StandardOutput.ReadToEnd();
+        p.WaitForExit();
+        UnityEngine.Debug.Log(strOutput);
+    }
+#endif
 
     public static void archiveJSON(int archiveNumber)
     {
@@ -69,7 +105,7 @@ public class JSONArchiver : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogError(e.Message);
+            UnityEngine.Debug.LogError(e.Message);
         }
     }
 
@@ -88,7 +124,7 @@ public class JSONArchiver : MonoBehaviour
                 while ((res = sr.ReadLine()) == "") { }
                 String filename = res;
                 String fileSize = sr.ReadLine();
-                Debug.Log("filename : " + filename + ", size : " + fileSize + ", reader pos : ");
+                UnityEngine.Debug.Log("filename : " + filename + ", size : " + fileSize + ", reader pos : ");
                 Char[] buf = new char[int.Parse(fileSize)];
                 pos += sr.ReadBlock(buf, 0, buf.Length);
                 StreamWriter sw = new StreamWriter(tosavePath + "\\" + filename);
@@ -98,21 +134,21 @@ public class JSONArchiver : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogError(e.Message);
+            UnityEngine.Debug.LogError(e.Message);
         }
     }
 
     public static void SaveJSONsFile(string path, string name, string content)
     {
         try
-        {            
+        {
             StreamWriter sw = new StreamWriter(Path.Combine(path, name + ".json"), false);
             sw.Write(content);
             sw.Close();
         }
         catch (Exception e)
         {
-            Debug.LogError(e.Message);
+            UnityEngine.Debug.LogError(e.Message);
         }
     }
 
@@ -131,7 +167,7 @@ public class JSONArchiver : MonoBehaviour
             }
             catch (Exception e)
             {
-                Debug.LogError(e.Message);
+                UnityEngine.Debug.LogError(e.Message);
                 existe = false;
                 return "";
             }

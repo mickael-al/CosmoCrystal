@@ -81,6 +81,16 @@ public class PlayerInventaire : Inventaire, I_Save
         }
     }
 
+    public override bool RemoveItem(Item item, int nombre = 1)
+    {
+        bool result = base.RemoveItem(item,nombre);
+        if(result)
+        {
+            uiInventaire.ItemTakeDrop(item, nombre, false);
+        }
+        return result;
+    }
+
     public override void majStatBonusEquipement()
     {
         base.majStatBonusEquipement();

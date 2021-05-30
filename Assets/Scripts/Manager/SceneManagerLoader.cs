@@ -105,7 +105,9 @@ public class SceneManagerLoader : MonoBehaviour
                 }
                 loadingText.GetComponent<TextMeshProUGUI>().text = chargement;
                 yield return null;
-            }            
+            }     
+            sceneSave = GameObject.FindWithTag("SceneSave").GetComponent<SceneSave>();
+            sceneSave.LoadAll();       
             loadingText.SetActive(false);
             playerObj.GetComponent<PlayerController>().ChangeAnimationState(true);
             timer = tempsTransition;

@@ -27,9 +27,9 @@ TagManager:
   - PPP
   - Cloth
   - Interactable
-  - 
-  - 
-  - 
+  - ignoreHimself
+  - Player
+  - ignorePlayer
   - 
   - 
   - 
