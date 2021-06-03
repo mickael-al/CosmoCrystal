@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,11 +18,31 @@ public class Coffre : Interactable, I_Save
     [SerializeField] private Animator animatorCoffre = null;
     [SerializeField] private bool instantiate = false;
     [SerializeField] private List<Transform> pointInstantiate = null;
+    [SerializeField] private float tempsItemSpawn = 1.0f;
     private GameObject prefabBase = null;
+
+    IEnumerator delaySpawn(Character character)
+    {
+        yield return new WaitForSeconds(tempsItemSpawn);
+        for (int i = 0; i < itemsSpawn.Count; i++)
+        {
+            if (instantiate)
+            {
+                GameObject objPrefb = Instantiate(prefabBase, pointInstantiate[pointInstantiate.Count % i].position, Quaternion.identity);
+                objPrefb.GetComponent<ItemDrop>().Item = itemsSpawn[i].item;
+                objPrefb.GetComponent<ItemDrop>().NbItem = itemsSpawn[i].nb;
+            }
+            else
+            {
+                int reste;
+                character.GetComponent<Inventaire>().AddItem(itemsSpawn[i].item, itemsSpawn[i].nb, out reste);
+            }
+        }
+    }
 
     public override void StartInteract()
     {
-        if(isLocked.locked)
+        if (isLocked.locked)
         {
             base.StartInteract();
         }
@@ -37,22 +57,7 @@ public class Coffre : Interactable, I_Save
                 isLocked.locked = false;
                 animatorCoffre.SetTrigger("Open");
                 StopInteract();
-
-                for(int i = 0 ; i < itemsSpawn.Count;i++)
-                {
-                    if (instantiate)
-                    {                        
-                        GameObject objPrefb = Instantiate(prefabBase,pointInstantiate[pointInstantiate.Count%i].position,Quaternion.identity);
-                        objPrefb.GetComponent<ItemDrop>().Item = itemsSpawn[i].item;
-                        objPrefb.GetComponent<ItemDrop>().NbItem = itemsSpawn[i].nb;
-                    }
-                    else
-                    {
-                        int reste;
-                        character.GetComponent<Inventaire>().AddItem(itemsSpawn[i].item, itemsSpawn[i].nb, out reste);
-                    }
-                }
-
+                StartCoroutine(delaySpawn(character));
             }
         }
     }
@@ -76,8 +81,9 @@ public class Coffre : Interactable, I_Save
         }
     }
 
-    private void Awake() {
-       prefabBase = Resources.Load("Item/Prefab/ItemBase") as GameObject;
+    private void Awake()
+    {
+        prefabBase = Resources.Load("Item/Prefab/ItemBase") as GameObject;
     }
 
     protected override void Start()
