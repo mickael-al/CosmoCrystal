@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerStarter : CombatStarter, InteractableAbilite, I_Save
 {
@@ -56,12 +57,13 @@ public class PlayerStarter : CombatStarter, InteractableAbilite, I_Save
 
     public void Save(string s)
     {
-        JSONArchiver.SaveJSONsFile(JSONArchiver.JSONPath, s, JsonUtility.ToJson(base.statistique));
+        JSONArchiver.SaveJSONsFile(JSONArchiver.JSONPath, s+"_0", JsonUtility.ToJson(base.statistique));
+        JSONArchiver.SaveJSONsFile(JSONArchiver.JSONPath, s+"_1", JsonUtility.ToJson(base.attaqueClassListSave));
     }
     public void Load(string s)
     {
         bool state = false;
-        JsonUtility.FromJsonOverwrite(JSONArchiver.LoadJsonsFile(JSONArchiver.JSONPath, s, out state), base.statistique);
+        JsonUtility.FromJsonOverwrite(JSONArchiver.LoadJsonsFile(JSONArchiver.JSONPath, s+"_0", out state), base.statistique);
         if (!state)
         {
             base.statistique = Resources.Load("Stat/Player") as Statistique;
@@ -78,6 +80,13 @@ public class PlayerStarter : CombatStarter, InteractableAbilite, I_Save
             base.statistique.DefenceBaseBonus = 0.0f;
             base.statistique.AttaqueBaseSpecialBonus = 0.0f;
             base.statistique.DefenceBaseSpecialBonus = 0.0f;
+        }
+        JsonUtility.FromJsonOverwrite(JSONArchiver.LoadJsonsFile(JSONArchiver.JSONPath, s+"_1", out state), base.attaqueClassListSave);
+        if (!state)
+        {
+            base.attaqueClassListSave = new AttaqueClassListSave();
+            base.attaqueClassListSave.attaqueList = new List<AttaqueSave>();
+            base.attaqueClassListSave.attaqueList.Add(new AttaqueSave(Resources.Load("AttaqueCombat/Morsure") as Attaque));
         }
     }
 }

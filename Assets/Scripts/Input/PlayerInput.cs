@@ -81,6 +81,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ActionSecondaire"",
+                    ""type"": ""Button"",
+                    ""id"": ""75f569d6-db03-4522-a665-09eac7bf6d67"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -281,6 +289,28 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""babddf6e-0ce6-449c-be89-5f5c7f7d354d"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""ActionSecondaire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""056ad6ed-c223-478e-993a-8595a244d29b"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ActionSecondaire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -325,6 +355,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Controller_CameraMousePos = m_Controller.FindAction("CameraMousePos", throwIfNotFound: true);
         m_Controller_Inventaire = m_Controller.FindAction("Inventaire", throwIfNotFound: true);
         m_Controller_Drop = m_Controller.FindAction("Drop", throwIfNotFound: true);
+        m_Controller_ActionSecondaire = m_Controller.FindAction("ActionSecondaire", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -382,6 +413,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Controller_CameraMousePos;
     private readonly InputAction m_Controller_Inventaire;
     private readonly InputAction m_Controller_Drop;
+    private readonly InputAction m_Controller_ActionSecondaire;
     public struct ControllerActions
     {
         private @PlayerInput m_Wrapper;
@@ -394,6 +426,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @CameraMousePos => m_Wrapper.m_Controller_CameraMousePos;
         public InputAction @Inventaire => m_Wrapper.m_Controller_Inventaire;
         public InputAction @Drop => m_Wrapper.m_Controller_Drop;
+        public InputAction @ActionSecondaire => m_Wrapper.m_Controller_ActionSecondaire;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -427,6 +460,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Drop.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnDrop;
                 @Drop.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnDrop;
                 @Drop.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnDrop;
+                @ActionSecondaire.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnActionSecondaire;
+                @ActionSecondaire.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnActionSecondaire;
+                @ActionSecondaire.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnActionSecondaire;
             }
             m_Wrapper.m_ControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -455,6 +491,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Drop.started += instance.OnDrop;
                 @Drop.performed += instance.OnDrop;
                 @Drop.canceled += instance.OnDrop;
+                @ActionSecondaire.started += instance.OnActionSecondaire;
+                @ActionSecondaire.performed += instance.OnActionSecondaire;
+                @ActionSecondaire.canceled += instance.OnActionSecondaire;
             }
         }
     }
@@ -487,5 +526,6 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnCameraMousePos(InputAction.CallbackContext context);
         void OnInventaire(InputAction.CallbackContext context);
         void OnDrop(InputAction.CallbackContext context);
+        void OnActionSecondaire(InputAction.CallbackContext context);
     }
 }

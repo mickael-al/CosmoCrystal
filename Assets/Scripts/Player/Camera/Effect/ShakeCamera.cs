@@ -20,4 +20,9 @@ public class ShakeCamera : CameraEffect
         Camera.transform.localPosition = originalPos;
         yield return null;
     }
+
+    public void StopEffect()
+    {
+
+    }
 }

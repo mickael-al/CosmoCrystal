@@ -15,12 +15,14 @@ public class PlayerCameraMouvement : MonoBehaviour
     [SerializeField] private float mindistance = 8.0f;
     [SerializeField] private GameObject cameraObj = null;
     [SerializeField] private LayerMask layerMask = ~0;
+    private List<CameraEffect> effectCoroutineList = new List<CameraEffect>();
 
     [Header("Mouse")]
 
     [SerializeField] private bool mouseSee = false;
     [SerializeField] private bool mouseCursorMove = false;
     [SerializeField] private bool cameraMove = true;
+    [SerializeField] private bool followTarget = true;
     private GameObject target = null;
     private float angleY = 0.0f;
     private float angleX = 0.0f;
@@ -63,6 +65,16 @@ public class PlayerCameraMouvement : MonoBehaviour
             }
             set{
                 cameraMove = value;
+            }
+        }
+
+        public bool FollowTarget
+        {
+            get{
+                return followTarget;
+            }
+            set{
+                followTarget = value;
             }
         }
 
@@ -130,7 +142,10 @@ public class PlayerCameraMouvement : MonoBehaviour
         }
         angleX = Mathf.Clamp(angleX,angleMaxX.x-angleMaxClamp,angleMaxX.y+angleMaxClamp);
         transform.eulerAngles = new Vector3(angleX,angleY,0);
-        transform.position = Vector3.Lerp(transform.position,target.transform.position ,Time.deltaTime * speedMoveCamera);
+        if(followTarget)
+        {
+            transform.position = Vector3.Lerp(transform.position,target.transform.position ,Time.deltaTime * speedMoveCamera);
+        }
        
         if (Physics.Raycast(transform.position, -transform.TransformDirection(Vector3.forward), out hit, distanceCamera,layerMask))
         {            
@@ -146,6 +161,18 @@ public class PlayerCameraMouvement : MonoBehaviour
 
     public void ApplyEffect(CameraEffect ce,float duree,float magnitude,float smoothness)
     {
+        effectCoroutineList.Add(ce);
         StartCoroutine(ce.Effect(cameraObj,duree,magnitude, smoothness));
+    }
+
+    public void StopAllEffect()
+    {
+        foreach(CameraEffect c in effectCoroutineList)
+        {
+            if(c != null)
+            {
+                c.StopEffect();
+            }
+        }
     }
 }
