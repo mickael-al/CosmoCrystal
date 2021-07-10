@@ -1118,7 +1118,7 @@ Transform:
   - {fileID: 71411907}
   - {fileID: 830888553}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1724602836
 GameObject:
@@ -1995,7 +1995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6427151477767470239, guid: 34809a021b463214f92186ed291afe5e, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6427151477767470239, guid: 34809a021b463214f92186ed291afe5e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2421,6 +2421,14 @@ PrefabInstance:
     - target: {fileID: 3344210398780616582, guid: 2b3ba15b777a02948b575cdc4b84cded, type: 3}
       propertyPath: m_Name
       value: Rabbit_IA
+      objectReference: {fileID: 0}
+    - target: {fileID: 3344210398780616699, guid: 2b3ba15b777a02948b575cdc4b84cded, type: 3}
+      propertyPath: alli.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3344210398780616699, guid: 2b3ba15b777a02948b575cdc4b84cded, type: 3}
+      propertyPath: alli.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3ba15b777a02948b575cdc4b84cded, type: 3}
