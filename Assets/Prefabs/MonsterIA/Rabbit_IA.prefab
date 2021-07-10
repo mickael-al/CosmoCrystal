@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3344210398780616582}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 104.85, y: 0.03, z: 90.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -116,6 +116,9 @@ MonoBehaviour:
   statistique: {fileID: 11400000, guid: ac4f9a4102bb088439cbef709885498c, type: 2}
   spawnPrefab: {fileID: 8880169426368002555, guid: 07dffb9e441333a48845f1cd943af044, type: 3}
   alli: []
+  attaqueClassListSave:
+    attaqueList:
+    - resourcesName: RabbitJump
   isFighting: 0
 --- !u!1 &3344635353160830337
 GameObject:
