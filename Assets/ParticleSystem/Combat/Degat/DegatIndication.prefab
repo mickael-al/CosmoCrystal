@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5
+  m_text: 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0258637ab74a0564bb3f606c928fcb28, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 0258637ab74a0564bb3f606c928fcb28, type: 2}
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 47
+  m_fontSize: 31.55
   m_fontSizeBase: 46.39
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 6926044908100502085}
-    characterCount: 1
+    characterCount: 3
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -235,6 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6854186362504776456}
   - component: {fileID: 3710302797744700445}
+  - component: {fileID: 6129172654866625985}
   m_Layer: 5
   m_Name: DegatIndication
   m_TagString: Untagged
@@ -275,5 +276,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9ba3d27e18595469bc4d061c3c6bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 6129172654866625985}
   damageText: {fileID: 6926044908100502085}
+--- !u!95 &6129172654866625985
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8992451246079091644}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2d9e4a96130232d49a5975d68f04265d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
