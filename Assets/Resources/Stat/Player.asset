@@ -21,8 +21,10 @@ MonoBehaviour:
   defenceBaseSpecial: 60
   niveaux: 1
   experience: 0
-  vie: 40
+  vie: 33
   mana: 30
   expBaseLevelUp: 100
   levelUpExponentielle: 1.5
   characterType: 00000000
+  vieBaseBonus: 0
+  manaBaseBonus: 10

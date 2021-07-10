@@ -12,14 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 043fbc81bf537d64fb2107f1058ecadf, type: 3}
   m_Name: Lapin_sauvage
   m_EditorClassIdentifier: 
-  vieBase: 0
-  manaBase: 0
-  vitesseBase: 0
-  attaqueBase: 0
-  defenceBase: 0
-  attaqueBaseSpecial: 0
-  defenceBaseSpecial: 0
+  vieBase: 55
+  manaBase: 30
+  vitesseBase: 85
+  attaqueBase: 66
+  defenceBase: 44
+  attaqueBaseSpecial: 44
+  defenceBaseSpecial: 56
   niveaux: 1
   experience: 0
+  vie: 52
+  mana: 0
+  expBaseLevelUp: 0
   levelUpExponentielle: 0
   characterType: 00000000
+  vieBaseBonus: 0
+  manaBaseBonus: 0
