@@ -161,8 +161,39 @@ public class JSONArchiver : MonoBehaviour
         }
     }
 
-    public static string ExtractArchiveInfo(string path, string name, out bool existe)
+    public static string ExtractArchiveInfo(int archiveNumber, out bool existe)
     {
+        try
+        {
+            String path = Path.Combine(archivePath, "archive_" + archiveNumber + ".data");
+            existe = File.Exists(path);
+            string result = "";
+            if (existe)
+            {
+                StreamReader sr = new StreamReader(path);
+                String filename = sr.ReadLine();
+                String fileSize = "";
+                while (!sr.EndOfStream && result == "")
+                {
+                    filename = sr.ReadLine();
+                    fileSize = sr.ReadLine();                    
+                    if (filename == "Player_0.json")
+                    {
+                        result = sr.ReadLine();                        
+                    }
+                    else
+                    {
+                        sr.ReadLine();
+                    }
+                }
+                sr.Close();
+            }
+            return result;
+        }
+        catch (Exception e)
+        {
+            UnityEngine.Debug.LogError(e.Message);
+        }
         existe = false;
         return "";
     }

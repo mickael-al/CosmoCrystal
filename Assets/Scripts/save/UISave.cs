@@ -75,7 +75,7 @@ public class UISave : MonoBehaviour
     {
         for (int i = 0; i < uiButtonSave.Length; i++)
         {
-            InfoPartiJoueur ipj = JsonUtility.FromJson<InfoPartiJoueur>(JSONArchiver.ExtractArchiveInfo(JSONArchiver.ArchivePath, "archive_" + i, out uiButtonSave[i].stateExiste));
+            InfoPartiJoueur ipj = JsonUtility.FromJson<InfoPartiJoueur>(JSONArchiver.ExtractArchiveInfo(i, out uiButtonSave[i].stateExiste));
             uiButtonSave[i].nouvellePartie.SetActive(!uiButtonSave[i].stateExiste);
             uiButtonSave[i].partie.SetActive(uiButtonSave[i].stateExiste);
             if (uiButtonSave[i].stateExiste)
