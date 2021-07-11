@@ -10,7 +10,7 @@ public class ItemContainer
 }
 
 [System.Serializable]
-public class Coffre : Interactable, I_Save
+public class Coffre : Interactable, I_Save, SwitchChangeListener
 {
     [Header("Coffre")]
     [SerializeField] private InteractStateSave isLocked;
@@ -113,5 +113,11 @@ public class Coffre : Interactable, I_Save
         {
             animatorCoffre.SetTrigger("Disabled");
         }
+    }
+
+    public void OnSwitchChange(bool value)
+    {
+        Debug.Log("trigger");
+        this.gameObject.SetActive(value);
     }
 }
