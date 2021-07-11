@@ -25,7 +25,7 @@ public class PlaqueTrigger : Switch
             {
                 throw new System.InvalidOperationException("les gameObjects de cette list doivent implémenté SwicthChangeListener");
             }
-        }
+        }        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -62,27 +62,27 @@ public class PlaqueTrigger : Switch
 
     public void setState(bool s)
     {
-        
-        if(this.state != s)
+        if(this.switchState.state != s)
         {
             foreach (GameObject go in this.listeners)
             {
                 go.GetComponent<SwitchChangeListener>().OnSwitchChange(s);
             }
         }
-        this.state = s;
+        this.switchState.state = s;
     }
 
-    public override void OnAfterLoad()
+    public override void Load(string s)
     {
+        base.Load(s);
         foreach (GameObject go in this.listeners)
         {
-            go.GetComponent<SwitchChangeListener>().OnSwitchChange(this.state);
+            go.GetComponent<SwitchChangeListener>().OnSwitchChange(this.switchState.state);
         }
     }
 
-    public override void OnBeforeSave()
+    public override void Save(string s)
     {
-        
+        base.Save(s);
     }
 }

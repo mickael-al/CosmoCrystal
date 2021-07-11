@@ -117,7 +117,6 @@ public class Coffre : Interactable, I_Save, SwitchChangeListener
 
     public void OnSwitchChange(bool value)
     {
-        Debug.Log("trigger");
         this.gameObject.SetActive(value);
     }
 }

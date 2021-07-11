@@ -3,31 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
+public class SwitchState //ta rien vue
+{
+    [SerializeField] public bool state = false;
+}
 public abstract class Switch : MonoBehaviour, I_Save
 {
-    protected bool state;
+    protected SwitchState switchState = new SwitchState();
 
-    public abstract void OnAfterLoad();
-
-    public abstract void OnBeforeSave();
-
-    public void Load(string s)
+    public virtual void Load(string s)
     {
         bool exist;
-        JsonUtility.FromJsonOverwrite(JSONArchiver.LoadJsonsFile(JSONArchiver.JSONPath, s, out exist), this.state);
+        JsonUtility.FromJsonOverwrite(JSONArchiver.LoadJsonsFile(JSONArchiver.JSONPath, s, out exist), this.switchState);
         if(!exist)
         {
-            Debug.Log("new");
-            this.state = false;
+            this.switchState.state = false;
         }
-        Debug.Log("load");
-        this.OnAfterLoad();
     }
 
-    public void Save(string s)
+    public virtual void Save(string s)
     {
-        this.OnBeforeSave();
-        Debug.Log("saved");
-        JSONArchiver.SaveJSONsFile(JSONArchiver.JSONPath, s, JsonUtility.ToJson(this.state));
+        JSONArchiver.SaveJSONsFile(JSONArchiver.JSONPath, s, JsonUtility.ToJson(this.switchState));
     }
 }
