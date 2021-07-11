@@ -98,6 +98,39 @@ public class JSONArchiver : MonoBehaviour
         }
 
     }
+
+    [MenuItem("PathMenu/Git Pull %k")]
+    static void GitPull()
+    {
+        string command = Application.dataPath.Replace("/Assets", "") + "/gitReceive.bat";
+        Process process = new Process();
+        process.StartInfo.UseShellExecute = false;
+        process.StartInfo.RedirectStandardOutput = true;
+        process.StartInfo.CreateNoWindow = true;
+        process.StartInfo.FileName = command;
+        process.StartInfo.Arguments = "commit";
+
+        int exitCode = -1;
+        string output = null;
+
+        try
+        {
+            process.Start();
+            output = process.StandardOutput.ReadToEnd();
+            process.WaitForExit();
+        }
+        catch (Exception e)
+        {
+            UnityEngine.Debug.LogError("Run error" + e.ToString());
+        }
+        finally
+        {
+            exitCode = process.ExitCode;
+            process.Dispose();
+            process = null;
+        }
+
+    }
 #endif
 
     public static void archiveJSON(int archiveNumber)

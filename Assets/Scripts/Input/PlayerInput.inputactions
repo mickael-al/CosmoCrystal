@@ -76,6 +76,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ChangeCameraDistance",
+                    "type": "Button",
+                    "id": "ba405bf8-9ab1-4912-8c87-94faa2153961",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -296,6 +304,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "ActionSecondaire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7c07954c-0c86-44b7-bedd-aea612b17dc2",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "ChangeCameraDistance",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "71d8db79-51ee-4b0f-932a-accea3aff5d2",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "ChangeCameraDistance",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

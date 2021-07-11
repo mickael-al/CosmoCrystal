@@ -11,11 +11,11 @@ public class PlayerCameraMouvement : MonoBehaviour
     [SerializeField] private float angleMaxClamp = 10.0f;
     [SerializeField] private float speedMoveCamera = 2.0f;
     [SerializeField] private float speedAdaptationWallCamera = 2.0f;
-    [SerializeField] private float distanceCamera = 13.0f;
     [SerializeField] private float mindistance = 8.0f;
     [SerializeField] private GameObject cameraObj = null;
     [SerializeField] private LayerMask layerMask = ~0;
     private List<CameraEffect> effectCoroutineList = new List<CameraEffect>();
+    [SerializeField] private List<float> distanceCameraMode = new List<float>();
 
     [Header("Mouse")]
 
@@ -30,6 +30,7 @@ public class PlayerCameraMouvement : MonoBehaviour
     private Vector2 cameraAxisPad = Vector2.zero;
     private float varDistCamera = 13.0f;
     private RaycastHit hit;
+    private int indiceDistance = 0;
 
     #region GetterSetter
         public bool MouseSee{
@@ -87,6 +88,7 @@ public class PlayerCameraMouvement : MonoBehaviour
                 target = value;
                 angleY = target.transform.eulerAngles.y;
                 angleX = target.transform.eulerAngles.x;
+                indiceDistance = 0;
             }
         }
     #endregion
@@ -110,10 +112,19 @@ public class PlayerCameraMouvement : MonoBehaviour
             Debug.LogWarning("Le tag player cannot find");
             Destroy(this);
         }
-        varDistCamera = distanceCamera;
-        cameraObj.transform.localPosition = new Vector3(0,0,-distanceCamera);
+        varDistCamera = distanceCameraMode[indiceDistance];
+        cameraObj.transform.localPosition = new Vector3(0,0,-distanceCameraMode[indiceDistance]);
         MouseSee = MouseSee;
         MouseCursorMove = MouseCursorMove;
+        InputManager.InputJoueur.Controller.ChangeCameraDistance.performed += ctx => ChangeCameraMode();
+    }
+
+    public void ChangeCameraMode()
+    {        
+        if(!GameObject.FindWithTag("Player").GetComponent<CombatStarter>().IsFighting)
+        {
+            indiceDistance = (indiceDistance+1)%distanceCameraMode.Count;
+        }
     }
 
     void Update()
@@ -147,13 +158,13 @@ public class PlayerCameraMouvement : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position,target.transform.position ,Time.deltaTime * speedMoveCamera);
         }
        
-        if (Physics.Raycast(transform.position, -transform.TransformDirection(Vector3.forward), out hit, distanceCamera,layerMask))
+        if (Physics.Raycast(transform.position, -transform.TransformDirection(Vector3.forward), out hit, distanceCameraMode[indiceDistance],layerMask))
         {            
-            varDistCamera = hit.distance < mindistance ? distanceCamera : hit.distance-1;
+            varDistCamera = hit.distance < mindistance ? distanceCameraMode[indiceDistance] : hit.distance-1;
         }
         else
         {
-            varDistCamera = distanceCamera;
+            varDistCamera = distanceCameraMode[indiceDistance];
         }
 
         cameraObj.transform.localPosition = Vector3.Lerp(cameraObj.transform.localPosition,new Vector3(0,0,-varDistCamera),Time.deltaTime * speedAdaptationWallCamera);
