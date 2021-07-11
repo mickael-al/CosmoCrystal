@@ -81,8 +81,8 @@ public class UISave : MonoBehaviour
             if (uiButtonSave[i].stateExiste)
             {
                 uiButtonSave[i].nom.text = ipj.nom;
-                uiButtonSave[i].vie.text = ipj.vie.ToString("00") + "/" + playerOBJ.GetComponent<PlayerStarter>().Stat.VieMax.ToString("00");
-                uiButtonSave[i].mana.text = ipj.mana.ToString("00") + "/" + playerOBJ.GetComponent<PlayerStarter>().Stat.ManaMax.ToString("00");
+                uiButtonSave[i].vie.text = ipj.vie.ToString("00") + "/" + ipj.vieMax.ToString("00");
+                uiButtonSave[i].mana.text = ipj.mana.ToString("00") + "/" + ipj.manaMax.ToString("00");
                 uiButtonSave[i].tempsDate.text = ipj.tempsDate;
                 uiButtonSave[i].tempsHeure.text = ipj.tempsHeure;
                 uiButtonSave[i].tempsTotal.text = Mathf.Round((float)TimeSpan.FromSeconds(ipj.tempsTotal).TotalHours).ToString("00") + ":" + Mathf.Round((float)TimeSpan.FromSeconds(ipj.tempsTotal).TotalMinutes).ToString("00") + ":" + Mathf.Round(((ipj.tempsTotal / 60.0f) - Mathf.Floor(ipj.tempsTotal / 60.0f)) * 60.0f).ToString("00");
@@ -95,7 +95,7 @@ public class UISave : MonoBehaviour
         if (!inSave)
         {
             partieSauvegarder.SetActive(false);
-            existSave = File.Exists(Path.Combine(JSONArchiver.ArchivePath, "Player_" + i + ".json"));
+            existSave = File.Exists(Path.Combine(JSONArchiver.ArchivePath, "Player_info.json"));
             if (!existSave)
             {
                 StartCoroutine(SaveWaiTime(i));

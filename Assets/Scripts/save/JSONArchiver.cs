@@ -177,7 +177,7 @@ public class JSONArchiver : MonoBehaviour
                 {
                     filename = sr.ReadLine();
                     fileSize = sr.ReadLine();                    
-                    if (filename == "Player_0.json")
+                    if (filename == "Player_info.json")
                     {
                         result = sr.ReadLine();                        
                     }
