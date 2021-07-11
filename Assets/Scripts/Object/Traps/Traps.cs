@@ -19,6 +19,10 @@ public class Traps : MonoBehaviour
         else if(other.tag == "ItemDrop")
         {
             other.GetComponent<ItemDrop>().Desintegrate();
+        } 
+        else if(other.tag == "MovableObject")
+        {
+            other.GetComponent<MovableObject>().Desintegrate();
         }
     }
 }

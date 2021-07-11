@@ -11,7 +11,7 @@ public class ItemDropRareteEffect
     public float shine = 0.0f;
 }
 
-public class ItemDrop : MonoBehaviour
+public class ItemDrop : MonoBehaviour, Destroyable
 {
     [SerializeField] private Item item = null;
     [SerializeField] private int nbItem = 1;
@@ -60,7 +60,8 @@ public class ItemDrop : MonoBehaviour
         }
     }
 
-    public void Desintegrate()//detruit par un traps 
+  
+    public void Desintegrate()//detruit par un traps
     {
         //if(!item.QueteObject)
         {

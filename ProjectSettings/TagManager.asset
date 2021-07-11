@@ -15,6 +15,8 @@ TagManager:
   - PPV
   - RespawnPoint
   - ItemDrop
+  - AttaqueDegat
+  - MovableObject
   layers:
   - Default
   - TransparentFX
