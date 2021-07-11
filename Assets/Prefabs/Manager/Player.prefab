@@ -1186,6 +1186,8 @@ MonoBehaviour:
   statistique: {fileID: 11400000, guid: 0951a2bfd25694940b01e2f0e840f4f2, type: 2}
   spawnPrefab: {fileID: 4759139148909388286, guid: 0ad311a7b002902438ebbb1c4829ffc7, type: 3}
   alli: []
+  attaqueClassListSave:
+    attaqueList: []
   isFighting: 0
 --- !u!114 &953608423200157346
 MonoBehaviour:
@@ -1851,7 +1853,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2482528376490811580, guid: c6e7986070f52924ca7282a3b898ebd2, type: 3}
       propertyPath: mindistance
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2482528376490811581, guid: c6e7986070f52924ca7282a3b898ebd2, type: 3}
       propertyPath: m_LocalPosition.x

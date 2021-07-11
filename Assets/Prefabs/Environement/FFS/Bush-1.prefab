@@ -111,6 +111,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabParticle: {fileID: 6127594742420307005, guid: d53ce8f7f57ded4478a8e9e5cbb55ce8, type: 3}
   offsetVec3: {x: 0, y: 1, z: 0}
+  itemsSpawn:
+  - itemSpawn: {fileID: 11400000, guid: 468887f5a09b16540a613d566bfdecda, type: 2}
+    pourcentage: 20
 --- !u!65 &3114526003321502886
 BoxCollider:
   m_ObjectHideFlags: 0

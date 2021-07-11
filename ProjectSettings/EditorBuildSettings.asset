@@ -10,5 +10,8 @@ EditorBuildSettings:
     guid: c9fc6ee2aa8bd474ab22ee55fe9bcc75
   - enabled: 1
     path: Assets/Scenes/Scene02Fallbury.unity
+    guid: 231b2d8b4bb0b1349aa8ef444582bb88
+  - enabled: 1
+    path: Assets/Scenes/Scene03Fallbury.unity
     guid: 3ad0816e4ef8a7c44a903f890180cae9
   m_configObjects: {}
