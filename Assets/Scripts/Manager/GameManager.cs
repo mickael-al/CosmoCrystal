@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> instantiateManager = new List<GameObject>();
@@ -9,8 +9,13 @@ public class GameManager : MonoBehaviour
     private SceneManagerLoader sceneManagerLoader = null;
     private void Awake()
     {
-        if(GameObject.FindGameObjectsWithTag("GameManager").Length >= 2)
+        GameObject[] managers = GameObject.FindGameObjectsWithTag("GameManager");
+        if(managers.Length >= 2)
         {
+            foreach(GameObject go in managers.Where(o => o != gameObject))
+            {
+                go.GetComponent<GameManager>().ChangePosSpawnPoint(spawnPoint.transform.position);
+            }
             Destroy(gameObject);
             return;
         }
@@ -27,5 +32,10 @@ public class GameManager : MonoBehaviour
         sceneManagerLoader = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManagerLoader>();
         StartCoroutine(sceneManagerLoader.TransitionFade(1.5f));
         playerObj.GetComponent<PlayerSaveManager>().LoadAll(0);
+    }
+
+    public void ChangePosSpawnPoint(Vector3 pos)
+    {
+        spawnPoint.transform.position = pos;
     }
 }

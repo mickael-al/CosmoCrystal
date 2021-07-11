@@ -24844,7 +24844,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 863501538, guid: 34809a021b463214f92186ed291afe5e, type: 3}
       propertyPath: allObjectSaveLoad.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 863501538, guid: 34809a021b463214f92186ed291afe5e, type: 3}
       propertyPath: allObjectSaveLoad.Array.data[0]
@@ -24854,6 +24854,10 @@ PrefabInstance:
       propertyPath: allObjectSaveLoad.Array.data[1]
       value: 
       objectReference: {fileID: 1974171644}
+    - target: {fileID: 863501538, guid: 34809a021b463214f92186ed291afe5e, type: 3}
+      propertyPath: allObjectSaveLoad.Array.data[2]
+      value: 
+      objectReference: {fileID: 1072763604462549935}
     - target: {fileID: 3628627071248898565, guid: 34809a021b463214f92186ed291afe5e, type: 3}
       propertyPath: m_Name
       value: Manager
@@ -52925,7 +52929,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dcb412ce0ac3924ab8b5fb6b3a9e2fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listeners: []
+  listeners:
+  - {fileID: 1974171644}
+  triggerPlayer: 0
+  triggerMovableObjects: 1
 --- !u!65 &1072763604462549937
 BoxCollider:
   m_ObjectHideFlags: 0

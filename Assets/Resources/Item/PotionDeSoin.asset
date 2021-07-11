@@ -24,4 +24,4 @@ MonoBehaviour:
   vendable: 1
   queteObject: 0
   itemEffect:
-  - {fileID: 11400000, guid: a08daf665f3254f46aed5f21538a042d, type: 2}
+  - {fileID: 11400000, guid: 2962fae56e63b5448b1a92ca15a9c7d5, type: 2}
