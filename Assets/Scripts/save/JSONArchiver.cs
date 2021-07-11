@@ -161,6 +161,12 @@ public class JSONArchiver : MonoBehaviour
         }
     }
 
+    public static string ExtractArchiveInfo(string path, string name, out bool existe)
+    {
+        existe = false;
+        return "";
+    }
+
     public static void loadJSONsFromArchive(int archiveNumber)
     {
         try

@@ -8,7 +8,7 @@ public class MovableObject : MonoBehaviour, Destroyable
     private float maxTimeDisolve;
     private Material material;
 
-    public ObjectSpawner spawner;
+    [HideInInspector] public ObjectSpawner spawner;
 
     private void Start()
     {
@@ -36,17 +36,8 @@ public class MovableObject : MonoBehaviour, Destroyable
             this.material.SetFloat("Vector1_A31CC259", currentTimeDisolve);
             yield return null;
         }
-        DestroyObject();
-    }
-
-    private void DestroyObject()
-    {
-        GameObject.Destroy(gameObject);
-    }
-
-    private void OnDestroy()
-    {
         spawner.removeObject(gameObject);
         spawner.CheckForSpawn();
+        GameObject.Destroy(gameObject);
     }
 }

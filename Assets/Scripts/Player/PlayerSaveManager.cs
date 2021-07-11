@@ -57,12 +57,12 @@ public class PlayerSaveManager : MonoBehaviour
         infoPartiJoueur.tempsHeure = System.DateTime.Now.ToString("HH:mm");
         infoPartiJoueur.vie = GetComponent<PlayerStarter>().Stat.Vie;
         infoPartiJoueur.mana = GetComponent<PlayerStarter>().Stat.Mana;
-        JSONArchiver.SaveJSONsFile(JSONArchiver.ArchivePath,s,JsonUtility.ToJson(infoPartiJoueur));
+        JSONArchiver.SaveJSONsFile(JSONArchiver.JSONPath,s,JsonUtility.ToJson(infoPartiJoueur));
     }
     public void Load(string s)
     {
         bool state = false;
-        infoPartiJoueur = JsonUtility.FromJson<InfoPartiJoueur>(JSONArchiver.LoadJsonsFile(JSONArchiver.ArchivePath,s,out state));
+        infoPartiJoueur = JsonUtility.FromJson<InfoPartiJoueur>(JSONArchiver.LoadJsonsFile(JSONArchiver.JSONPath,s,out state));
         if(!state)
         {
             infoPartiJoueur = new InfoPartiJoueur();
