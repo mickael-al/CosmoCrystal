@@ -10896,7 +10896,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 311954089}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 112.4, y: 7.08, z: 120.37}
+  m_LocalPosition: {x: 111.61, y: 7.08, z: 120.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 495120712}
@@ -11415,7 +11415,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405408703}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 127.26, y: 7.08, z: 110.91}
+  m_LocalPosition: {x: 127.58, y: 7.08, z: 103.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 495120712}
@@ -18344,7 +18344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextSceneName: Scene03Fallbury
   nextPosition: {x: 209.6899, y: 10.67634, z: 177.4953}
-  nextAngleY: 87
+  nextAngleY: -177
   sceneManager: {fileID: 0}
 --- !u!1 &816946276
 GameObject:

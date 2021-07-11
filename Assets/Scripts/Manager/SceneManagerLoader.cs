@@ -58,6 +58,7 @@ public class SceneManagerLoader : MonoBehaviour
     private void OnEnable()
     {
         sceneSave = GameObject.FindWithTag("SceneSave").GetComponent<SceneSave>();
+        sceneSave.GenerateKey();
         sceneSave.LoadAll();
     }
 
@@ -107,6 +108,7 @@ public class SceneManagerLoader : MonoBehaviour
                 yield return null;
             }     
             sceneSave = GameObject.FindWithTag("SceneSave").GetComponent<SceneSave>();
+            sceneSave.GenerateKey();
             sceneSave.LoadAll();       
             loadingText.SetActive(false);
             playerObj.GetComponent<PlayerController>().ChangeAnimationState(true);

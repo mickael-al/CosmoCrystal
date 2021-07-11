@@ -17,6 +17,7 @@ TagManager:
   - ItemDrop
   - AttaqueDegat
   - MovableObject
+  - Switch
   layers:
   - Default
   - TransparentFX

@@ -4,28 +4,16 @@ using UnityEngine;
 
 public class PlaqueTrigger : Switch
 {
-    [SerializeField]
-    private List<GameObject> listeners;
-
-    [SerializeField]
-    private bool triggerPlayer;
-
-    [SerializeField]
-    private bool triggerMovableObjects;
+    [SerializeField] private bool triggerPlayer;
+    [SerializeField] private bool triggerMovableObjects;
     private Material mat = null;
     private Color baseColor = Color.white;
     private List<GameObject> ObjectInPlaque = new List<GameObject>();
-    private void Start()
+    protected override void Start()
     {
         mat = GetComponentInChildren<SkinnedMeshRenderer>().material;
         baseColor = mat.GetColor("_EmissionColor");
-        foreach (GameObject go in this.listeners)
-        {
-            if (go.GetComponent<SwitchChangeListener>() == null)
-            {
-                throw new System.InvalidOperationException("les gameObjects de cette list doivent implémenté SwicthChangeListener");
-            }
-        }        
+        base.Start();      
     }
 
     private void OnTriggerEnter(Collider other)
@@ -60,18 +48,6 @@ public class PlaqueTrigger : Switch
         }
     }
 
-    public void setState(bool s)
-    {
-        if(this.switchState.state != s)
-        {
-            foreach (GameObject go in this.listeners)
-            {
-                go.GetComponent<SwitchChangeListener>().OnSwitchChange(s);
-            }
-        }
-        this.switchState.state = s;
-    }
-
     public override void Load(string s)
     {
         base.Load(s);
@@ -79,10 +55,5 @@ public class PlaqueTrigger : Switch
         {
             go.GetComponent<SwitchChangeListener>().OnSwitchChange(this.switchState.state);
         }
-    }
-
-    public override void Save(string s)
-    {
-        base.Save(s);
     }
 }

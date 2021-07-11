@@ -6,9 +6,16 @@ public class SceneSave : MonoBehaviour
 {
     [SerializeField] private List<GameObject> allObjectSaveLoad = new List<GameObject>();
     private string keyRandom = "";
+
     private void Awake() {
+        GenerateKey();
+    }
+
+    public void GenerateKey()
+    {
         keyRandom = SceneManager.GetActiveScene().name;
     }
+
     public void SaveAll()
     {
         for(int i = 0 ; i < allObjectSaveLoad.Count;i++)

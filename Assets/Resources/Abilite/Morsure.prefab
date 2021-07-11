@@ -4717,6 +4717,7 @@ MonoBehaviour:
   tagInteract:
   - Destroyable
   - ' Ennemi'
+  - Switch
 --- !u!65 &6970341865407117806
 BoxCollider:
   m_ObjectHideFlags: 0
