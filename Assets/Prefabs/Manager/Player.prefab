@@ -1852,8 +1852,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 3945491864731072382}
     m_Modifications:
     - target: {fileID: 2482528376490811580, guid: c6e7986070f52924ca7282a3b898ebd2, type: 3}
+      propertyPath: distanceCameraMode.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2482528376490811580, guid: c6e7986070f52924ca7282a3b898ebd2, type: 3}
       propertyPath: mindistance
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2482528376490811580, guid: c6e7986070f52924ca7282a3b898ebd2, type: 3}
+      propertyPath: distanceCameraMode.Array.data[0]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2482528376490811580, guid: c6e7986070f52924ca7282a3b898ebd2, type: 3}
+      propertyPath: distanceCameraMode.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2482528376490811580, guid: c6e7986070f52924ca7282a3b898ebd2, type: 3}
+      propertyPath: distanceCameraMode.Array.data[2]
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2482528376490811581, guid: c6e7986070f52924ca7282a3b898ebd2, type: 3}
       propertyPath: m_LocalPosition.x

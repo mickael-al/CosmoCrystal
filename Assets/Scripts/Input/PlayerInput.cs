@@ -89,6 +89,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChangeCameraDistance"",
+                    ""type"": ""Button"",
+                    ""id"": ""ba405bf8-9ab1-4912-8c87-94faa2153961"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -311,6 +319,28 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""ActionSecondaire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7c07954c-0c86-44b7-bedd-aea612b17dc2"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""ChangeCameraDistance"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""71d8db79-51ee-4b0f-932a-accea3aff5d2"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""ChangeCameraDistance"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -356,6 +386,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Controller_Inventaire = m_Controller.FindAction("Inventaire", throwIfNotFound: true);
         m_Controller_Drop = m_Controller.FindAction("Drop", throwIfNotFound: true);
         m_Controller_ActionSecondaire = m_Controller.FindAction("ActionSecondaire", throwIfNotFound: true);
+        m_Controller_ChangeCameraDistance = m_Controller.FindAction("ChangeCameraDistance", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -414,6 +445,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Controller_Inventaire;
     private readonly InputAction m_Controller_Drop;
     private readonly InputAction m_Controller_ActionSecondaire;
+    private readonly InputAction m_Controller_ChangeCameraDistance;
     public struct ControllerActions
     {
         private @PlayerInput m_Wrapper;
@@ -427,6 +459,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @Inventaire => m_Wrapper.m_Controller_Inventaire;
         public InputAction @Drop => m_Wrapper.m_Controller_Drop;
         public InputAction @ActionSecondaire => m_Wrapper.m_Controller_ActionSecondaire;
+        public InputAction @ChangeCameraDistance => m_Wrapper.m_Controller_ChangeCameraDistance;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -463,6 +496,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @ActionSecondaire.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnActionSecondaire;
                 @ActionSecondaire.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnActionSecondaire;
                 @ActionSecondaire.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnActionSecondaire;
+                @ChangeCameraDistance.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnChangeCameraDistance;
+                @ChangeCameraDistance.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnChangeCameraDistance;
+                @ChangeCameraDistance.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnChangeCameraDistance;
             }
             m_Wrapper.m_ControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -494,6 +530,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @ActionSecondaire.started += instance.OnActionSecondaire;
                 @ActionSecondaire.performed += instance.OnActionSecondaire;
                 @ActionSecondaire.canceled += instance.OnActionSecondaire;
+                @ChangeCameraDistance.started += instance.OnChangeCameraDistance;
+                @ChangeCameraDistance.performed += instance.OnChangeCameraDistance;
+                @ChangeCameraDistance.canceled += instance.OnChangeCameraDistance;
             }
         }
     }
@@ -527,5 +566,6 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnInventaire(InputAction.CallbackContext context);
         void OnDrop(InputAction.CallbackContext context);
         void OnActionSecondaire(InputAction.CallbackContext context);
+        void OnChangeCameraDistance(InputAction.CallbackContext context);
     }
 }
