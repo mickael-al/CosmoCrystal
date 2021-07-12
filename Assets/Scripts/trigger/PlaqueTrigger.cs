@@ -53,7 +53,7 @@ public class PlaqueTrigger : Switch
         base.Load(s);
         foreach (GameObject go in this.listeners)
         {
-            go.GetComponent<SwitchChangeListener>().OnSwitchChange(this.switchState.state);
+            go.GetComponent<SwitchChangeListener>().OnSwitchChange(this.switchState.state,this);
         }
     }
 }

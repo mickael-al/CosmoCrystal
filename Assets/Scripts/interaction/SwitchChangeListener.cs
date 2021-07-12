@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface SwitchChangeListener
 {
-    void OnSwitchChange(bool value);
+    void OnSwitchChange(bool value,Switch interupteur);
 }

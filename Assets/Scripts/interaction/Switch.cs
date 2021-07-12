@@ -12,6 +12,8 @@ public abstract class Switch : MonoBehaviour, I_Save
     [SerializeField] protected List<GameObject> listeners;
     protected SwitchState switchState = new SwitchState();
 
+    public SwitchState SwitchS { get { return switchState; } }
+
     protected virtual void Start()
     {
         foreach (GameObject go in this.listeners)
@@ -20,16 +22,16 @@ public abstract class Switch : MonoBehaviour, I_Save
             {
                 throw new System.InvalidOperationException("les gameObjects de cette list doivent implémenté SwicthChangeListener");
             }
-        }        
+        }
     }
 
     public virtual void setState(bool s)
     {
-        if(this.switchState.state != s)
+        if (this.switchState.state != s)
         {
             foreach (GameObject go in this.listeners)
             {
-                go.GetComponent<SwitchChangeListener>().OnSwitchChange(s);
+                go.GetComponent<SwitchChangeListener>().OnSwitchChange(s, this);
             }
         }
         this.switchState.state = s;
@@ -39,10 +41,10 @@ public abstract class Switch : MonoBehaviour, I_Save
     {
         bool exist;
         JsonUtility.FromJsonOverwrite(JSONArchiver.LoadJsonsFile(JSONArchiver.JSONPath, s, out exist), this.switchState);
-        if(!exist)
+        if (!exist)
         {
             this.switchState.state = false;
-        }       
+        }
     }
 
     public virtual void Save(string s)

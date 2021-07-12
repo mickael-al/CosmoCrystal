@@ -2,12 +2,12 @@
 
 public class Porte : Interactable,I_Save
 {
-    [SerializeField] private Item keyItem = null;
-    [SerializeField] private InteractStateSave locked = null;
-    [SerializeField] private Dialogue dialogueNotKey = null;
+    [SerializeField] protected Item keyItem = null;
+    [SerializeField] protected InteractStateSave locked = null;
+    [SerializeField] protected Dialogue dialogueNotKey = null;
 
     [Header("Animation Porte")]
-    [SerializeField] private Animator animatorPorte = null;
+    [SerializeField] protected Animator animatorPorte = null;
     public override void StartInteract()
     {
         if(locked.locked)
