@@ -1039,6 +1039,7 @@ GameObject:
   - component: {fileID: 953608423200157346}
   - component: {fileID: 2413368064451185986}
   - component: {fileID: 7401617075378429542}
+  - component: {fileID: 376749572}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -1168,6 +1169,8 @@ MonoBehaviour:
     nom: 
     vie: 0
     mana: 0
+    vieMax: 0
+    manaMax: 0
     tempsDate: 
     tempsHeure: 
     tempsTotal: 0
@@ -1189,6 +1192,7 @@ MonoBehaviour:
   attaqueClassListSave:
     attaqueList: []
   isFighting: 0
+  floatingText: {fileID: 3710302797744700445, guid: b2beb9b71c3a1ab4eb2b4e4eeaaa4cfb, type: 3}
 --- !u!114 &953608423200157346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1241,6 +1245,19 @@ MonoBehaviour:
   - {fileID: 5372967221698510304}
   - {fileID: 4124980272263861582}
   - {fileID: 8699566277526429407}
+--- !u!114 &376749572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945491864731072377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 652d110bebe43984db31d2cc1ed8b171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedMove: 50
 --- !u!1 &3945491864790057555
 GameObject:
   m_ObjectHideFlags: 0

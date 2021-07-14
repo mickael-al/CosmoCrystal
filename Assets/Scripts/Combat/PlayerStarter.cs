@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class PlayerStarter : CombatStarter, InteractableAbilite, I_Save
 {
     private GameObject sceneManagerObj = null;
+    [SerializeField] private FloatingText floatingText = null;
     protected override void Start()
     {
         sceneManagerObj = GameObject.FindWithTag("SceneManager");
@@ -35,6 +36,10 @@ public class PlayerStarter : CombatStarter, InteractableAbilite, I_Save
 
     public void TakeExternalDamage(float damage, float effCamMag = 0.0f, float effCamDur = 0.0f, float effCamSmoth = 0.0f)
     {
+        if(statistique.Vie > 0)
+        {
+            FloatingTextControler.CreateFloatingText(Mathf.Clamp(damage,0,statistique.VieMax).ToString(),transform,floatingText);
+        }
         if (statistique.Vie - damage < 0)
         {
             statistique.Vie = 0;
@@ -46,7 +51,7 @@ public class PlayerStarter : CombatStarter, InteractableAbilite, I_Save
             statistique.Vie -= damage;
             GameObject.FindWithTag("PivotCamera").GetComponent<PlayerCameraMouvement>().ApplyEffect(new ShakeCamera(), effCamDur, effCamMag, effCamSmoth);
         }
-        sceneManagerObj.GetComponent<UIStatPlayer>().MajValue();
+        sceneManagerObj.GetComponent<UIStatPlayer>().MajValue();        
     }
 
     public void Respawn()

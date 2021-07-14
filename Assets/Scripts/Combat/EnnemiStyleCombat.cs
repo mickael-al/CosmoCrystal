@@ -40,7 +40,7 @@ public class EnnemiStyleCombat : StyleCombat
             }
             DegCal = Mathf.Round(DegCal);
             base.stat.Vie -= DegCal;
-            cm.Ftc.CreateFloatingText(DegCal.ToString(), transform);
+            FloatingTextControler.CreateFloatingText(DegCal.ToString(), transform);
             cm.NoteAttaque(adc.PourcentageReussite / 100.0f);
         }
     }

@@ -343,6 +343,96 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Debug"",
+            ""id"": ""c19a6708-96b2-41f6-9bc6-573afce75129"",
+            ""actions"": [
+                {
+                    ""name"": ""Mouvement"",
+                    ""type"": ""Value"",
+                    ""id"": ""654cd927-e790-4d97-90c4-965d457a9b53"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""UP"",
+                    ""type"": ""Button"",
+                    ""id"": ""e76e639e-a3a1-4ff9-b1fb-c974074f42dd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""arrow"",
+                    ""id"": ""d7783872-2df8-4e0a-9aa9-12fc42490d05"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouvement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""385eae4c-6fcd-4da2-82d2-f12de0716ac1"",
+                    ""path"": ""<Keyboard>/u"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Mouvement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""d2bb2214-5b25-46e1-ac45-1530f7fddc6c"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Mouvement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""b879e1cc-fac7-4e2c-89ff-8fd2682ece9d"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Mouvement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""89c6883e-9810-4b14-8fa7-af095f963e75"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Mouvement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""68da1bfd-a8f1-4261-b864-1e66760205dc"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UP"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -387,6 +477,10 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Controller_Drop = m_Controller.FindAction("Drop", throwIfNotFound: true);
         m_Controller_ActionSecondaire = m_Controller.FindAction("ActionSecondaire", throwIfNotFound: true);
         m_Controller_ChangeCameraDistance = m_Controller.FindAction("ChangeCameraDistance", throwIfNotFound: true);
+        // Debug
+        m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
+        m_Debug_Mouvement = m_Debug.FindAction("Mouvement", throwIfNotFound: true);
+        m_Debug_UP = m_Debug.FindAction("UP", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -537,6 +631,47 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         }
     }
     public ControllerActions @Controller => new ControllerActions(this);
+
+    // Debug
+    private readonly InputActionMap m_Debug;
+    private IDebugActions m_DebugActionsCallbackInterface;
+    private readonly InputAction m_Debug_Mouvement;
+    private readonly InputAction m_Debug_UP;
+    public struct DebugActions
+    {
+        private @PlayerInput m_Wrapper;
+        public DebugActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Mouvement => m_Wrapper.m_Debug_Mouvement;
+        public InputAction @UP => m_Wrapper.m_Debug_UP;
+        public InputActionMap Get() { return m_Wrapper.m_Debug; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DebugActions set) { return set.Get(); }
+        public void SetCallbacks(IDebugActions instance)
+        {
+            if (m_Wrapper.m_DebugActionsCallbackInterface != null)
+            {
+                @Mouvement.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnMouvement;
+                @Mouvement.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnMouvement;
+                @Mouvement.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnMouvement;
+                @UP.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnUP;
+                @UP.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnUP;
+                @UP.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnUP;
+            }
+            m_Wrapper.m_DebugActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Mouvement.started += instance.OnMouvement;
+                @Mouvement.performed += instance.OnMouvement;
+                @Mouvement.canceled += instance.OnMouvement;
+                @UP.started += instance.OnUP;
+                @UP.performed += instance.OnUP;
+                @UP.canceled += instance.OnUP;
+            }
+        }
+    }
+    public DebugActions @Debug => new DebugActions(this);
     private int m_KeyboardandMouseSchemeIndex = -1;
     public InputControlScheme KeyboardandMouseScheme
     {
@@ -567,5 +702,10 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnDrop(InputAction.CallbackContext context);
         void OnActionSecondaire(InputAction.CallbackContext context);
         void OnChangeCameraDistance(InputAction.CallbackContext context);
+    }
+    public interface IDebugActions
+    {
+        void OnMouvement(InputAction.CallbackContext context);
+        void OnUP(InputAction.CallbackContext context);
     }
 }

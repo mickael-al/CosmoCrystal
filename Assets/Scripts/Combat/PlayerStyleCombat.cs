@@ -73,7 +73,7 @@ public class PlayerStyleCombat : StyleCombat
             DegCal = Mathf.Round(DegCal);
             base.stat.Vie -= DegCal;
             cm.Uisp.MajValue();
-            cm.Ftc.CreateFloatingText(DegCal.ToString(), transform);
+            FloatingTextControler.CreateFloatingText(DegCal.ToString(), transform);
         }
     }
 

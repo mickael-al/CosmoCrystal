@@ -5,14 +5,13 @@ using UnityEngine;
 public class MovableObject : MonoBehaviour, Destroyable
 {
 
-    private float maxTimeDisolve;
+    [SerializeField] private float maxTimeDisolve = 2.0f;
     private Material material;
 
     [HideInInspector] public ObjectSpawner spawner;
 
     private void Start()
     {
-        this.maxTimeDisolve = 1.0f;
         this.material = GetComponent<MeshRenderer>().material;
     }
 
@@ -33,7 +32,7 @@ public class MovableObject : MonoBehaviour, Destroyable
         while (currentTimeDisolve < this.maxTimeDisolve)
         {
             currentTimeDisolve += Time.deltaTime;
-            this.material.SetFloat("Vector1_A31CC259", currentTimeDisolve);
+            this.material.SetFloat("Vector1_A31CC259", currentTimeDisolve/maxTimeDisolve);
             yield return null;
         }
         spawner.removeObject(gameObject);
