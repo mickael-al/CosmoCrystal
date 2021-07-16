@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &415016
 Transform:
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 115016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 415018}
   - {fileID: 415020}
@@ -64,6 +64,7 @@ GameObject:
   - component: {fileID: 3315018}
   - component: {fileID: 2315018}
   - component: {fileID: 6515020}
+  - component: {fileID: 1841850233515896703}
   m_Layer: 0
   m_Name: Needle
   m_TagString: Untagged
@@ -142,11 +143,30 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 115018}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.52995527, y: 0.5085304, z: 0.5162337}
   m_Center: {x: 0.0019949228, y: 0.24579579, z: -0.002992615}
+--- !u!114 &1841850233515896703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8e8345385d903448d6072e1d9ef79c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  degatPourcentage: 0.15
+  degatRate: 0.5
+  animation: {fileID: 11115020}
+  firstDelay: 0
+  delay: 1.5
+  showName: Anim_TrapNeedle_Show
+  hideName: Anim_TrapNeedle_Hide
 --- !u!1 &115020
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,13 +192,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 115020}
-  m_LocalRotation: {x: 1.7112914e-15, y: 1, z: -0.000000021855694, w: 0.0000000754979}
+  m_LocalRotation: {x: 0.0075359526, y: 0.9992867, z: -0.00046674584, w: -0.037001323}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 415016}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.021, y: -175.759, z: 0.865}
 --- !u!33 &3315020
 MeshFilter:
   m_ObjectHideFlags: 0

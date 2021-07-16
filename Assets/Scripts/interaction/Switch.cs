@@ -43,7 +43,11 @@ public abstract class Switch : MonoBehaviour, I_Save
         JsonUtility.FromJsonOverwrite(JSONArchiver.LoadJsonsFile(JSONArchiver.JSONPath, s, out exist), this.switchState);
         if (!exist)
         {
-            this.switchState.state = false;
+            this.switchState.state = false;            
+        }
+        foreach (GameObject go in this.listeners)
+        {
+            go.GetComponent<SwitchChangeListener>().OnSwitchChange(this.switchState.state, this);
         }
     }
 

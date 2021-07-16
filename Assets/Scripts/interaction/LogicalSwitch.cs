@@ -26,6 +26,10 @@ public class LogicalSwitch : Switch,SwitchChangeListener
 
     public void OnSwitchChange(bool value,Switch interupteur)
     {    
+        if(!interupteursMap.ContainsKey(interupteur))
+        {
+            return;
+        }
         interupteursMap[interupteur] = value;
         bool state = AndOperator(interupteursMap.Values.ToList()).First<bool>();
         foreach (GameObject go in base.listeners)
