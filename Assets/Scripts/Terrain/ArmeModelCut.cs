@@ -27,7 +27,7 @@ public class ArmeModelCut : MonoBehaviour
                 emit.rateOverDistance = maxEmitRate;
                 if (character != null)
                 {
-                    character.SpeedModifier = character.WalkSpeed/2.0f;
+                    character.SpeedModifier = 0.5f;
                 }
             }
             else if (hit.transform.GetComponent<DestructibleAbilite>())
@@ -35,7 +35,7 @@ public class ArmeModelCut : MonoBehaviour
                 if (character != null)
                 {
                     hit.transform.GetComponent<DestructibleAbilite>().Interact(character);                    
-                    character.SpeedModifier = character.WalkSpeed/2.0f;
+                    character.SpeedModifier = 0.5f;
                 }
             }
         }
@@ -43,7 +43,7 @@ public class ArmeModelCut : MonoBehaviour
         {
             if (character != null)
             {
-                character.SpeedModifier = character.WalkSpeed;
+                character.SpeedModifier = 1;
             }
             emit.rateOverDistance = 0.0f;
         }
@@ -51,7 +51,7 @@ public class ArmeModelCut : MonoBehaviour
     private void OnDestroy() {
         if (character != null)
         {
-                character.SpeedModifier = character.WalkSpeed;
+                character.SpeedModifier = 1;
         }
     }
 }

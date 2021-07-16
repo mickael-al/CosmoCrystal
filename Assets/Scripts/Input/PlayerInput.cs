@@ -97,6 +97,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""88c7b889-08d3-4869-8923-a0a70fb8abcf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -341,6 +349,28 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""ChangeCameraDistance"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""efb4e27c-e61a-4438-b3ee-bbb9cd4fc6ef"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d53dc3c7-0ab6-4d49-a5c6-c6a01698a9cf"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -477,6 +507,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Controller_Drop = m_Controller.FindAction("Drop", throwIfNotFound: true);
         m_Controller_ActionSecondaire = m_Controller.FindAction("ActionSecondaire", throwIfNotFound: true);
         m_Controller_ChangeCameraDistance = m_Controller.FindAction("ChangeCameraDistance", throwIfNotFound: true);
+        m_Controller_Sprint = m_Controller.FindAction("Sprint", throwIfNotFound: true);
         // Debug
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_Mouvement = m_Debug.FindAction("Mouvement", throwIfNotFound: true);
@@ -540,6 +571,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Controller_Drop;
     private readonly InputAction m_Controller_ActionSecondaire;
     private readonly InputAction m_Controller_ChangeCameraDistance;
+    private readonly InputAction m_Controller_Sprint;
     public struct ControllerActions
     {
         private @PlayerInput m_Wrapper;
@@ -554,6 +586,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @Drop => m_Wrapper.m_Controller_Drop;
         public InputAction @ActionSecondaire => m_Wrapper.m_Controller_ActionSecondaire;
         public InputAction @ChangeCameraDistance => m_Wrapper.m_Controller_ChangeCameraDistance;
+        public InputAction @Sprint => m_Wrapper.m_Controller_Sprint;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -593,6 +626,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @ChangeCameraDistance.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnChangeCameraDistance;
                 @ChangeCameraDistance.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnChangeCameraDistance;
                 @ChangeCameraDistance.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnChangeCameraDistance;
+                @Sprint.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnSprint;
             }
             m_Wrapper.m_ControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -627,6 +663,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @ChangeCameraDistance.started += instance.OnChangeCameraDistance;
                 @ChangeCameraDistance.performed += instance.OnChangeCameraDistance;
                 @ChangeCameraDistance.canceled += instance.OnChangeCameraDistance;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
             }
         }
     }
@@ -702,6 +741,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnDrop(InputAction.CallbackContext context);
         void OnActionSecondaire(InputAction.CallbackContext context);
         void OnChangeCameraDistance(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
     }
     public interface IDebugActions
     {

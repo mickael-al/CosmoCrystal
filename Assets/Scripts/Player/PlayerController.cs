@@ -17,6 +17,7 @@ public class PlayerController : Character
 
     #region ControlerVariable
     private float speed = 0.0f;
+    private float speedModifier = 1.0f;
     private float AnglesModelPlayerY = 0.0f;
 
     private float pivotY = 0.0f;
@@ -35,7 +36,7 @@ public class PlayerController : Character
     #endregion
 
     #region GetterSetter
-    public override float SpeedModifier { set {speed=value; } get { return speed; } }
+    public override float SpeedModifier { set {speedModifier=value; } get { return speedModifier; } }
     #endregion
 
     protected override void Awake()
@@ -71,11 +72,13 @@ public class PlayerController : Character
     protected override void Start()
     {
         base.Start();
-        speed = walkSpeed;
+        speed = walkSpeed * speedModifier;
         pivot = GameObject.FindWithTag("PivotCamera");
         pivotY = transform.eulerAngles.y;
         RaycastQuatNormal = transform.rotation;
         AnglesModelPlayerY = pivotY + Mathf.Atan2(lerpMove.x, lerpMove.y) * Mathf.Rad2Deg;
+        InputManager.InputJoueur.Controller.Sprint.started += ctx => speed = runSpeed;
+        InputManager.InputJoueur.Controller.Sprint.canceled += ctx => speed = walkSpeed;
     }
 
     protected override void Update()
@@ -85,14 +88,14 @@ public class PlayerController : Character
         {
             Locomation();
         }
-
+        
     }
     public void Locomation()
     {
         Gravity();
         lerpMove = Vector2.Lerp(lerpMove, InputManager.InputJoueur.Controller.Mouvement.ReadValue<Vector2>(), Time.deltaTime * 12.0f);
-        moveController = transform.TransformDirection(Vector3.right) * Time.deltaTime * speed * lerpMove.x;
-        moveController += transform.TransformDirection(Vector3.forward) * Time.deltaTime * speed * lerpMove.y;
+        moveController = transform.TransformDirection(Vector3.right) * Time.deltaTime * speed * speedModifier * lerpMove.x;
+        moveController += transform.TransformDirection(Vector3.forward) * Time.deltaTime * speed * speedModifier * lerpMove.y;
         moveController += new Vector3(0, base.gravityValue * Time.deltaTime * notGroundTime * base.gravityAcelerationMultipliyer, 0);
         characterControler.Move(moveController);   
                
@@ -106,7 +109,6 @@ public class PlayerController : Character
         {
             modelPlayer.transform.rotation = RaycastQuatNormal;
         }
-
 
         if (Physics.Raycast(transform.position, -Vector3.up, out hit, 4.0f,layerMaskRayCastFloor) && floorAdaptation)
         {

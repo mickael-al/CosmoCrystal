@@ -1076,7 +1076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 8
-  runSpeed: 2
+  runSpeed: 12
   gravityValue: -9.81
   gravityAcelerationMultipliyer: 1
   isInteract: 0
